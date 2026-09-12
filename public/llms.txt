@@ -1,0 +1,32 @@
+# cloudsandai
+
+> Instructor-led courses covering mathematical foundations, statistical methods, machine learning, Python, coding, and deep neural networks. Founded and taught by Deven Dande.
+
+cloudsandai offers a structured learning path from mathematics and statistics through to deep learning, designed for engineering students, polytechnic students, and working professionals. The curriculum is aligned with topics covered at IIT and BITS, and delivered through instructor-led batches with hands-on projects.
+
+## Key Details
+
+- **Instructor**: Deven Dande (AWS-certified, 3+ years of AI/ML training experience)
+- **Next Batch**: Starting 12th October 2026
+- **Discounts**: Early Bird 20% off, Bulk Admission (group of 5+) 30% off
+- **Location**: Nagpur, India (with online options)
+- **Contact**: deven@cloudsandai.com, +91 8830628242
+- **LinkedIn**: https://www.linkedin.com/in/devendande
+
+## Curriculum Areas
+
+- Mathematics for Machine Learning
+- Statistics & Probability
+- Python Programming & Coding
+- Machine Learning Algorithms
+- Deep Learning & Neural Networks
+
+## Links
+
+- [Home](https://cloudsandai.com/)
+- [Courses](https://cloudsandai.com/#courses)
+- [Curriculum](https://cloudsandai.com/#curriculum)
+- [Webinars](https://cloudsandai.com/#webinars)
+- [About](https://cloudsandai.com/#about)
+- [FAQ](https://cloudsandai.com/#faq)
+- [Contact](https://cloudsandai.com/#contact)
