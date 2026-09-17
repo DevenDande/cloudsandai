@@ -13,15 +13,15 @@ export function Webinars() {
     <section id="webinars" className="border-b border-ink-100 bg-ink-50/40 py-20 lg:py-28">
       <div className="mx-auto max-w-8xl px-6 lg:px-10">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          {/* Python + Coding Webinars */}
+          {/* Computational practice sessions */}
           <div>
             <p className="mono-label">Course 1</p>
             <h2 className="mt-4 text-balance text-2xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-3xl">
-              8 Python + Coding Webinars
+              8 Programming & Scientific Computing Sessions
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-500">
-              Course 1 includes 8 dedicated webinars focused on Python and coding to
-              complement the mathematical and machine learning curriculum.
+              Course 1 includes 8 Programming Sessions that run alongside the
+              academic curriculum, connecting concepts with implementation.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -39,30 +39,30 @@ export function Webinars() {
             <div className="mt-8 inline-flex items-center gap-3 rounded-xl border border-ink-100 bg-white px-5 py-4">
               <span className="font-mono text-3xl font-semibold text-ink-900">8</span>
               <span className="text-sm text-ink-500">
-                Python + Coding
+                Programming
                 <br />
-                Webinars
+                Sessions
               </span>
             </div>
           </div>
 
-          {/* Additional Webinars */}
+          {/* Additional deep-learning sessions */}
           <div>
             <p className="mono-label">Course 2</p>
             <h2 className="mt-4 text-balance text-2xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-3xl">
-              6 Additional Webinars
+              6 Additional Deep Learning Sessions
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-500">
-              Course 2 adds 6 additional webinars alongside the 8 Python + Coding
-              webinars included in Course 1.
+              Course 2 adds 6 deep-learning implementation sessions alongside the 8
+              Programming & Scientific Computing sessions included in Course 1.
             </p>
 
             <div className="mt-8 inline-flex items-center gap-3 rounded-xl border border-ink-100 bg-white px-5 py-4">
               <span className="font-mono text-3xl font-semibold text-ink-900">14</span>
               <span className="text-sm text-ink-500">
-                Total
+                Programming
                 <br />
-                Webinars
+                Sessions
               </span>
             </div>
 
@@ -71,7 +71,7 @@ export function Webinars() {
                 <span className="flex h-7 w-7 items-center justify-center rounded bg-ink-100 font-mono text-xs font-medium text-ink-600">
                   8
                 </span>
-                <span className="text-sm text-ink-700">Python + Coding Webinars</span>
+                <span className="text-sm text-ink-700">Programming & Scientific Computing</span>
               </div>
               <div className="flex items-center gap-1 pl-4 text-ink-300">
                 <span className="text-xs">+</span>
@@ -81,7 +81,7 @@ export function Webinars() {
                   6
                 </span>
                 <span className="text-sm font-medium text-accent-800">
-                  Additional Webinars
+                  Deep Learning Implementation
                 </span>
               </div>
             </div>

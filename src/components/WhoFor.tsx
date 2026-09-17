@@ -19,7 +19,7 @@ const audiences = [
   {
     icon: Code2,
     title: 'Python Learners',
-    text: 'For learners who want dedicated Python and coding support alongside ML concepts.',
+    text: 'For learners who want programming and scientific computing practice alongside ML concepts.',
   },
   {
     icon: BrainCircuit,

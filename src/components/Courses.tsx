@@ -83,6 +83,21 @@ export function Courses() {
                 {course.summary}
               </div>
 
+              <div
+                className={`mt-3 text-sm ${
+                  course.highlighted ? 'text-ink-200' : 'text-ink-700'
+                }`}
+              >
+                <span className="font-medium">{course.duration}</span>
+                {' · '}
+                <span className="font-medium">{course.lectures}</span>
+                {course.additionalDuration && course.additionalLectures && (
+                  <span className="ml-2 text-xs opacity-75">
+                    ({course.additionalDuration} + {course.additionalLectures})
+                  </span>
+                )}
+              </div>
+
               {/* Core areas */}
               <div className="mt-6 space-y-2.5">
                 {course.coreAreas.map((area, i) => (
@@ -107,7 +122,7 @@ export function Courses() {
                 ))}
               </div>
 
-              {/* Webinars */}
+              {/* Practice sessions */}
               <div
                 className={`mt-6 border-t pt-5 ${
                   course.highlighted ? 'border-white/10' : 'border-ink-100'
@@ -124,7 +139,7 @@ export function Courses() {
                       course.highlighted ? 'text-ink-300' : 'text-ink-400'
                     }`}
                   >
-                    Webinars
+                    Sessions
                   </span>
                 </div>
                 <div className="mt-3 space-y-2">
@@ -149,13 +164,15 @@ export function Courses() {
                       course.highlighted ? 'text-white' : 'text-ink-900'
                     }`}
                   >
-                    Total: {course.totalWebinars} Webinars
+                    Total: {course.totalWebinars} Sessions
                   </div>
                 </div>
               </div>
 
               {/* CTAs */}
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div
+                className={`${course.highlighted ? 'mt-8' : 'mt-auto'} flex flex-col gap-3 sm:flex-row sm:items-center`}
+              >
                 <button
                   onClick={() => scrollTo('#contact')}
                   className={`group inline-flex flex-1 items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all ${

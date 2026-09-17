@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Phone, Linkedin, Send, ArrowUpRight } from 'lucide-react';
+import { Instagram, Mail, Phone, Linkedin, Send, ArrowUpRight } from 'lucide-react';
 
 export function Contact() {
   const [form, setForm] = useState({
@@ -86,6 +86,38 @@ export function Contact() {
                 </div>
                 <ArrowUpRight className="h-4 w-4 text-ink-300 transition-colors group-hover:text-ink-700" />
               </a>
+
+              <a
+                href="https://www.linkedin.com/company/cloudsandai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 transition-all hover:border-ink-200 hover:shadow-sm"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-ink-50 text-ink-700 transition-colors group-hover:bg-accent-500 group-hover:text-white">
+                  <Linkedin className="h-5 w-5" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs text-ink-400">cloudsandai LinkedIn</p>
+                  <p className="text-sm font-medium text-ink-900">linkedin.com/company/cloudsandai</p>
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-ink-300 transition-colors group-hover:text-ink-700" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/cloudsandaidotcom"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 transition-all hover:border-ink-200 hover:shadow-sm"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-ink-50 text-ink-700 transition-colors group-hover:bg-accent-500 group-hover:text-white">
+                  <Instagram className="h-5 w-5" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs text-ink-400">Instagram</p>
+                  <p className="text-sm font-medium text-ink-900">@cloudsandaidotcom</p>
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-ink-300 transition-colors group-hover:text-ink-700" />
+              </a>
             </div>
           </div>
 
@@ -163,11 +195,11 @@ export function Contact() {
                     className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 transition-colors focus:border-ink-900 focus:outline-none focus:ring-1 focus:ring-ink-900"
                   >
                     <option value="">Select a course</option>
-                    <option value="Introduction to Machine Learning — ₹10,000">
-                      Introduction to Machine Learning — ₹10,000
+                    <option value="Introduction to Machine Learning — ₹15,000">
+                      Introduction to Machine Learning — ₹15,000
                     </option>
-                    <option value="Machine Learning + Deep Neural Networks — ₹16,000">
-                      Machine Learning + Deep Neural Networks — ₹16,000
+                    <option value="Machine Learning + Deep Neural Networks — ₹20,000">
+                      Machine Learning + Deep Neural Networks — ₹20,000
                     </option>
                     <option value="Not sure yet">Not sure yet</option>
                   </select>

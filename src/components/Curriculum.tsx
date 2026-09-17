@@ -1,15 +1,12 @@
 import { useState } from 'react';
-import { BookOpen, Brain, BarChart3, Cpu, ChevronDown } from 'lucide-react';
+import { BookOpen, Brain, BarChart3, Code2, Cpu } from 'lucide-react';
 import { CurriculumAccordion } from './CurriculumAccordion';
 import {
-  mathFoundations,
-  statisticalMethods,
-  machineLearning,
   deepNeuralNetworks,
   course1Modules,
 } from '@/data/curriculum';
 
-const course1Icons = [BookOpen, BarChart3, Brain];
+const course1Icons = [BookOpen, BarChart3, Brain, Code2];
 
 export function Curriculum() {
   const [tab, setTab] = useState<'course1' | 'course2'>('course1');
@@ -23,8 +20,8 @@ export function Curriculum() {
             The Curriculum
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-500">
-            Built around the mathematical, statistical, machine learning and deep learning
-            topics covered in the reference course handouts.
+            Academic foundations and Programming & Scientific Computing are developed
+            together. Course 2 adds Deep Neural Networks and implementation practice.
           </p>
         </div>
 
@@ -76,7 +73,7 @@ export function Curriculum() {
             <div className="rounded-xl border border-accent-200 bg-accent-50/40 p-4">
               <p className="text-sm text-accent-800">
                 <span className="font-medium">Course 2</span> includes all of Course 1
-                plus the Deep Neural Networks module below.
+                plus the Deep Neural Networks module below and additional implementation sessions.
               </p>
             </div>
 
@@ -97,7 +94,7 @@ export function Curriculum() {
               <div className="mb-2 flex items-center gap-2 text-accent-600">
                 <Cpu className="h-4 w-4" />
                 <span className="mono-label !text-accent-600">
-                  Module 04 — Course 2 Extension
+                  Module 05 — Course 2 Extension
                 </span>
               </div>
               <CurriculumAccordion module={deepNeuralNetworks} />

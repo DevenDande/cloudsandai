@@ -1,6 +1,5 @@
-import { ArrowRight } from 'lucide-react';
-
-const course1Path = ['Mathematics', 'Statistics', 'Machine Learning', 'Python + Coding'];
+const academicPath = ['Mathematics', 'Statistics', 'Machine Learning'];
+const computationalPath = ['Python', 'Scientific Computing', 'Algorithms', 'Implementation'];
 
 const course2Extra = [
   'Deep Neural Networks',
@@ -21,7 +20,7 @@ export function Roadmap() {
             The Learning Path
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-500">
-            A clear progression from foundations to advanced deep learning.
+            Academic foundations and computational practice progress in parallel, followed by advanced deep learning.
           </p>
         </div>
 
@@ -37,18 +36,21 @@ export function Roadmap() {
             <h3 className="mt-4 text-lg font-semibold text-ink-900">
               Introduction to Machine Learning
             </h3>
-            <div className="mt-6 space-y-0">
-              {course1Path.map((step, i) => (
-                <div key={i}>
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-ink-200 bg-ink-50 font-mono text-xs font-medium text-ink-700">
-                      {i + 1}
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {[academicPath, computationalPath].map((path, pathIndex) => (
+                <div key={pathIndex} className="space-y-0">
+                  <p className="mono-label">{pathIndex === 0 ? 'Academic Track' : 'Computational Track'}</p>
+                  {path.map((step, i) => (
+                    <div key={step} className="mt-3">
+                      <div className="flex items-center gap-4">
+                        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-ink-200 bg-ink-50 font-mono text-xs font-medium text-ink-700">
+                          {i + 1}
+                        </div>
+                        <span className="text-sm font-medium text-ink-800">{step}</span>
+                      </div>
+                      {i < path.length - 1 && <div className="ml-[18px] h-4 w-px bg-ink-200" />}
                     </div>
-                    <span className="text-sm font-medium text-ink-800">{step}</span>
-                  </div>
-                  {i < course1Path.length - 1 && (
-                    <div className="ml-[18px] h-6 w-px bg-ink-200" />
-                  )}
+                  ))}
                 </div>
               ))}
             </div>
@@ -71,7 +73,7 @@ export function Roadmap() {
                   ↻
                 </div>
                 <span className="text-sm font-medium text-ink-200">
-                  Everything in Course 1
+                  Everything in Course 1, including both parallel tracks
                 </span>
               </div>
               <div className="ml-[18px] h-6 w-px bg-white/15" />

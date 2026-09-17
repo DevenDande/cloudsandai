@@ -1,4 +1,4 @@
-import { Linkedin, Mail, Phone } from 'lucide-react';
+import { Instagram, Linkedin, Mail, Phone } from 'lucide-react';
 
 const footerLinks = [
   { label: 'Home', href: '#home' },
@@ -34,7 +34,7 @@ export function Footer() {
               />
             </a>
             <p className="mt-4 text-sm text-ink-500">
-              Mathematics · Statistics · Machine Learning · Deep Learning · Python
+              Mathematics · Statistics · Machine Learning · Programming · Scientific Computing · Deep Learning
             </p>
 
             <div className="mt-6 flex items-center gap-3">
@@ -46,6 +46,24 @@ export function Footer() {
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/cloudsandai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-200 text-ink-600 transition-colors hover:border-ink-900 hover:bg-ink-900 hover:text-white"
+                aria-label="cloudsandai LinkedIn"
+              >
+                <Linkedin className="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.instagram.com/cloudsandaidotcom"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-200 text-ink-600 transition-colors hover:border-ink-900 hover:bg-ink-900 hover:text-white"
+                aria-label="cloudsandai Instagram"
+              >
+                <Instagram className="h-4 w-4" />
               </a>
               <a
                 href="mailto:deven@cloudsandai.com"
@@ -110,6 +128,26 @@ export function Footer() {
                   className="text-sm text-ink-500 transition-colors hover:text-ink-900"
                 >
                   LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/cloudsandai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-ink-500 transition-colors hover:text-ink-900"
+                >
+                  cloudsandai LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/cloudsandaidotcom"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-ink-500 transition-colors hover:text-ink-900"
+                >
+                  Instagram @cloudsandaidotcom
                 </a>
               </li>
             </ul>

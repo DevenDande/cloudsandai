@@ -1,7 +1,5 @@
 const marqueeItems = [
-  'Early Bird Discount – 20%',
-  'Bulk Admission Discount (Group of 5+ candidates) – 30%',
-  'Batches starting from 12th October 2026',
+  'Courses Starting from INR 2999 for Polytechnic Students, Engineering Students, Recent Graduates and AI + AWS bootcamp coming soon...Stay Tuned!',
 ];
 
 const renderMarqueeContent = () => (

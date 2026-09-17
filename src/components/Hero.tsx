@@ -21,7 +21,7 @@ export function Hero() {
           <div className="lg:col-span-7">
             <div className="animate-fade-up opacity-0" style={{ animationDelay: '0.1s' }}>
               <p className="mono-label">
-                Mathematics · Statistics · Machine Learning · Deep Learning
+                Mathematics · Statistics · Machine Learning · Programming · Deep Learning
               </p>
             </div>
 
@@ -36,9 +36,8 @@ export function Hero() {
               className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-500 animate-fade-up opacity-0"
               style={{ animationDelay: '0.3s' }}
             >
-              Learn the mathematics, statistical methods, machine learning algorithms,
-              Python, coding, and deep neural networks through a structured
-              instructor-led curriculum.
+              Learn mathematics, statistics, machine learning, programming, algorithms and
+              scientific computing together through a structured, instructor-led curriculum.
             </p>
 
             <div
@@ -68,13 +67,13 @@ export function Hero() {
               <span className="text-sm text-ink-400">By Deven Dande</span>
               <span className="h-1 w-1 rounded-full bg-ink-200" />
               <a
-                href="https://www.linkedin.com/in/devendande"
+                href="https://www.linkedin.com/company/cloudsandai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-600 transition-colors hover:text-accent-600"
               >
                 <Linkedin className="h-4 w-4" />
-                LinkedIn
+                cloudsandai LinkedIn
               </a>
             </div>
           </div>

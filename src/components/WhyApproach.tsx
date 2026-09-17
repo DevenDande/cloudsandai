@@ -19,7 +19,7 @@ const reasons = [
   {
     icon: Code2,
     title: 'Implementation',
-    text: 'Use dedicated Python and coding webinars to connect concepts with implementation.',
+    text: 'Develop programming, algorithms and scientific computing alongside academic concepts, then connect them through implementation.',
   },
   {
     icon: BrainCircuit,

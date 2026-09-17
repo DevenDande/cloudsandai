@@ -355,8 +355,55 @@ export const machineLearning: CurriculumModule = {
   ],
 };
 
-export const deepNeuralNetworks: CurriculumModule = {
+export const programmingScientificComputing: CurriculumModule = {
   number: '04',
+  title: 'Programming & Scientific Computing',
+  groups: [
+    {
+      letter: 'A',
+      title: 'Python Foundations',
+      topics: ['Python syntax', 'Variables and data types', 'Conditionals', 'Loops', 'Functions', 'Modules', 'Basic debugging'],
+    },
+    {
+      letter: 'B',
+      title: 'Programming Fundamentals',
+      topics: ['Problem decomposition', 'Functions', 'Recursion', 'Computational thinking', 'Code organization', 'Basic complexity concepts'],
+    },
+    {
+      letter: 'C',
+      title: 'Data Structures',
+      topics: ['Lists', 'Tuples', 'Dictionaries', 'Sets', 'Stacks', 'Queues', 'Practical use of data structures'],
+    },
+    {
+      letter: 'D',
+      title: 'Algorithms',
+      topics: ['Searching', 'Sorting', 'Recursion', 'Algorithmic thinking', 'Big-O / computational complexity', 'Implementation-oriented problem solving'],
+    },
+    {
+      letter: 'E',
+      title: 'NumPy & Numerical Computing',
+      topics: ['Arrays', 'Vectorization', 'Broadcasting', 'Matrix operations', 'Numerical computation'],
+    },
+    {
+      letter: 'F',
+      title: 'Scientific Computing',
+      topics: ['Numerical differentiation', 'Numerical integration', 'Simulation', 'Numerical optimization', 'Computational experiments'],
+    },
+    {
+      letter: 'G',
+      title: 'Data Handling & Visualization',
+      topics: ['Pandas', 'Data cleaning', 'Exploratory data analysis', 'Visualization'],
+    },
+    {
+      letter: 'H',
+      title: 'Machine Learning Programming',
+      topics: ['Translating mathematical equations into code', 'Implementing ML algorithms', 'Training workflows', 'Evaluation', 'Computational experiments'],
+    },
+  ],
+};
+
+export const deepNeuralNetworks: CurriculumModule = {
+  number: '05',
   title: 'Deep Neural Networks',
   groups: [
     {
@@ -496,6 +543,7 @@ export const course1Modules: CurriculumModule[] = [
   mathFoundations,
   statisticalMethods,
   machineLearning,
+  programmingScientificComputing,
 ];
 
 export const dnnModule: CurriculumModule = deepNeuralNetworks;
@@ -504,17 +552,17 @@ export const faqItems: { question: string; answer: string }[] = [
   {
     question: 'What does Course 1 include?',
     answer:
-      'Course 1 combines Mathematical Foundations for Machine Learning, Introduction to Statistical Methods and Machine Learning, along with 8 Python + Coding webinars.',
+      'Course 1 combines Mathematical Foundations for Machine Learning, Introduction to Statistical Methods, Machine Learning, and Programming & Scientific Computing through 8 Programming Sessions.',
   },
   {
     question: 'What does Course 2 include?',
     answer:
-      'Course 2 includes everything in Course 1, plus Deep Neural Networks and 6 additional webinars.',
+      'Course 2 includes everything in Course 1, plus Deep Neural Networks and 6 additional deep-learning implementation sessions, for 14 Programming Sessions total.',
   },
   {
-    question: 'How many webinars are included?',
+    question: 'How many sessions are included?',
     answer:
-      'Course 1 includes 8 Python + Coding webinars. Course 2 includes those 8 webinars plus 6 additional webinars, for a total of 14.',
+      'Course 1 includes 8 Programming Sessions. Course 2 includes those 8 Programming Sessions plus 6 additional deep-learning implementation sessions, for 14 Programming Sessions total.',
   },
   {
     question: 'What topics are covered in the mathematics component?',
@@ -554,6 +602,10 @@ export interface CourseCardData {
   label: string;
   description: string;
   summary: string;
+  duration: string;
+  lectures: string;
+  additionalDuration?: string;
+  additionalLectures?: string;
   coreAreas: string[];
   webinars: string[];
   totalWebinars: string;
@@ -568,14 +620,17 @@ export const courses: CourseCardData[] = [
     price: '₹15,000',
     label: 'FOUNDATION TRACK',
     description:
-      'A structured program covering mathematical foundations, statistical methods, machine learning, and dedicated Python + coding webinars.',
-    summary: '3 Core Areas + 8 Webinars',
+      'A structured foundation program where mathematics, statistics, machine learning and programming develop together through computation.',
+    summary: '4 Core Areas + 8 Programming Sessions',
+    duration: '120 hrs',
+    lectures: '60 lectures',
     coreAreas: [
       'Mathematical Foundations for Machine Learning',
       'Introduction to Statistical Methods',
       'Machine Learning',
+      'Programming & Scientific Computing',
     ],
-    webinars: ['8 Python + Coding Webinars'],
+    webinars: ['8 Programming & Scientific Computing Sessions'],
     totalWebinars: '8',
     highlighted: false,
   },
@@ -585,15 +640,20 @@ export const courses: CourseCardData[] = [
     price: '₹20,000',
     label: 'COMPLETE TRACK',
     description:
-      'Everything in the Introduction to Machine Learning program, extended with a full Deep Neural Networks curriculum and 6 additional webinars.',
-    summary: '4 Core Areas + 14 Webinars',
+      'Everything in the Introduction to Machine Learning program, extended with Deep Neural Networks and 6 additional implementation sessions.',
+    summary: '5 Core Areas + 14 Programming Sessions',
+    duration: '180 hrs',
+    lectures: '90 lectures',
+    additionalDuration: '60',
+    additionalLectures: '30 lectures',
     coreAreas: [
       'Mathematical Foundations for Machine Learning',
       'Introduction to Statistical Methods',
       'Machine Learning',
+      'Programming & Scientific Computing',
       'Deep Neural Networks',
     ],
-    webinars: ['8 Python + Coding Webinars', '6 Additional Webinars'],
+    webinars: ['8 Programming & Scientific Computing Sessions', '6 Deep Learning Implementation Sessions'],
     totalWebinars: '14',
     highlighted: true,
     badge: 'Includes Course 1',
@@ -604,10 +664,12 @@ export const comparisonRows: { feature: string; course1: string; course2: string
   { feature: 'Mathematical Foundations for ML', course1: 'check', course2: 'check' },
   { feature: 'Statistical Methods', course1: 'check', course2: 'check' },
   { feature: 'Machine Learning', course1: 'check', course2: 'check' },
-  { feature: 'Python + Coding', course1: 'check', course2: 'check' },
-  { feature: 'Python + Coding Webinars', course1: '8', course2: '8' },
+  { feature: 'Programming & Scientific Computing', course1: 'check', course2: 'check' },
+  { feature: 'Computational Practice Sessions', course1: '8', course2: '8' },
   { feature: 'Deep Neural Networks', course1: 'dash', course2: 'check' },
-  { feature: 'Additional Webinars', course1: 'dash', course2: '6' },
-  { feature: 'Total Webinars', course1: '8', course2: '14' },
+  { feature: 'Additional Deep Learning Implementation', course1: 'dash', course2: '6' },
+  { feature: 'Total Programming Sessions', course1: '8', course2: '14' },
+  { feature: 'Duration', course1: '120 hrs', course2: '180 hrs (additional 60 hrs)' },
+  { feature: 'Lectures', course1: '60', course2: '90 (additional 30 lectures)' },
   { feature: 'Price', course1: '₹15,000', course2: '₹20,000' },
 ];

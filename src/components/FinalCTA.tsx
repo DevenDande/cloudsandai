@@ -18,8 +18,8 @@ export function FinalCTA() {
           Then Go Deeper.
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-400">
-          Start with mathematics, statistics and machine learning — or take the complete
-          path into deep neural networks.
+          Learn theory and computation together, then continue into deep neural networks
+          with Course 2.
         </p>
 
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
