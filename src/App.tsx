@@ -96,7 +96,7 @@ function PageContent({ path }: { path: string }) {
       <Philosophy />
       <Roadmap />
       <WhyApproach />
-      <Contact compact />
+      <Contact />
       <FAQ />
       <FinalCTA />
     </>
