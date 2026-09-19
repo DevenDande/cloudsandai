@@ -1,32 +1,97 @@
 # cloudsandai
 
-> Instructor-led courses covering mathematical foundations, statistical methods, machine learning, Python, coding, and deep neural networks. Founded and taught by Deven Dande.
+> Foundations-first, instructor-led education in mathematics, statistics, programming, machine learning, and deep learning. Founded and taught by Deven Dande in Nagpur, India, with online learning options.
 
-cloudsandai offers a structured learning path from mathematics and statistics through to deep learning, designed for engineering students, polytechnic students, and working professionals. The curriculum is aligned with topics covered at IIT and BITS, and delivered through instructor-led batches with hands-on projects.
+## About
 
-## Key Details
+cloudsandai is an independent educational initiative led by Deven Dande and a team of 3+ AI engineers. It is designed for engineering students, polytechnic students, recent graduates, working professionals, and learners who want to understand AI and machine learning beyond surface-level tools and buzzwords.
 
-- **Instructor**: Deven Dande (AWS-certified, 3+ years of AI/ML training experience)
-- **Next Batch**: Starting 12th October 2026
-- **Discounts**: Early Bird 20% off, Bulk Admission (group of 5+) 30% off
-- **Location**: Nagpur, India (with online options)
-- **Contact**: deven@cloudsandai.com, +91 8830628242
-- **LinkedIn**: https://www.linkedin.com/in/devendande
+The initiative's primary purpose is to respond to a problem Deven sees in the AI education market: many bootcamps market AI/ML as a gimmick, make ambitious promises, and enroll students without teaching the mathematical, statistical, computational, and programming foundations needed for genuine understanding. cloudsandai takes the opposite approach by developing foundations first and connecting theory to implementation.
 
-## Curriculum Areas
+A second purpose is to democratize AI/ML education for non-English-speaking audiences. Deven plans to make explanations and learning resources available in Hindi as well, so language is less of a barrier for students who want to learn AI and machine learning.
 
-- Mathematics for Machine Learning
-- Statistics & Probability
-- Python Programming & Coding
-- Machine Learning Algorithms
-- Deep Learning & Neural Networks
+Deven and his team have AWS certifications and hands-on experience delivering AI/ML projects and proofs of concept for clients across India, the UK, the USA, and government sectors. For the past three years, the team has conducted AI/ML internships and training programs for polytechnic and engineering students in Nagpur, with more than 200 students reached.
 
-## Links
+## Learning Approach
 
-- [Home](https://cloudsandai.com/)
-- [Courses](https://cloudsandai.com/#courses)
-- [Curriculum](https://cloudsandai.com/#curriculum)
-- [Webinars](https://cloudsandai.com/#webinars)
-- [About](https://cloudsandai.com/#about)
-- [FAQ](https://cloudsandai.com/#faq)
-- [Contact](https://cloudsandai.com/#contact)
+- Build mathematical intuition instead of treating algorithms as black boxes.
+- Develop probability, statistics, estimation, testing, and statistical modelling skills.
+- Study classical machine learning algorithms and the complete machine learning workflow.
+- Learn Python, algorithms, data structures, NumPy, Pandas, visualization, and scientific computing.
+- Translate mathematical equations into working implementations and computational experiments.
+- Progress from foundations into deep neural networks, CNNs, sequence models, attention, and transformers.
+- Combine instructor-led explanation with programming and implementation sessions.
+
+## Courses
+
+### Introduction to Machine Learning
+
+Foundation track covering four core areas:
+
+- Mathematical Foundations for Machine Learning
+- Introduction to Statistical Methods
+- Machine Learning
+- Programming & Scientific Computing
+
+The track includes 120 hours, 60 lectures, and 8 programming and scientific-computing sessions. The listed price on the website is INR 15,000.
+
+### Machine Learning + Deep Neural Networks
+
+Complete track containing everything in the Introduction to Machine Learning program, plus Deep Neural Networks and 6 additional deep-learning implementation sessions.
+
+The track includes five core areas, 180 hours, 90 lectures, and 14 programming or implementation sessions in total. The listed price on the website is INR 20,000.
+
+## Curriculum
+
+### Mathematical Foundations for Machine Learning
+
+Linear systems, matrices, vector spaces, linear independence, basis, rank, norms, inner products, geometry, matrix decomposition, eigenvalues and eigenvectors, singular value decomposition, vector calculus, gradients, backpropagation, automatic differentiation, optimization, gradient descent, stochastic optimization, hyperparameter tuning, PCA, dimensionality reduction, and mathematical foundations of support vector machines and kernels.
+
+### Introduction to Statistical Methods
+
+Probability and statistics, conditional probability, Bayes theorem, random variables, expectation, variance, covariance, probability distributions, sampling, the Central Limit Theorem, confidence intervals, hypothesis testing, ANOVA, maximum likelihood, correlation, regression, time-series analysis, Gaussian Mixture Models, and Expectation Maximization.
+
+### Machine Learning
+
+Introduction and taxonomy of machine learning, learning-system design, data preprocessing and wrangling, model training and testing, performance metrics, regression, classification, logistic regression, decision trees, instance-based learning, support vector machines, Bayesian learning, ensemble learning, unsupervised learning, clustering, and model evaluation including bias, fairness, and interpretability.
+
+### Programming & Scientific Computing
+
+Python syntax, data types, conditionals, loops, functions, modules, debugging, problem decomposition, recursion, computational thinking, code organization, complexity, data structures, searching, sorting, algorithms, NumPy, vectorization, broadcasting, matrix operations, numerical differentiation and integration, simulation, numerical optimization, Pandas, data cleaning, exploratory data analysis, visualization, and implementation of machine learning algorithms.
+
+### Deep Neural Networks
+
+Supervised, unsupervised, semi-supervised, and reinforcement learning; biological and artificial neurons; perceptrons; multilayer perceptrons; forward and backward propagation; computational graphs; activation functions; softmax regression; optimization; regularization; underfitting and overfitting; dropout; batch normalization; CNNs; transfer learning; RNNs; GRU and LSTM models; attention; self-attention; positional encoding; transformers; neural network search; time-series modelling and forecasting; federated learning; meta-learning; and online/incremental learning.
+
+## Free Educational Content
+
+Deven Dande will soon publish free AI/ML explanation videos through the cloudsandai website, YouTube, and Instagram. These explanations are intended to make foundational AI/ML concepts more accessible, including for Hindi-speaking learners. The YouTube channel link will be added to the website when it is available.
+
+## Audience and Delivery
+
+- Engineering students
+- Polytechnic students
+- Recent graduates
+- Working professionals
+- Learners preparing for practical AI/ML work
+- Students seeking mathematics and programming foundations before deep learning
+
+Teaching is instructor-led and available in Nagpur, India, with online options. Contact Deven for current batch schedules, enrollment, and delivery details.
+
+## Contact and Social Links
+
+- Email: deven@cloudsandai.com
+- Phone: +91 8830628242
+- Deven Dande on LinkedIn: https://www.linkedin.com/in/devendande
+- cloudsandai on LinkedIn: https://www.linkedin.com/company/cloudsandai
+- cloudsandai on Instagram: https://www.instagram.com/cloudsandaidotcom
+
+## Website Links
+
+- Home: https://cloudsandai.com/
+- Courses: https://cloudsandai.com/#courses
+- Curriculum: https://cloudsandai.com/#curriculum
+- Webinars and programming sessions: https://cloudsandai.com/#webinars
+- About: https://cloudsandai.com/#about
+- FAQ: https://cloudsandai.com/#faq
+- Contact: https://cloudsandai.com/#contact

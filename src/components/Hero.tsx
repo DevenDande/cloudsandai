@@ -67,7 +67,7 @@ export function Hero() {
           <div className="lg:col-span-7">
             <div className="animate-fade-up opacity-0" style={{ animationDelay: '0.1s' }}>
               <p className="mono-label">
-                Mathematics · Statistics · Machine Learning · Programming · Deep Learning
+                Mathematics · Statistics · Machine Learning · Deep Learning
               </p>
             </div>
 

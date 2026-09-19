@@ -1,5 +1,5 @@
 const marqueeItems = [
-  'Courses Starting from INR 2999 for Polytechnic Students, Engineering Students, Recent Graduates and AI + AWS bootcamp coming soon...Stay Tuned!',
+  'Remote classes from INR 2999 • Morning 7:00 AM–8:30 AM • Evening 7:30 PM–9:00 PM • Starting soon • Recordings available • Call +91 8830628242',
 ];
 
 const renderMarqueeContent = () => (
