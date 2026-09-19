@@ -3,28 +3,28 @@ import { GraduationCap, Sparkles, Wrench, Code2, BrainCircuit } from 'lucide-rea
 const audiences = [
   {
     icon: GraduationCap,
-    title: 'Students',
-    text: 'For students looking for structured coverage of mathematical foundations, statistics and machine learning.',
+    title: 'Polytechnic & Engineering Students',
+    text: 'For students looking for structured coverage of mathematical foundations, statistics, programming and machine learning.',
   },
   {
     icon: Sparkles,
-    title: 'ML Beginners',
-    text: 'For learners who want to build a systematic foundation rather than jump directly into advanced models.',
+    title: 'Recent Graduates',
+    text: 'For recent graduates who want to strengthen their foundations and connect theory with implementation.',
   },
   {
     icon: Wrench,
-    title: 'Technical Learners',
-    text: 'For learners interested in understanding the mathematics and mechanics behind ML algorithms.',
+    title: 'Data Analysts & Data Scientists',
+    text: 'For data professionals who want to deepen their understanding of the mathematics and mechanics behind machine learning.',
   },
   {
     icon: Code2,
-    title: 'Python Learners',
-    text: 'For learners who want programming and scientific computing practice alongside ML concepts.',
+    title: 'ML Engineers Who Need to Understand the Basics',
+    text: 'For ML engineers who know how to build systems but want to understand why the methods work.',
   },
   {
     icon: BrainCircuit,
-    title: 'Deep Learning Learners',
-    text: 'For learners who want to continue from machine learning into DNNs, CNNs, RNNs, attention and transformers.',
+    title: 'Curious Learners, Irrespective of Background',
+    text: 'For curious learners who want to understand machine learning from the foundations up, regardless of their background.',
   },
 ];
 

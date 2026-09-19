@@ -1,10 +1,6 @@
 import { Check, ArrowRight } from 'lucide-react';
 
 export function CourseSelection() {
-  const scrollTo = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section className="border-b border-ink-100 py-20 lg:py-28">
       <div className="mx-auto max-w-8xl px-6 lg:px-10">
@@ -39,13 +35,13 @@ export function CourseSelection() {
                 )
               )}
             </div>
-            <button
-              onClick={() => scrollTo('#contact')}
+            <a
+              href="/contact"
               className="group mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-ink-900 transition-colors hover:text-ink-700"
             >
               Enquire About Course 1
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </button>
+            </a>
           </div>
 
           {/* Course 2 */}
@@ -77,13 +73,13 @@ export function CourseSelection() {
                 Course 2 includes everything in Course 1.
               </p>
             </div>
-            <button
-              onClick={() => scrollTo('#contact')}
+            <a
+              href="/contact"
               className="group mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-white transition-colors hover:text-accent-300"
             >
               Enquire About Course 2
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </button>
+            </a>
           </div>
         </div>
       </div>

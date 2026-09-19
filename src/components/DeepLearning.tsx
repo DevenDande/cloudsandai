@@ -3,10 +3,6 @@ import { deepNeuralNetworks } from '@/data/curriculum';
 import { CurriculumAccordion } from './CurriculumAccordion';
 
 export function DeepLearning() {
-  const scrollTo = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section id="deep-learning" className="relative border-b border-ink-100 overflow-hidden py-20 lg:py-28">
       <div className="absolute inset-0 dot-bg opacity-40" />
@@ -63,19 +59,19 @@ export function DeepLearning() {
         </div>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <button
-            onClick={() => scrollTo('#contact')}
+          <a
+            href="/contact"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-ink-800"
           >
             Enquire About Course 2
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </button>
-          <button
-            onClick={() => scrollTo('#courses')}
+          </a>
+          <a
+            href="/courses"
             className="inline-flex items-center justify-center rounded-full border border-ink-200 px-6 py-3 text-sm font-medium text-ink-900 transition-all hover:border-ink-400"
           >
             Back to Courses
-          </button>
+          </a>
         </div>
       </div>
     </section>

@@ -1,21 +1,13 @@
 import { Instagram, Linkedin, Mail, Phone } from 'lucide-react';
 
 const footerLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Courses', href: '#courses' },
-  { label: 'Curriculum', href: '#curriculum' },
-  { label: 'Webinars', href: '#webinars' },
-  { label: 'About', href: '#about' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'Courses', href: '/courses' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export function Footer() {
-  const handleNavClick = (e: React.MouseEvent, href: string) => {
-    e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <footer className="bg-white py-16">
       <div className="mx-auto max-w-8xl px-6 lg:px-10">
@@ -23,8 +15,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-5">
             <a
-              href="#home"
-              onClick={(e) => handleNavClick(e, '#home')}
+              href="/"
               className="flex items-center text-ink-900"
             >
               <img
@@ -90,7 +81,6 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
                     className="text-sm text-ink-500 transition-colors hover:text-ink-900"
                   >
                     {link.label}

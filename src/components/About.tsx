@@ -7,7 +7,7 @@ const profileImages = [
   { src: '/WhatsApp_Image_2026-09-09_at_5.16.38_PM copy.jpeg', alt: 'Deven Dande with a student and colleague' },
 ];
 
-export function About() {
+export function About({ compact = false }: { compact?: boolean }) {
   const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
@@ -94,8 +94,16 @@ export function About() {
               Deven Dande & team of 3+ AI Engineers
             </h3>
             <p className="mt-4 text-lg leading-relaxed text-ink-500">
-              Deven Dande and his team bring a foundations-first approach to AI/ML, backed by AWS certifications and hands-on experience delivering AI/ML projects and POCs for clients across India, the UK, USA, and government sectors. <b>For the past three years, the team has also conducted AI/ML internships and training programs for polytechnic and engineering students across Nagpur, focusing on practical, industry-oriented learning with 200+ happy and knowledgable students.</b>
+              {compact
+                ? 'Deven Dande and his team bring a foundations-first approach to AI/ML through structured, practical and instructor-led learning.'
+                : 'Deven Dande and his team bring a foundations-first approach to AI/ML, backed by AWS certifications and hands-on experience delivering AI/ML projects and POCs for clients across India, the UK, USA, and government sectors. For the past three years, the team has also conducted AI/ML internships and training programs for polytechnic and engineering students across Nagpur, focusing on practical, industry-oriented learning with 200+ happy and knowledgable students.'}
             </p>
+
+            {compact && (
+              <a href="/about" className="mt-6 inline-flex text-sm font-medium text-ink-900 underline-offset-4 hover:underline">
+                Learn More About the Instructor
+              </a>
+            )}
 
             <div className="mt-8 space-y-3">
               <a

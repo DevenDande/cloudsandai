@@ -2,10 +2,6 @@ import { Check, ArrowRight, BookOpen, Award, Video } from 'lucide-react';
 import { courses } from '@/data/curriculum';
 
 export function Courses() {
-  const scrollTo = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section id="courses" className="border-b border-ink-100 py-20 lg:py-28">
       <div className="mx-auto max-w-8xl px-6 lg:px-10">
@@ -173,8 +169,8 @@ export function Courses() {
               <div
                 className={`${course.highlighted ? 'mt-8' : 'mt-auto'} flex flex-col gap-3 sm:flex-row sm:items-center`}
               >
-                <button
-                  onClick={() => scrollTo('#contact')}
+                <a
+                  href="/contact"
                   className={`group inline-flex flex-1 items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all ${
                     course.highlighted
                       ? 'bg-white text-ink-900 hover:bg-ink-100'
@@ -183,15 +179,15 @@ export function Courses() {
                 >
                   Enquire About Course
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </button>
-                <button
-                  onClick={() => scrollTo('#curriculum')}
+                </a>
+                <a
+                  href="#curriculum"
                   className={`inline-flex items-center justify-center text-sm font-medium underline-offset-4 hover:underline ${
                     course.highlighted ? 'text-accent-200' : 'text-ink-500'
                   }`}
                 >
                   View Curriculum
-                </button>
+                </a>
               </div>
             </div>
           ))}

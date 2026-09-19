@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Instagram, Mail, Phone, Linkedin, Send, ArrowUpRight } from 'lucide-react';
 
-export function Contact() {
+export function Contact({ compact = false }: { compact?: boolean }) {
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -122,7 +122,7 @@ export function Contact() {
           </div>
 
           {/* Right: Form */}
-          <div className="lg:col-span-7">
+          {!compact && <div className="lg:col-span-7">
             <form
               onSubmit={handleSubmit}
               className="rounded-2xl border border-ink-100 bg-white p-6 lg:p-8"
@@ -243,7 +243,14 @@ export function Contact() {
                 or sent through a server.
               </p>
             </form>
-          </div>
+          </div>}
+          {compact && (
+            <div className="lg:col-span-7 lg:flex lg:items-end">
+              <a href="/contact" className="inline-flex items-center rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-ink-800">
+                Contact cloudsandai
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </section>

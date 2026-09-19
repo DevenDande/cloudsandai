@@ -40,10 +40,6 @@ export function Hero() {
     return () => window.clearInterval(interval);
   }, [isPaused, prefersReducedMotion]);
 
-  const scrollTo = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const showPrevious = () => {
     setActiveImage((current) => (current - 1 + courseImages.length) % courseImages.length);
   };
@@ -90,20 +86,20 @@ export function Hero() {
               className="mt-8 flex flex-col gap-3 sm:flex-row animate-fade-up opacity-0"
               style={{ animationDelay: '0.4s' }}
             >
-              <button
-                onClick={() => scrollTo('#courses')}
+              <a
+                href="/courses"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-ink-800 hover:shadow-lg hover:shadow-ink-900/10"
               >
                 Explore Courses
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </button>
-              <button
-                onClick={() => scrollTo('#contact')}
+              </a>
+              <a
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-6 py-3 text-sm font-medium text-ink-900 transition-all hover:border-ink-400 hover:bg-ink-50"
               >
                 <Mail className="h-4 w-4" />
                 Contact Deven
-              </button>
+              </a>
             </div>
 
             <div

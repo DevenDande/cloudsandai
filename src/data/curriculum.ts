@@ -550,48 +550,49 @@ export const dnnModule: CurriculumModule = deepNeuralNetworks;
 
 export const faqItems: { question: string; answer: string }[] = [
   {
+    question: 'What gap do the cloudsandai courses fill?',
+    answer:
+      'cloudsandai connects mathematical foundations, statistics, programming, scientific computing and machine learning in one structured curriculum, helping learners understand both how AI and ML methods work and why they work.',
+  },
+  {
+    question: 'Why choose cloudsandai for AI and ML learning?',
+    answer:
+      'cloudsandai takes a foundations-first, instructor-led approach. Concepts are studied alongside computation and implementation so learners can build a connected understanding of mathematics, statistics, programming, machine learning and deep learning.',
+  },
+  {
+    question: 'Who are the cloudsandai courses for?',
+    answer:
+      'The courses are designed for polytechnic and engineering students, recent graduates, data analysts and data scientists, ML engineers who want to understand the fundamentals, and curious learners irrespective of background.',
+  },
+  {
+    question: 'What does a foundations-first approach to AI and ML mean?',
+    answer:
+      'It means learning the mathematical, statistical and programming ideas behind machine learning before relying on advanced models. The curriculum connects theory, computation and implementation throughout the learning path.',
+  },
+  {
     question: 'What does Course 1 include?',
     answer:
-      'Course 1 combines Mathematical Foundations for Machine Learning, Introduction to Statistical Methods, Machine Learning, and Programming & Scientific Computing through 8 Programming Sessions.',
+      'Course 1 combines Mathematical Foundations for Machine Learning, Introduction to Statistical Methods, Machine Learning, and Programming & Scientific Computing through 8 Programming Sessions. It includes 120 hours and 60 lectures.',
   },
   {
     question: 'What does Course 2 include?',
     answer:
-      'Course 2 includes everything in Course 1, plus Deep Neural Networks and 6 additional deep-learning implementation sessions, for 14 Programming Sessions total.',
+      'Course 2 includes everything in Course 1, plus Deep Neural Networks and 6 additional deep-learning implementation sessions, for 14 Programming Sessions total. It includes 180 hours and 90 lectures.',
   },
   {
-    question: 'How many sessions are included?',
+    question: 'What topics are covered in the curriculum?',
     answer:
-      'Course 1 includes 8 Programming Sessions. Course 2 includes those 8 Programming Sessions plus 6 additional deep-learning implementation sessions, for 14 Programming Sessions total.',
+      'The curriculum progresses through programming and scientific computing, mathematics, statistics, machine learning and deep learning. Topics include optimization, PCA, SVMs, regression, classification, ensembles, neural networks, CNNs, sequence models, attention and transformers.',
   },
   {
-    question: 'What topics are covered in the mathematics component?',
+    question: 'How do I choose between Course 1 and Course 2?',
     answer:
-      'The mathematics component covers linear systems, vector spaces, analytic geometry, matrix decomposition, vector calculus, optimization, PCA and mathematical foundations of SVMs.',
+      'Choose Course 1 for the foundations track covering mathematics, statistics, machine learning and programming. Choose Course 2 if you want to continue from Course 1 into Deep Neural Networks and the additional implementation sessions.',
   },
   {
-    question: 'What statistical topics are covered?',
+    question: 'How do I enrol in a cloudsandai course?',
     answer:
-      'The statistics component covers probability, conditional probability and Bayes theorem, probability distributions, hypothesis testing, estimation, ANOVA, maximum likelihood, correlation, regression, time-series analysis, Gaussian Mixture Models and Expectation Maximization.',
-  },
-  {
-    question: 'What machine learning topics are covered?',
-    answer:
-      'The ML curriculum covers the ML workflow, regression, classification, logistic regression, decision trees, instance-based learning, SVMs, Bayesian learning, ensemble learning, unsupervised learning and model evaluation.',
-  },
-  {
-    question: 'What is covered in Deep Neural Networks?',
-    answer:
-      'The DNN component covers neural-network fundamentals, feedforward networks, optimization, regularization, CNNs, sequence models, attention, transformers, neural architecture search, time-series modelling and forecasting, federated learning, meta learning and online learning.',
-  },
-  {
-    question: 'How do I enroll?',
-    answer:
-      'Contact Deven directly using the email address or phone number on the website.',
-  },
-  {
-    question: 'Can I contact Deven before enrolling?',
-    answer: 'Yes. Use the contact form, email, phone or LinkedIn.',
+      'Contact Deven using the enquiry form, email, phone or LinkedIn. You can ask questions about the curriculum and which learning path is right for you before enrolling.',
   },
 ];
 
