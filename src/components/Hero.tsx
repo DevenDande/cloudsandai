@@ -103,6 +103,16 @@ export function Hero() {
             </div>
 
             <div
+              className="mt-5 max-w-xl animate-fade-up opacity-0"
+              style={{ animationDelay: '0.45s' }}
+            >
+              <p className="text-sm font-medium text-ink-600">Advanced AI &amp; Cloud tracks coming soon</p>
+              <p className="mt-1 text-xs leading-relaxed text-ink-400">
+                Agentic AI · AWS Bedrock &amp; SageMaker · AI Deployment on Cloud
+              </p>
+            </div>
+
+            <div
               className="mt-10 flex items-center gap-3 animate-fade-up opacity-0"
               style={{ animationDelay: '0.5s' }}
             >

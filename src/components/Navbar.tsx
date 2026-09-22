@@ -5,6 +5,7 @@ import { Marquee } from '@/components/Marquee';
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Courses', href: '/courses' },
+  { label: 'Advanced AI', href: '/#advanced-ai-cloud' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];

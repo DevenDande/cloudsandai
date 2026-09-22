@@ -12,7 +12,7 @@ const course2Extra = [
 
 export function Roadmap() {
   return (
-    <section className="border-b border-ink-100 py-20 lg:py-28">
+    <section id="advanced-ai-cloud" className="border-b border-ink-100 py-20 lg:py-28">
       <div className="mx-auto max-w-8xl px-6 lg:px-10">
         <div className="max-w-2xl">
           <p className="mono-label">Learning Roadmap</p>
@@ -21,6 +21,11 @@ export function Roadmap() {
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-500">
             Academic foundations and computational practice progress in parallel, followed by advanced deep learning.
+          </p>
+          <p className="mt-5 text-sm font-medium text-ink-600">
+            Foundations <span className="px-1 text-ink-300">→</span> Machine Learning{' '}
+            <span className="px-1 text-ink-300">→</span> Deep Learning{' '}
+            <span className="px-1 text-ink-300">→</span> Advanced AI &amp; Cloud
           </p>
         </div>
 
@@ -90,6 +95,30 @@ export function Roadmap() {
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-accent-500/40 bg-accent-50 p-8 lg:col-span-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <span className="mono-label text-accent-700">03</span>
+                <h3 className="mt-3 text-lg font-semibold text-ink-900">Advanced AI &amp; Cloud</h3>
+              </div>
+              <span className="w-fit rounded-full bg-accent-500 px-3 py-1 text-xs font-medium text-white">
+                Coming Soon
+              </span>
+            </div>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ink-600">
+              Advanced programs focused on building and deploying modern AI systems.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {['Agentic AI', 'AWS Bedrock & SageMaker', 'AI Deployment on Cloud', 'Advanced AI Systems'].map(
+                (step) => (
+                  <div key={step} className="border-l-2 border-accent-500/40 pl-3 text-sm font-medium text-ink-800">
+                    {step}
+                  </div>
+                ),
+              )}
             </div>
           </div>
         </div>

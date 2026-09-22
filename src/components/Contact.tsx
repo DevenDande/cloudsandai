@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Instagram, Mail, Phone, Linkedin, Send, ArrowUpRight } from 'lucide-react';
+import { Instagram, Mail, Phone, Linkedin, Send, ArrowUpRight, Youtube } from 'lucide-react';
 
 export function Contact({ compact = false }: { compact?: boolean }) {
   const [form, setForm] = useState({
@@ -115,6 +115,22 @@ export function Contact({ compact = false }: { compact?: boolean }) {
                 <div className="flex-1">
                   <p className="text-xs text-ink-400">Instagram</p>
                   <p className="text-sm font-medium text-ink-900">@cloudsandaidotcom</p>
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-ink-300 transition-colors group-hover:text-ink-700" />
+              </a>
+
+              <a
+                href="https://www.youtube.com/@cloudsandai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 transition-all hover:border-ink-200 hover:shadow-sm"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-ink-50 text-ink-700 transition-colors group-hover:bg-accent-500 group-hover:text-white">
+                  <Youtube className="h-5 w-5" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs text-ink-400">YouTube</p>
+                  <p className="text-sm font-medium text-ink-900">@cloudsandai</p>
                 </div>
                 <ArrowUpRight className="h-4 w-4 text-ink-300 transition-colors group-hover:text-ink-700" />
               </a>

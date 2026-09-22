@@ -1,29 +1,10 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { render } from '../dist-ssr/entry-server.js';
-
-const routes = {
-  '/': {
-    title: 'cloudsandai — Machine Learning & Deep Learning Courses',
-    description: 'Learn mathematics, statistics, programming, machine learning and deep learning through a structured, instructor-led curriculum.',
-  },
-  '/courses': {
-    title: 'Machine Learning & Deep Learning Courses | cloudsandai',
-    description: 'Explore cloudsandai courses in machine learning, mathematics, statistics, programming, scientific computing and deep neural networks.',
-  },
-  '/about': {
-    title: 'About cloudsandai | Foundations-First AI/ML Learning',
-    description: 'Learn about cloudsandai, its foundations-first teaching approach, and instructor Deven Dande.',
-  },
-  '/contact': {
-    title: 'Contact cloudsandai | Course Enquiries',
-    description: 'Contact Deven Dande with questions about cloudsandai machine learning and deep learning courses.',
-  },
-};
+import { pageMetadata, render } from '../dist-ssr/entry-server.js';
 
 const templatePath = new URL('../dist/index.html', import.meta.url);
 const template = await readFile(templatePath, 'utf8');
 
-for (const [route, metadata] of Object.entries(routes)) {
+for (const [route, metadata] of Object.entries(pageMetadata)) {
   const canonical = `https://cloudsandai.com${route}`;
   let prerendered = template.replace('<div id="root"></div>', `<div id="root">${render(route)}</div>`);
   prerendered = prerendered

@@ -36,9 +36,16 @@ function PageMetadata({ path }: { path: string }) {
   const metadata = pageMetadata[path];
 
   useEffect(() => {
+    const canonical = `https://cloudsandai.com${metadata.path}`;
     document.title = metadata.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', metadata.description);
-    document.querySelector('link[rel="canonical"]')?.setAttribute('href', `https://cloudsandai.com${metadata.path}`);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonical);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', metadata.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', metadata.description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonical);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', metadata.title);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', metadata.description);
+    document.querySelector('meta[name="twitter:url"]')?.setAttribute('content', canonical);
   }, [metadata]);
 
   return null;

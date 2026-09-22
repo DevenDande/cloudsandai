@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Mail, Phone } from 'lucide-react';
+import { Instagram, Linkedin, Mail, Phone, Youtube } from 'lucide-react';
 
 const footerLinks = [
   { label: 'Home', href: '/' },
@@ -55,6 +55,15 @@ export function Footer() {
                 aria-label="cloudsandai Instagram"
               >
                 <Instagram className="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.youtube.com/@cloudsandai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-200 text-ink-600 transition-colors hover:border-ink-900 hover:bg-ink-900 hover:text-white"
+                aria-label="cloudsandai YouTube"
+              >
+                <Youtube className="h-4 w-4" />
               </a>
               <a
                 href="mailto:deven@cloudsandai.com"
@@ -138,6 +147,16 @@ export function Footer() {
                   className="text-sm text-ink-500 transition-colors hover:text-ink-900"
                 >
                   Instagram @cloudsandaidotcom
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@cloudsandai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-ink-500 transition-colors hover:text-ink-900"
+                >
+                  cloudsandai YouTube
                 </a>
               </li>
             </ul>
