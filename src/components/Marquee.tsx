@@ -2,9 +2,7 @@ const renderMarqueeContent = () => (
   <div className="flex shrink-0 items-center">
     <div className="flex items-center">
       <span className="whitespace-nowrap text-xs font-medium tracking-wide text-ink-600">
-        Remote classes from INR <del>2999</del>{' '}
-        <strong className="font-bold text-ink-900">2499 for a limited time</strong>
-        {' '}• Morning 7:00 AM–8:30 AM • Evening 7:30 PM–9:00 PM • Starting soon • Recordings available • Call +91 8830628242
+        Live AI/ML Sessions | Outside College & Office Hours | Session Recordings on LMS | Learn Around Your Schedule | Built for Students & Working Professionals
       </span>
       <span className="mx-6 text-ink-300" aria-hidden="true">
         •
