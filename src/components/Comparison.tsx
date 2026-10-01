@@ -70,28 +70,31 @@ export function Comparison() {
               </tr>
             </thead>
             <tbody>
-              {comparisonRows.map((row, i) => (
-                <tr
-                  key={i}
-                  className={`border-b border-ink-100 last:border-0 transition-colors hover:bg-ink-50/60 ${
-                    row.feature === 'Price' ? 'bg-ink-50/40' : ''
-                  }`}
-                >
-                  <td className="px-5 py-4 text-sm text-ink-700">
-                    {row.feature === 'Price' ? (
-                      <span className="font-medium text-ink-900">{row.feature}</span>
-                    ) : (
-                      row.feature
-                    )}
-                  </td>
-                  <td className="px-5 py-4 text-center">
-                    <Cell value={row.course1} highlighted={false} />
-                  </td>
-                  <td className="px-5 py-4 text-center bg-accent-50/30">
-                    <Cell value={row.course2} highlighted={true} />
-                  </td>
-                </tr>
-              ))}
+              {comparisonRows.map((row, i) => {
+                const isPriceRow = row.feature.includes('payment') || row.feature.startsWith('2 installments');
+                return (
+                  <tr
+                    key={i}
+                    className={`border-b border-ink-100 last:border-0 transition-colors hover:bg-ink-50/60 ${
+                      isPriceRow ? 'bg-ink-50/40' : ''
+                    }`}
+                  >
+                    <td className="px-5 py-4 text-sm text-ink-700">
+                      {isPriceRow ? (
+                        <span className="font-medium text-ink-900">{row.feature}</span>
+                      ) : (
+                        row.feature
+                      )}
+                    </td>
+                    <td className="px-5 py-4 text-center">
+                      <Cell value={row.course1} highlighted={false} />
+                    </td>
+                    <td className="px-5 py-4 text-center bg-accent-50/30">
+                      <Cell value={row.course2} highlighted={true} />
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

@@ -1,10 +1,6 @@
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
 import { faqItems } from '@/data/curriculum';
 
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   return (
     <section id="faq" className="border-b border-ink-100 py-20 lg:py-28">
       <div className="mx-auto max-w-4xl px-6 lg:px-10">
@@ -16,41 +12,19 @@ export function FAQ() {
         </div>
 
         <div className="mt-10 space-y-3">
-          {faqItems.map((item, i) => {
-            const isOpen = openIndex === i;
-            return (
-              <div
-                key={i}
-                className={`rounded-xl border transition-all ${
-                  isOpen
-                    ? 'border-ink-300 bg-white shadow-sm'
-                    : 'border-ink-100 bg-white hover:border-ink-200'
-                }`}
-              >
-                <button
-                  onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left"
-                  aria-expanded={isOpen}
-                >
-                  <span className="text-sm font-medium text-ink-900 lg:text-base">
-                    {item.question}
-                  </span>
-                  <ChevronDown
-                    className={`h-5 w-5 flex-shrink-0 text-ink-400 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
-                {isOpen && (
-                  <div className="px-5 pb-5">
-                    <p className="text-sm leading-relaxed text-ink-500">
-                      {item.answer}
-                    </p>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+          {faqItems.map((item) => (
+            <article
+              key={item.question}
+              className="rounded-xl border border-ink-100 bg-white p-5 transition-colors hover:border-ink-200"
+            >
+              <h3 className="text-sm font-medium text-ink-900 lg:text-base">
+                {item.question}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-500">
+                {item.answer}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

@@ -16,17 +16,20 @@ export function CourseSelection() {
           <div className="flex flex-col rounded-2xl border border-ink-100 bg-white p-8">
             <div className="flex items-center justify-between">
               <span className="mono-label">Course 1</span>
-              <span className="font-mono text-2xl font-semibold text-ink-900">₹15,000</span>
+              <div className="text-right">
+                <p className="text-xs text-ink-500">Total in 2 installments</p>
+                <p className="font-mono text-xl font-semibold text-ink-900">₹15,000</p>
+                <p className="mt-1 text-xs text-ink-500">One-time payment: <span className="font-semibold text-ink-800">₹13,500</span></p>
+              </div>
             </div>
             <h3 className="mt-4 text-lg font-semibold text-ink-900">
               Foundation Track
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-ink-500">
-              Build a foundation in mathematics, statistics and machine learning while
-              programming and scientific computing develop alongside them through 8 Programming Sessions.
+              Build a foundation in mathematics, statistics and machine learning, with Python for Machine Learning and implementation integrated throughout.
             </p>
             <div className="mt-6 space-y-2">
-              {['4 Core Areas', '120 hrs · 60 lectures', '8 Programming & Scientific Computing Sessions', 'Theory ↔ Computation ↔ Implementation'].map(
+              {['3 Core Areas', '120 hrs · 60 lectures', '8 Integrated Programming Sessions', 'Theory ↔ Computation ↔ Implementation'].map(
                 (item, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-success-500" />
@@ -48,19 +51,25 @@ export function CourseSelection() {
           <div className="relative flex flex-col rounded-2xl border border-ink-900 bg-ink-950 p-8 text-white">
             <div className="flex items-center justify-between">
               <span className="mono-label !text-accent-300">Course 2</span>
-              <span className="font-mono text-2xl font-semibold text-white">₹20,000</span>
+              <div className="text-right">
+                <p className="text-xs text-ink-300">Total in 2 installments</p>
+                <p className="font-mono text-xl font-semibold text-white">₹20,000</p>
+                <p className="mt-1 text-xs text-ink-300">One-time payment: <span className="font-semibold text-white">₹17,500</span></p>
+              </div>
             </div>
-            <h3 className="mt-4 text-lg font-semibold text-white">Complete Track</h3>
+            <h3 className="mt-4 text-lg font-semibold text-white">
+              Machine Learning + Deep Neural Networks
+            </h3>
             <p className="mt-3 text-sm leading-relaxed text-ink-300">
-              Continue from Course 1 into Deep Neural Networks, with 6 additional
-              deep-learning implementation sessions and 14 Programming Sessions total.
+              Includes everything from Course 1, then extends into Deep Neural Networks, CNNs, Sequence Models, Attention, Transformers and advanced deep learning. Implementation continues throughout these topics.
             </p>
             <div className="mt-6 space-y-2">
               {[
                 'Everything in Course 1',
-                'Deep Neural Networks',
+                'Deep Neural Networks, CNNs and Sequence Models',
+                'Attention, Transformers and Advanced Deep Learning',
                 '180 hrs · 90 lectures (60 + 30 lectures)',
-                '14 Programming Sessions',
+                '8 integrated programming + 6 additional deep-learning implementation sessions',
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-accent-400" />

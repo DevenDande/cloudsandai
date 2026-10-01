@@ -1,12 +1,12 @@
 # cloudsandai
 
-> Foundations-first, instructor-led education in mathematics, statistics, programming, machine learning, and deep learning. Founded and taught by Deven Dande in Nagpur, India, with online learning options.
+> Foundations-first, instructor-led education in mathematics, statistical methods and machine learning, with programming and scientific computing integrated throughout. Founded and taught by Deven Dande in Nagpur, India, with online learning options.
 
 ## About
 
 cloudsandai is an independent educational initiative led by Deven Dande and a team of 3+ AI engineers. It is designed for engineering students, polytechnic students, recent graduates, working professionals, and learners who want to understand AI and machine learning beyond surface-level tools and buzzwords.
 
-The initiative's primary purpose is to respond to a problem Deven sees in the AI education market: many bootcamps market AI/ML as a gimmick, make ambitious promises, and enroll students without teaching the mathematical, statistical, computational, and programming foundations needed for genuine understanding. cloudsandai takes the opposite approach by developing foundations first and connecting theory to implementation.
+The initiative's primary purpose is to respond to a problem Deven sees in the AI education market: many bootcamps market AI/ML as a gimmick, make ambitious promises, and enroll students without developing the mathematical and statistical understanding, computational thinking, and programming practice needed for genuine understanding. cloudsandai takes the opposite approach by developing foundations first and connecting theory to implementation.
 
 A second purpose is to democratize AI/ML education for non-English-speaking audiences. Deven plans to make explanations and learning resources available in Hindi as well, so language is less of a barrier for students who want to learn AI and machine learning.
 
@@ -17,7 +17,7 @@ Deven and his team have AWS certifications and hands-on experience delivering AI
 - Build mathematical intuition instead of treating algorithms as black boxes.
 - Develop probability, statistics, estimation, testing, and statistical modelling skills.
 - Study classical machine learning algorithms and the complete machine learning workflow.
-- Learn Python, algorithms, data structures, NumPy, Pandas, visualization, and scientific computing.
+- Use Python, algorithms, NumPy, Pandas, Matplotlib, data analysis, visualization, and scientific computing throughout the academic curriculum.
 - Translate mathematical equations into working implementations and computational experiments.
 - Progress from foundations into deep neural networks, CNNs, sequence models, attention, and transformers.
 - Combine instructor-led explanation with programming and implementation sessions.
@@ -26,20 +26,19 @@ Deven and his team have AWS certifications and hands-on experience delivering AI
 
 ### Introduction to Machine Learning
 
-Foundation track covering four core areas:
+Foundation track covering three core areas:
 
 - Mathematical Foundations for Machine Learning
 - Introduction to Statistical Methods
 - Machine Learning
-- Programming & Scientific Computing
 
-The track includes 120 hours, 60 lectures, and 8 programming and scientific-computing sessions. The listed price on the website is INR 15,000.
+Programming and implementation are integrated throughout the course, with 8 programming sessions connecting concepts to computation, coding, experimentation, visualization, and algorithm implementation. The track includes 120 hours and 60 lectures. The price is INR 15,000 total when paid in 2 installments, or INR 13,500 as a one-time payment.
 
 ### Machine Learning + Deep Neural Networks
 
-Complete track containing everything in the Introduction to Machine Learning program, plus Deep Neural Networks and 6 additional deep-learning implementation sessions.
+Complete track containing everything in the Introduction to Machine Learning program, plus Deep Neural Networks, CNNs, sequence models, attention, transformers, advanced deep learning, and 6 additional deep-learning implementation sessions. Implementation continues throughout the advanced topics.
 
-The track includes five core areas, 180 hours, 90 lectures, and 14 programming or implementation sessions in total. The listed price on the website is INR 20,000.
+The track retains the same three foundational areas and includes 180 hours, 90 lectures, and 14 programming or implementation sessions in total. The price is INR 20,000 total when paid in 2 installments, or INR 17,500 as a one-time payment.
 
 ## Curriculum
 
@@ -55,9 +54,9 @@ Probability and statistics, conditional probability, Bayes theorem, random varia
 
 Introduction and taxonomy of machine learning, learning-system design, data preprocessing and wrangling, model training and testing, performance metrics, regression, classification, logistic regression, decision trees, instance-based learning, support vector machines, Bayesian learning, ensemble learning, unsupervised learning, clustering, and model evaluation including bias, fairness, and interpretability.
 
-### Programming & Scientific Computing
+### Integrated Programming & Implementation
 
-Python syntax, data types, conditionals, loops, functions, modules, debugging, problem decomposition, recursion, computational thinking, code organization, complexity, data structures, searching, sorting, algorithms, NumPy, vectorization, broadcasting, matrix operations, numerical differentiation and integration, simulation, numerical optimization, Pandas, data cleaning, exploratory data analysis, visualization, and implementation of machine learning algorithms.
+Programming is not taught as a separate subject. It is used throughout the curriculum to turn mathematical and statistical concepts into working implementations and experiments. Learn the concept, code it, experiment with it, and understand it. Topics include Python syntax, data types, conditionals, loops, functions, modules, debugging, problem solving, recursion, computational thinking, code organization, complexity, data structures, searching, sorting, algorithms, NumPy, vectorization, broadcasting, matrix operations, numerical differentiation and integration, simulation, numerical optimization, Pandas, Matplotlib, data cleaning, exploratory data analysis, visualization, and machine learning implementation.
 
 ### Deep Neural Networks
 

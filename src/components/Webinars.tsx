@@ -17,11 +17,10 @@ export function Webinars() {
           <div>
             <p className="mono-label">Course 1</p>
             <h2 className="mt-4 text-balance text-2xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-3xl">
-              8 Programming & Scientific Computing Sessions
+              8 Integrated Programming Sessions
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-500">
-              Course 1 includes 8 Programming Sessions that run alongside the
-              academic curriculum, connecting concepts with implementation.
+              Course 1 includes 8 coding and implementation sessions that run alongside the academic curriculum, connecting concepts with Python, scientific computing and experiments.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -53,8 +52,7 @@ export function Webinars() {
               6 Additional Deep Learning Sessions
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-500">
-              Course 2 adds 6 deep-learning implementation sessions alongside the 8
-              Programming & Scientific Computing sessions included in Course 1.
+              Course 2 includes Course 1's 8 integrated programming sessions, plus 6 additional deep-learning implementation sessions. Implementation continues throughout the advanced topics.
             </p>
 
             <div className="mt-8 inline-flex items-center gap-3 rounded-xl border border-ink-100 bg-white px-5 py-4">
@@ -71,7 +69,7 @@ export function Webinars() {
                 <span className="flex h-7 w-7 items-center justify-center rounded bg-ink-100 font-mono text-xs font-medium text-ink-600">
                   8
                 </span>
-                <span className="text-sm text-ink-700">Programming & Scientific Computing</span>
+                <span className="text-sm text-ink-700">Integrated programming sessions</span>
               </div>
               <div className="flex items-center gap-1 pl-4 text-ink-300">
                 <span className="text-xs">+</span>

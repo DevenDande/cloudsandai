@@ -355,9 +355,9 @@ export const machineLearning: CurriculumModule = {
   ],
 };
 
-export const programmingScientificComputing: CurriculumModule = {
-  number: '04',
-  title: 'Programming & Scientific Computing',
+export const integratedProgrammingImplementation: CurriculumModule = {
+  number: '',
+  title: 'Integrated Programming & Implementation',
   groups: [
     {
       letter: 'A',
@@ -392,7 +392,7 @@ export const programmingScientificComputing: CurriculumModule = {
     {
       letter: 'G',
       title: 'Data Handling & Visualization',
-      topics: ['Pandas', 'Data cleaning', 'Exploratory data analysis', 'Visualization'],
+      topics: ['Pandas', 'Data cleaning', 'Exploratory data analysis', 'Matplotlib', 'Visualization'],
     },
     {
       letter: 'H',
@@ -403,7 +403,7 @@ export const programmingScientificComputing: CurriculumModule = {
 };
 
 export const deepNeuralNetworks: CurriculumModule = {
-  number: '05',
+  number: 'C2',
   title: 'Deep Neural Networks',
   groups: [
     {
@@ -543,7 +543,6 @@ export const course1Modules: CurriculumModule[] = [
   mathFoundations,
   statisticalMethods,
   machineLearning,
-  programmingScientificComputing,
 ];
 
 export const dnnModule: CurriculumModule = deepNeuralNetworks;
@@ -567,12 +566,12 @@ export const faqItems: { question: string; answer: string }[] = [
   {
     question: 'What does a foundations-first approach to AI and ML mean?',
     answer:
-      'It means learning the mathematical, statistical and programming ideas behind machine learning before relying on advanced models. The curriculum connects theory, computation and implementation throughout the learning path.',
+      'It means building mathematical and statistical understanding while using programming throughout to implement concepts, test ideas and experiment before relying on advanced models. The curriculum connects theory, computation and implementation.',
   },
   {
     question: 'What does Course 1 include?',
     answer:
-      'Course 1 combines Mathematical Foundations for Machine Learning, Introduction to Statistical Methods, Machine Learning, and Programming & Scientific Computing through 8 Programming Sessions. It includes 120 hours and 60 lectures.',
+      'Course 1 covers three core areas: Mathematical Foundations for Machine Learning, Introduction to Statistical Methods, and Machine Learning. Programming and scientific computing are integrated throughout the curriculum through 8 programming sessions. It includes 120 hours and 60 lectures.',
   },
   {
     question: 'What does Course 2 include?',
@@ -582,12 +581,12 @@ export const faqItems: { question: string; answer: string }[] = [
   {
     question: 'What topics are covered in the curriculum?',
     answer:
-      'The curriculum progresses through programming and scientific computing, mathematics, statistics, machine learning and deep learning. Topics include optimization, PCA, SVMs, regression, classification, ensembles, neural networks, CNNs, sequence models, attention and transformers.',
+      'The curriculum covers mathematics, statistical methods and machine learning, with Python, NumPy, Pandas, Matplotlib, scientific computing and algorithm implementation integrated throughout. Advanced topics include neural networks, CNNs, sequence models, attention and transformers.',
   },
   {
     question: 'How do I choose between Course 1 and Course 2?',
     answer:
-      'Choose Course 1 for the foundations track covering mathematics, statistics, machine learning and programming. Choose Course 2 if you want to continue from Course 1 into Deep Neural Networks and the additional implementation sessions.',
+      'Choose Course 1 for the three core academic areas with integrated programming and implementation. Choose Course 2 if you want everything in Course 1 plus Deep Neural Networks and additional deep-learning implementation sessions.',
   },
   {
     question: 'How do I enrol in a cloudsandai course?',
@@ -599,7 +598,8 @@ export const faqItems: { question: string; answer: string }[] = [
 export interface CourseCardData {
   id: string;
   title: string;
-  price: string;
+  installmentPrice: string;
+  oneTimePrice: string;
   label: string;
   description: string;
   summary: string;
@@ -607,7 +607,7 @@ export interface CourseCardData {
   lectures: string;
   additionalDuration?: string;
   additionalLectures?: string;
-  coreAreas: string[];
+  coreAreas: { title: string; description: string }[];
   webinars: string[];
   totalWebinars: string;
   highlighted: boolean;
@@ -618,43 +618,60 @@ export const courses: CourseCardData[] = [
   {
     id: 'course-1',
     title: 'Introduction to Machine Learning',
-    price: '₹15,000',
+    installmentPrice: '₹15,000',
+    oneTimePrice: '₹13,500',
     label: 'FOUNDATION TRACK',
     description:
-      'A structured foundation program where mathematics, statistics, machine learning and programming develop together through computation.',
-    summary: '4 Core Areas + 8 Programming Sessions',
+      'A structured Machine Learning course where mathematics, statistics and machine learning develop through Python, scientific computing and implementation.',
+    summary: '3 Core Areas + 8 Integrated Programming Sessions',
     duration: '120 hrs',
     lectures: '60 lectures',
     coreAreas: [
-      'Mathematical Foundations for Machine Learning',
-      'Introduction to Statistical Methods',
-      'Machine Learning',
-      'Programming & Scientific Computing',
+      {
+        title: 'Mathematical Foundations for Machine Learning',
+        description: 'Mathematics required to understand how machine learning works.',
+      },
+      {
+        title: 'Introduction to Statistical Methods',
+        description: 'Probability, statistics, distributions, estimation and hypothesis testing for ML.',
+      },
+      {
+        title: 'Machine Learning',
+        description: 'Core algorithms, intuition, implementation, evaluation and experimentation.',
+      },
     ],
-    webinars: ['8 Programming & Scientific Computing Sessions'],
+    webinars: ['8 Integrated Programming Sessions'],
     totalWebinars: '8',
     highlighted: false,
   },
   {
     id: 'course-2',
     title: 'Machine Learning + Deep Neural Networks',
-    price: '₹20,000',
+    installmentPrice: '₹20,000',
+    oneTimePrice: '₹17,500',
     label: 'COMPLETE TRACK',
     description:
-      'Everything in the Introduction to Machine Learning program, extended with Deep Neural Networks and 6 additional implementation sessions.',
-    summary: '5 Core Areas + 14 Programming Sessions',
+      'Includes everything in Course 1, then extends into Deep Neural Networks and advanced deep learning with 6 additional implementation sessions.',
+    summary: '3 Core Areas + Deep Learning Extension',
     duration: '180 hrs',
     lectures: '90 lectures',
     additionalDuration: '60',
     additionalLectures: '30 lectures',
     coreAreas: [
-      'Mathematical Foundations for Machine Learning',
-      'Introduction to Statistical Methods',
-      'Machine Learning',
-      'Programming & Scientific Computing',
-      'Deep Neural Networks',
+      {
+        title: 'Mathematical Foundations for Machine Learning',
+        description: 'Mathematics required to understand how machine learning works.',
+      },
+      {
+        title: 'Introduction to Statistical Methods',
+        description: 'Probability, statistics, distributions, estimation and hypothesis testing for ML.',
+      },
+      {
+        title: 'Machine Learning',
+        description: 'Core algorithms, intuition, implementation, evaluation and experimentation.',
+      },
     ],
-    webinars: ['8 Programming & Scientific Computing Sessions', '6 Deep Learning Implementation Sessions'],
+    webinars: ['8 Integrated Programming Sessions', '6 Additional Deep Learning Implementation Sessions'],
     totalWebinars: '14',
     highlighted: true,
     badge: 'Includes Course 1',
@@ -662,15 +679,13 @@ export const courses: CourseCardData[] = [
 ];
 
 export const comparisonRows: { feature: string; course1: string; course2: string }[] = [
-  { feature: 'Mathematical Foundations for ML', course1: 'check', course2: 'check' },
-  { feature: 'Statistical Methods', course1: 'check', course2: 'check' },
-  { feature: 'Machine Learning', course1: 'check', course2: 'check' },
-  { feature: 'Programming & Scientific Computing', course1: 'check', course2: 'check' },
-  { feature: 'Computational Practice Sessions', course1: '8', course2: '8' },
+  { feature: 'Core academic areas', course1: '3', course2: '4' },
+  { feature: 'Integrated programming sessions', course1: '8', course2: '8' },
   { feature: 'Deep Neural Networks', course1: 'dash', course2: 'check' },
-  { feature: 'Additional Deep Learning Implementation', course1: 'dash', course2: '6' },
-  { feature: 'Total Programming Sessions', course1: '8', course2: '14' },
+  { feature: 'Additional deep learning implementation sessions', course1: 'dash', course2: '6' },
+  { feature: 'Total programming & implementation sessions', course1: '8', course2: '14' },
   { feature: 'Duration', course1: '120 hrs', course2: '180 hrs (additional 60 hrs)' },
   { feature: 'Lectures', course1: '60', course2: '90 (additional 30 lectures)' },
-  { feature: 'Price', course1: '₹15,000', course2: '₹20,000' },
+  { feature: '2 installments (total)', course1: '₹15,000', course2: '₹20,000' },
+  { feature: 'One-time payment', course1: '₹13,500', course2: '₹17,500' },
 ];

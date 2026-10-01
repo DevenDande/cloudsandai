@@ -14,7 +14,7 @@ export const pageMetadata: Record<string, PageMetadata> = {
   '/courses': {
     title: 'AI & Machine Learning Courses in Nagpur | cloudsandai',
     description:
-      'Explore cloudsandai AI and machine learning courses in Nagpur, from mathematics and Python foundations to ML and deep learning.',
+      'Explore the cloudsandai Machine Learning course in Nagpur, with Python for Machine Learning, scientific computing, integrated implementation and deep learning.',
     path: '/courses',
   },
   '/about': {

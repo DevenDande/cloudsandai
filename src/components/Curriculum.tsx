@@ -1,12 +1,25 @@
 import { useState } from 'react';
-import { BookOpen, Brain, BarChart3, Code2, Cpu } from 'lucide-react';
+import { BookOpen, Brain, BarChart3, Cpu } from 'lucide-react';
 import { CurriculumAccordion } from './CurriculumAccordion';
 import {
   deepNeuralNetworks,
   course1Modules,
+  integratedProgrammingImplementation,
 } from '@/data/curriculum';
 
-const course1Icons = [BookOpen, BarChart3, Brain, Code2];
+const course1Icons = [BookOpen, BarChart3, Brain];
+const implementationElements = [
+  'Python',
+  'NumPy',
+  'Pandas',
+  'Matplotlib',
+  'Scientific Computing',
+  'Algorithm Implementation',
+  'Data Analysis',
+  'ML Implementation',
+  'Problem Solving',
+  'Experiments and Visualization',
+];
 
 export function Curriculum() {
   const [tab, setTab] = useState<'course1' | 'course2'>('course1');
@@ -20,8 +33,7 @@ export function Curriculum() {
             The Curriculum
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-500">
-            Academic foundations and Programming & Scientific Computing are developed
-            together. Course 2 adds Deep Neural Networks and implementation practice.
+            Three academic areas form the course structure. Programming and implementation are integrated throughout both courses.
           </p>
         </div>
 
@@ -93,14 +105,51 @@ export function Curriculum() {
             <div className="pt-4">
               <div className="mb-2 flex items-center gap-2 text-accent-600">
                 <Cpu className="h-4 w-4" />
-                <span className="mono-label !text-accent-600">
-                  Module 05 — Course 2 Extension
-                </span>
+                <span className="mono-label !text-accent-600">Course 2 Extension</span>
               </div>
               <CurriculumAccordion module={deepNeuralNetworks} />
             </div>
           </div>
         )}
+
+        <section className="mt-12 border-t border-ink-100 pt-10">
+          <div className="max-w-3xl">
+            <p className="mono-label">Learning Methodology</p>
+            <h3 className="mt-3 text-2xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-3xl">
+              Integrated Programming &amp; Implementation
+            </h3>
+            <p className="mt-3 text-base leading-relaxed text-ink-500">
+              Programming runs alongside the academic curriculum rather than being treated as a separate subject. Every major concept is connected to computation, coding, experimentation, visualization, and algorithm implementation.
+            </p>
+          </div>
+          <div className="mt-6 rounded-xl border border-accent-200 bg-accent-50/40 p-5 text-center">
+            <p className="text-sm font-semibold text-accent-800">Learn the concept → Code it → Experiment with it → Understand it</p>
+            <p className="mt-2 text-sm text-ink-600">Theory ↔ Computation ↔ Implementation, throughout the curriculum</p>
+          </div>
+          <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+            {['Mathematics', 'Code & Compute', 'Experiment', 'Machine Learning'].map((step, i) => (
+              <div key={step} className="flex items-center gap-3 rounded-lg border border-ink-100 bg-white px-4 py-3">
+                <span className="font-mono text-xs font-medium text-accent-600">0{i + 1}</span>
+                <span className="text-sm font-medium text-ink-800">{step}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-sm text-ink-500">This is a recurring learning cycle, not a sequence completed before coding begins.</p>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {implementationElements.map((element) => (
+              <span key={element} className="rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm font-medium text-ink-700">
+                {element}
+              </span>
+            ))}
+          </div>
+          <div className="mt-6">
+            <CurriculumAccordion
+              module={integratedProgrammingImplementation}
+              showNumber={false}
+              title="Explore integrated programming topics"
+            />
+          </div>
+        </section>
       </div>
     </section>
   );

@@ -49,13 +49,23 @@ export function Courses() {
                     {course.title}
                   </h3>
                 </div>
-                <div className="text-right">
+                <div className="w-36 shrink-0 text-right">
                   <p
-                    className={`text-2xl font-semibold tracking-tight lg:text-3xl ${
+                    className={`text-xs ${
+                      course.highlighted ? 'text-ink-300' : 'text-ink-500'
+                    }`}
+                  >
+                    Total in 2 installments
+                  </p>
+                  <p
+                    className={`mt-0.5 text-xl font-semibold tracking-tight lg:text-2xl ${
                       course.highlighted ? 'text-white' : 'text-ink-900'
                     }`}
                   >
-                    {course.price}
+                    {course.installmentPrice}
+                  </p>
+                  <p className={`mt-1 text-xs ${course.highlighted ? 'text-ink-300' : 'text-ink-500'}`}>
+                    One-time: <span className={`font-semibold ${course.highlighted ? 'text-white' : 'text-ink-800'}`}>{course.oneTimePrice}</span>
                   </p>
                 </div>
               </div>
@@ -105,14 +115,21 @@ export function Courses() {
                           : 'bg-ink-50 text-ink-600'
                       }`}
                     >
-                      <span className="font-mono text-[10px] font-medium">{i + 1}</span>
+                      <span className="font-mono text-[10px] font-medium">{String(i + 1).padStart(2, '0')}</span>
                     </div>
                     <span
                       className={`text-sm ${
                         course.highlighted ? 'text-ink-200' : 'text-ink-700'
                       }`}
                     >
-                      {area}
+                      <span>
+                        <span className={`block font-medium ${course.highlighted ? 'text-white' : 'text-ink-900'}`}>
+                          {area.title}
+                        </span>
+                        <span className={`mt-1 block text-xs leading-relaxed ${course.highlighted ? 'text-ink-300' : 'text-ink-500'}`}>
+                          {area.description}
+                        </span>
+                      </span>
                     </span>
                   </div>
                 ))}

@@ -1,13 +1,25 @@
-const academicPath = ['Mathematics', 'Statistics', 'Machine Learning'];
-const computationalPath = ['Python', 'Scientific Computing', 'Algorithms', 'Implementation'];
+const academicPath = [
+  {
+    title: 'Mathematical Foundations',
+    description: 'Mathematics required to understand how machine learning works.',
+  },
+  {
+    title: 'Statistical Methods',
+    description: 'Probability, distributions, estimation, testing and related concepts used in ML.',
+  },
+  {
+    title: 'Machine Learning',
+    description: 'Core algorithms, intuition, implementation, evaluation and experimentation.',
+  },
+];
 
 const course2Extra = [
   'Deep Neural Networks',
   'CNNs',
-  'RNNs',
+  'Sequence Models',
   'Attention',
   'Transformers',
-  'Advanced Deep Learning Topics',
+  'Advanced Deep Learning',
 ];
 
 export function Roadmap() {
@@ -20,7 +32,7 @@ export function Roadmap() {
             The Learning Path
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-500">
-            Academic foundations and computational practice progress in parallel, followed by advanced deep learning.
+            Mathematics, statistics and machine learning are learned through an ongoing cycle of theory, computation and implementation. Course 2 extends this foundation into advanced deep learning.
           </p>
           <p className="mt-5 text-sm font-medium text-ink-600">
             Foundations <span className="px-1 text-ink-300">→</span> Machine Learning{' '}
@@ -41,23 +53,22 @@ export function Roadmap() {
             <h3 className="mt-4 text-lg font-semibold text-ink-900">
               Introduction to Machine Learning
             </h3>
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {[academicPath, computationalPath].map((path, pathIndex) => (
-                <div key={pathIndex} className="space-y-0">
-                  <p className="mono-label">{pathIndex === 0 ? 'Academic Track' : 'Computational Track'}</p>
-                  {path.map((step, i) => (
-                    <div key={step} className="mt-3">
-                      <div className="flex items-center gap-4">
-                        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-ink-200 bg-ink-50 font-mono text-xs font-medium text-ink-700">
-                          {i + 1}
-                        </div>
-                        <span className="text-sm font-medium text-ink-800">{step}</span>
-                      </div>
-                      {i < path.length - 1 && <div className="ml-[18px] h-4 w-px bg-ink-200" />}
-                    </div>
-                  ))}
+            <div className="mt-6 space-y-3">
+              {academicPath.map((area, i) => (
+                <div key={area.title} className="flex items-start gap-4 rounded-lg border border-ink-100 bg-ink-50/40 p-4">
+                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-ink-200 bg-white font-mono text-xs font-medium text-ink-700">
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-ink-900">{area.title}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-ink-500">{area.description}</p>
+                  </div>
                 </div>
               ))}
+              <div className="rounded-lg border border-accent-200 bg-accent-50/40 p-4">
+                <p className="text-sm font-medium text-accent-800">Theory ↔ Computation ↔ Implementation</p>
+                <p className="mt-1 text-sm leading-relaxed text-ink-600">Each concept moves through code, computation and experiments as it is learned.</p>
+              </div>
             </div>
           </div>
 
@@ -78,7 +89,7 @@ export function Roadmap() {
                   ↻
                 </div>
                 <span className="text-sm font-medium text-ink-200">
-                  Everything in Course 1, including both parallel tracks
+                  Everything in Course 1, with implementation continuing through every topic
                 </span>
               </div>
               <div className="ml-[18px] h-6 w-px bg-white/15" />

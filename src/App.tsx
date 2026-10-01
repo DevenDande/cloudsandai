@@ -57,7 +57,7 @@ function PageContent({ path }: { path: string }) {
       <>
         <PageIntro
           title="Machine Learning & Deep Learning Courses"
-          description="Structured, instructor-led programs that bring mathematics, statistics, programming and implementation together."
+          description="Three core academic areas taught through integrated Python, scientific computing, experimentation and machine learning implementation."
         />
         <Courses />
         <Comparison />

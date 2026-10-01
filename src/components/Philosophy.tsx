@@ -1,5 +1,17 @@
-const academicTrack = ['Mathematics', 'Statistics', 'Machine Learning'];
-const computationalTrack = ['Python', 'Scientific Computing', 'Algorithms', 'Implementation'];
+const learningApplications = [
+  {
+    concept: 'Mathematics',
+    appliedThrough: 'Python, NumPy, computation and visualization',
+  },
+  {
+    concept: 'Statistics',
+    appliedThrough: 'Python, data analysis and experiments',
+  },
+  {
+    concept: 'Machine Learning',
+    appliedThrough: 'Algorithm implementation, experimentation and evaluation',
+  },
+];
 
 export function Philosophy() {
   return (
@@ -8,42 +20,38 @@ export function Philosophy() {
         <div className="max-w-7xl">
           <p className="mono-label">Learning Philosophy</p>
           <h2 className="mt-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-4xl lg:text-5xl">
-            Theory and computation, learned together.
+            How You Learn
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-ink-500">
-            Machine learning is easier to understand when the mathematics, statistics,
-            algorithms, and implementation are connected.
+          <p className="mt-6 text-lg font-medium leading-relaxed text-ink-800">
+            Learn the concept. Code it. Experiment with it. Understand it.
           </p>
-          <p className="mt-4 text-lg leading-relaxed text-ink-500">
-            Mathematical, statistical and machine learning concepts develop alongside
-            programming, algorithms and scientific computing. Learn the concept, implement
-            it, experiment with it, and understand the relationship between theory and computation.
+          <p className="mt-4 text-base leading-relaxed text-ink-500">
+            Programming is not taught as a separate subject. It is used throughout the curriculum to turn mathematical and statistical concepts into working implementations and experiments.
           </p>
         </div>
 
-        {/* Parallel progression visual */}
-        <div className="mt-16">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            {[{ title: 'Academic Foundations', items: academicTrack }, { title: 'Computational Foundations', items: computationalTrack }].map((track) => (
-              <div key={track.title} className="rounded-xl border border-ink-100 bg-white p-6">
-                <p className="mono-label">{track.title}</p>
-                <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {track.items.map((item, i) => (
-                    <div key={item} className="flex items-center gap-4">
-                      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-ink-900 font-mono text-xs font-medium text-white">
-                        {String(i + 1).padStart(2, '0')}
-                      </div>
-                      <span className="text-sm font-medium text-ink-800">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+        <div className="mt-10 overflow-hidden rounded-xl border border-ink-100 bg-white">
+          <div className="hidden grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-6 border-b border-ink-100 bg-ink-50/60 px-5 py-3 sm:grid lg:px-6">
+            <span className="mono-label">Academic Concept</span>
+            <span className="mono-label">Applied Through</span>
           </div>
-
-          <div className="mt-6 rounded-xl border border-accent-200 bg-accent-50/40 p-5 text-center">
+          {learningApplications.map((item) => (
+            <div
+              key={item.concept}
+              className="grid grid-cols-1 gap-2 border-b border-ink-100 px-5 py-4 last:border-0 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:gap-6 lg:px-6"
+            >
+              <div>
+                <span className="mono-label sm:hidden">Academic Concept</span>
+                <p className="mt-1 text-sm font-semibold text-ink-900 sm:mt-0">{item.concept}</p>
+              </div>
+              <div>
+                <span className="mono-label sm:hidden">Applied Through</span>
+                <p className="mt-1 text-sm leading-relaxed text-ink-600 sm:mt-0">{item.appliedThrough}</p>
+              </div>
+            </div>
+          ))}
+          <div className="border-t border-accent-200 bg-accent-50/40 px-5 py-4 text-center lg:px-6">
             <p className="text-sm font-medium text-accent-800">Theory ↔ Computation ↔ Implementation</p>
-            <p className="mt-2 text-sm text-ink-600">Deep Neural Networks follows as the advanced Course 2 extension.</p>
           </div>
         </div>
       </div>

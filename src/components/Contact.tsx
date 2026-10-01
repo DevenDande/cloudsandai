@@ -211,11 +211,11 @@ export function Contact({ compact = false }: { compact?: boolean }) {
                     className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 transition-colors focus:border-ink-900 focus:outline-none focus:ring-1 focus:ring-ink-900"
                   >
                     <option value="">Select a course</option>
-                    <option value="Introduction to Machine Learning — ₹15,000">
-                      Introduction to Machine Learning — ₹15,000
+                    <option value="Introduction to Machine Learning — ₹15,000 in 2 installments or ₹13,500 one-time">
+                      Introduction to Machine Learning — ₹15,000 in 2 installments or ₹13,500 one-time
                     </option>
-                    <option value="Machine Learning + Deep Neural Networks — ₹20,000">
-                      Machine Learning + Deep Neural Networks — ₹20,000
+                    <option value="Machine Learning + Deep Neural Networks — ₹20,000 in 2 installments or ₹17,500 one-time">
+                      Machine Learning + Deep Neural Networks — ₹20,000 in 2 installments or ₹17,500 one-time
                     </option>
                     <option value="Not sure yet">Not sure yet</option>
                   </select>

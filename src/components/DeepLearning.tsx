@@ -26,9 +26,6 @@ export function DeepLearning() {
         </div>
 
         <div className="mt-10">
-          <div className="mb-2 flex items-center gap-2 text-accent-600">
-            <span className="mono-label !text-accent-600">Module 04</span>
-          </div>
           <CurriculumAccordion module={deepNeuralNetworks} />
         </div>
 
