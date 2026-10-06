@@ -29,6 +29,18 @@ export const pageMetadata: Record<string, PageMetadata> = {
       'Contact cloudsandai about AI and machine learning courses in Nagpur, including mathematics, Python, ML and deep learning programs.',
     path: '/contact',
   },
+  '/articles': {
+    title: 'Articles | cloudsandai',
+    description:
+      'Explore articles on machine learning, artificial intelligence, mathematics and learning at cloudsandai.',
+    path: '/articles',
+  },
+  '/resources': {
+    title: 'Resources | cloudsandai',
+    description:
+      'Explore practical machine learning and artificial intelligence learning resources from cloudsandai.',
+    path: '/resources',
+  },
 };
 
 export function normalizePath(pathname: string) {

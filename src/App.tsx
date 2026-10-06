@@ -32,6 +32,16 @@ function PageIntro({ title, description }: { title: string; description: string 
   );
 }
 
+function ComingSoon() {
+  return (
+    <section className="border-b border-ink-100 py-20 lg:py-28">
+      <div className="mx-auto max-w-8xl px-6 text-center lg:px-10">
+        <p className="mono-label">Coming soon</p>
+      </div>
+    </section>
+  );
+}
+
 function PageMetadata({ path }: { path: string }) {
   const metadata = pageMetadata[path];
 
@@ -93,6 +103,30 @@ function PageContent({ path }: { path: string }) {
           description="Have questions about the curriculum or which learning path is right for you? Get in touch with Deven."
         />
         <Contact />
+      </>
+    );
+  }
+
+  if (path === '/articles') {
+    return (
+      <>
+        <PageIntro
+          title="Articles"
+          description="Ideas and explanations for understanding machine learning and AI."
+        />
+        <ComingSoon />
+      </>
+    );
+  }
+
+  if (path === '/resources') {
+    return (
+      <>
+        <PageIntro
+          title="Resources"
+          description="Practical materials to support your machine learning and AI learning."
+        />
+        <ComingSoon />
       </>
     );
   }
