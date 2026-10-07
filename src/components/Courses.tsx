@@ -58,14 +58,16 @@ export function Courses() {
                     Need details?
                   </p>
                   <a
-                    href="tel:+918830628242"
+                    href="https://calendly.com/deven-cloudsandai/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`mt-2 inline-flex items-center justify-center rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                       course.highlighted
                         ? 'bg-white/10 text-white hover:bg-white/15'
                         : 'bg-ink-100 text-ink-900 hover:bg-ink-200'
                     }`}
                   >
-                    Call to know more
+                    Book a Consultation
                   </a>
                 </div>
               </div>
@@ -187,14 +189,16 @@ export function Courses() {
                 className={`${course.highlighted ? 'mt-8' : 'mt-auto'} flex flex-col gap-3 sm:flex-row sm:items-center`}
               >
                 <a
-                  href="tel:+918830628242"
+                  href="https://calendly.com/deven-cloudsandai/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`group inline-flex flex-1 items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all ${
                     course.highlighted
                       ? 'bg-white text-ink-900 hover:bg-ink-100'
                       : 'bg-ink-900 text-white hover:bg-ink-800'
                   }`}
                 >
-                  Call to know more
+                  Book a Consultation
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </a>
                 <a

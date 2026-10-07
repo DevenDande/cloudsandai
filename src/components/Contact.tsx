@@ -1,7 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Instagram, Mail, Phone, Linkedin, Send, ArrowUpRight, Youtube } from 'lucide-react';
 
 export function Contact({ compact = false }: { compact?: boolean }) {
+  useEffect(() => {
+    const scriptId = 'calendly-inline-widget-script';
+    const existingScript = document.getElementById(scriptId) as HTMLScriptElement | null;
+
+    if (!existingScript) {
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.type = 'text/javascript';
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -30,6 +43,14 @@ export function Contact({ compact = false }: { compact?: boolean }) {
   return (
     <section id="contact" className="border-b border-ink-100 bg-ink-50/40 py-20 lg:py-28">
       <div className="mx-auto max-w-8xl px-6 lg:px-10">
+        <div className="mb-10 overflow-hidden rounded-2xl border border-ink-100 bg-white">
+          <div
+            className="calendly-inline-widget"
+            data-url="https://calendly.com/deven-cloudsandai/30min"
+            style={{ minWidth: '320px', height: '700px' }}
+          />
+        </div>
+
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left: Info */}
           <div className="lg:col-span-5">
@@ -259,6 +280,7 @@ export function Contact({ compact = false }: { compact?: boolean }) {
                 or sent through a server.
               </p>
             </form>
+
           </div>}
           {compact && (
             <div className="lg:col-span-7 lg:flex lg:items-end">
