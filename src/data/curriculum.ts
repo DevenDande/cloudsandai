@@ -598,8 +598,6 @@ export const faqItems: { question: string; answer: string }[] = [
 export interface CourseCardData {
   id: string;
   title: string;
-  installmentPrice: string;
-  oneTimePrice: string;
   label: string;
   description: string;
   summary: string;
@@ -618,8 +616,6 @@ export const courses: CourseCardData[] = [
   {
     id: 'course-1',
     title: 'Introduction to Machine Learning',
-    installmentPrice: '₹15,000',
-    oneTimePrice: '₹13,500',
     label: 'FOUNDATION TRACK',
     description:
       'A structured Machine Learning course where mathematics, statistics and machine learning develop through Python, scientific computing and implementation.',
@@ -647,8 +643,6 @@ export const courses: CourseCardData[] = [
   {
     id: 'course-2',
     title: 'Machine Learning + Deep Neural Networks',
-    installmentPrice: '₹20,000',
-    oneTimePrice: '₹17,500',
     label: 'COMPLETE TRACK',
     description:
       'Includes everything in Course 1, then extends into Deep Neural Networks and advanced deep learning with 6 additional implementation sessions.',
@@ -686,6 +680,4 @@ export const comparisonRows: { feature: string; course1: string; course2: string
   { feature: 'Total programming & implementation sessions', course1: '8', course2: '14' },
   { feature: 'Duration', course1: '120 hrs', course2: '180 hrs (additional 60 hrs)' },
   { feature: 'Lectures', course1: '60', course2: '90 (additional 30 lectures)' },
-  { feature: '2 installments (total)', course1: '₹15,000', course2: '₹20,000' },
-  { feature: 'One-time payment', course1: '₹13,500', course2: '₹17,500' },
 ];

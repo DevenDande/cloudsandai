@@ -55,18 +55,18 @@ export function Courses() {
                       course.highlighted ? 'text-ink-300' : 'text-ink-500'
                     }`}
                   >
-                    Total in 2 installments
+                    Need details?
                   </p>
-                  <p
-                    className={`mt-0.5 text-xl font-semibold tracking-tight lg:text-2xl ${
-                      course.highlighted ? 'text-white' : 'text-ink-900'
+                  <a
+                    href="tel:+918830628242"
+                    className={`mt-2 inline-flex items-center justify-center rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
+                      course.highlighted
+                        ? 'bg-white/10 text-white hover:bg-white/15'
+                        : 'bg-ink-100 text-ink-900 hover:bg-ink-200'
                     }`}
                   >
-                    {course.installmentPrice}
-                  </p>
-                  <p className={`mt-1 text-xs ${course.highlighted ? 'text-ink-300' : 'text-ink-500'}`}>
-                    One-time: <span className={`font-semibold ${course.highlighted ? 'text-white' : 'text-ink-800'}`}>{course.oneTimePrice}</span>
-                  </p>
+                    Call to know more
+                  </a>
                 </div>
               </div>
 
@@ -187,14 +187,14 @@ export function Courses() {
                 className={`${course.highlighted ? 'mt-8' : 'mt-auto'} flex flex-col gap-3 sm:flex-row sm:items-center`}
               >
                 <a
-                  href="/contact"
+                  href="tel:+918830628242"
                   className={`group inline-flex flex-1 items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all ${
                     course.highlighted
                       ? 'bg-white text-ink-900 hover:bg-ink-100'
                       : 'bg-ink-900 text-white hover:bg-ink-800'
                   }`}
                 >
-                  Enquire About Course
+                  Call to know more
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </a>
                 <a

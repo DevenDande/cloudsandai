@@ -27,13 +27,7 @@ function Cell({ value, highlighted }: { value: string; highlighted: boolean }) {
   return (
     <span
       className={`text-sm font-medium ${
-        value.startsWith('₹')
-          ? highlighted
-            ? 'text-accent-700 font-semibold'
-            : 'text-ink-900 font-semibold'
-          : highlighted
-            ? 'text-accent-700'
-            : 'text-ink-700'
+        highlighted ? 'text-accent-700' : 'text-ink-700'
       }`}
     >
       {value}

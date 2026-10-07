@@ -16,11 +16,12 @@ export function CourseSelection() {
           <div className="flex flex-col rounded-2xl border border-ink-100 bg-white p-8">
             <div className="flex items-center justify-between">
               <span className="mono-label">Course 1</span>
-              <div className="text-right">
-                <p className="text-xs text-ink-500">Total in 2 installments</p>
-                <p className="font-mono text-xl font-semibold text-ink-900">₹15,000</p>
-                <p className="mt-1 text-xs text-ink-500">One-time payment: <span className="font-semibold text-ink-800">₹13,500</span></p>
-              </div>
+              <a
+                href="tel:+918830628242"
+                className="inline-flex items-center justify-center rounded-full bg-ink-100 px-3 py-1.5 text-xs font-medium text-ink-900 transition-colors hover:bg-ink-200"
+              >
+                Call to know more
+              </a>
             </div>
             <h3 className="mt-4 text-lg font-semibold text-ink-900">
               Foundation Track
@@ -39,10 +40,10 @@ export function CourseSelection() {
               )}
             </div>
             <a
-              href="/contact"
+              href="tel:+918830628242"
               className="group mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-ink-900 transition-colors hover:text-ink-700"
             >
-              Enquire About Course 1
+              Call to know more
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
@@ -51,11 +52,12 @@ export function CourseSelection() {
           <div className="relative flex flex-col rounded-2xl border border-ink-900 bg-ink-950 p-8 text-white">
             <div className="flex items-center justify-between">
               <span className="mono-label !text-accent-300">Course 2</span>
-              <div className="text-right">
-                <p className="text-xs text-ink-300">Total in 2 installments</p>
-                <p className="font-mono text-xl font-semibold text-white">₹20,000</p>
-                <p className="mt-1 text-xs text-ink-300">One-time payment: <span className="font-semibold text-white">₹17,500</span></p>
-              </div>
+              <a
+                href="tel:+918830628242"
+                className="inline-flex items-center justify-center rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-white/15"
+              >
+                Call to know more
+              </a>
             </div>
             <h3 className="mt-4 text-lg font-semibold text-white">
               Machine Learning + Deep Neural Networks
@@ -83,10 +85,10 @@ export function CourseSelection() {
               </p>
             </div>
             <a
-              href="/contact"
+              href="tel:+918830628242"
               className="group mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-white transition-colors hover:text-accent-300"
             >
-              Enquire About Course 2
+              Call to know more
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
