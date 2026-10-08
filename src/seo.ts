@@ -6,27 +6,27 @@ export interface PageMetadata {
 
 export const pageMetadata: Record<string, PageMetadata> = {
   '/': {
-    title: 'cloudsandai | AI & Machine Learning Courses in Nagpur',
+    title: 'cloudsandai by Deven Dande | AI/ML Classes in Nagpur',
     description:
-      'cloudsandai offers AI and machine learning courses and classes in Nagpur, covering mathematics, Python, ML and deep learning.',
+      'Looking for AI/ML classes in Nagpur? Learn machine learning, deep learning, Python and mathematics with Deven Dande at cloudsandai (Clouds and AI).',
     path: '/',
   },
   '/courses': {
     title: 'AI & Machine Learning Courses in Nagpur | cloudsandai',
     description:
-      'Explore the cloudsandai Machine Learning course in Nagpur, with Python for Machine Learning, scientific computing, integrated implementation and deep learning.',
+      'Explore instructor-led AI and machine learning courses in Nagpur with Deven Dande. Learn mathematics, Python, scientific computing, machine learning and deep learning.',
     path: '/courses',
   },
   '/about': {
-    title: 'About cloudsandai | AI/ML Education in Nagpur',
+    title: 'About Deven Dande and cloudsandai | Nagpur',
     description:
-      'Learn about cloudsandai, an AI and machine learning education initiative in Nagpur with a foundations-first curriculum in mathematics, Python, ML and deep learning.',
+      'Meet Deven Dande, founder and AI/ML instructor at cloudsandai (Clouds and AI), offering foundations-first machine learning education in Nagpur.',
     path: '/about',
   },
   '/contact': {
     title: 'Contact cloudsandai | AI/ML Courses in Nagpur',
     description:
-      'Contact cloudsandai about AI and machine learning courses in Nagpur, including mathematics, Python, ML and deep learning programs.',
+      'Contact Deven Dande at cloudsandai to ask about AI and machine learning classes in Nagpur, course options, mathematics, Python or deep learning.',
     path: '/contact',
   },
   '/articles': {

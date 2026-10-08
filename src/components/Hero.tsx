@@ -71,7 +71,7 @@ export function Hero() {
               className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl animate-fade-up opacity-0"
               style={{ animationDelay: '0.2s' }}
             >
-              Understand Machine Learning from the Foundations Up.
+              Understand Clouds and AI from the Foundations Up
             </h1>
 
             <p
