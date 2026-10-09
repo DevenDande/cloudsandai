@@ -1,53 +1,6 @@
-import { useEffect, useState } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, Mail, Linkedin } from 'lucide-react';
-
-const courseImages = [
-  { src: '/courses/1_deeplearning.png', alt: 'Deep Neural Networks course' },
-  { src: '/courses/2_machinelearning.png', alt: 'Machine Learning course' },
-  {
-    src: '/courses/3_maths.png',
-    alt: 'Mathematics for Machine Learning course',
-  },
-  { src: '/courses/4_Probandstats.png', alt: 'Probability and Statistics course' },
-  {
-    src: '/courses/5_numpypandas.png',
-    alt: 'NumPy, Pandas and Matplotlib course',
-  },
-];
+import { ArrowRight, Mail, Linkedin } from 'lucide-react';
 
 export function Hero() {
-  const [activeImage, setActiveImage] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const updateMotionPreference = () => setPrefersReducedMotion(mediaQuery.matches);
-
-    updateMotionPreference();
-    mediaQuery.addEventListener('change', updateMotionPreference);
-
-    return () => mediaQuery.removeEventListener('change', updateMotionPreference);
-  }, []);
-
-  useEffect(() => {
-    if (isPaused || prefersReducedMotion) return;
-
-    const interval = window.setInterval(() => {
-      setActiveImage((current) => (current + 1) % courseImages.length);
-    }, 3000);
-
-    return () => window.clearInterval(interval);
-  }, [isPaused, prefersReducedMotion]);
-
-  const showPrevious = () => {
-    setActiveImage((current) => (current - 1 + courseImages.length) % courseImages.length);
-  };
-
-  const showNext = () => {
-    setActiveImage((current) => (current + 1) % courseImages.length);
-  };
-
   return (
     <section
       id="home"
@@ -130,73 +83,21 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right: Course carousel */}
+          {/* Right: LinkedIn post */}
           <div className="lg:col-span-5">
             <div
-              className="relative animate-fade-in opacity-0"
+              className="flex justify-center animate-fade-in opacity-0"
               style={{ animationDelay: '0.4s' }}
             >
-              <div
-                className="overflow-hidden rounded-2xl border border-ink-100 bg-white/60 shadow-sm backdrop-blur-sm"
-                role="region"
-                aria-roledescription="carousel"
-                aria-label="Cloudsandai course curriculum"
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
-              >
-                <div className="relative aspect-square bg-white">
-                  {courseImages.map((image, index) => (
-                    <img
-                      key={image.src}
-                      src={image.src}
-                      alt={image.alt}
-                      className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-700 motion-reduce:transition-none ${
-                        activeImage === index ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      aria-hidden={activeImage !== index}
-                    />
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between border-t border-ink-100 bg-white/80 px-4 py-3 backdrop-blur-sm">
-                  <span className="font-mono text-xs text-ink-400">course.curriculum</span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={showPrevious}
-                      className="flex h-7 w-7 items-center justify-center rounded-full border border-ink-200 bg-white text-ink-600 transition-colors hover:border-ink-900 hover:bg-ink-900 hover:text-white"
-                      aria-label="Show previous course image"
-                    >
-                      <ChevronLeft className="h-4 w-4" />
-                    </button>
-                    <div
-                      className="flex items-center gap-1.5"
-                      aria-label={`Image ${activeImage + 1} of ${courseImages.length}`}
-                    >
-                      {courseImages.map((image, index) => (
-                        <button
-                          key={image.src}
-                          type="button"
-                          onClick={() => setActiveImage(index)}
-                          className={`h-1.5 rounded-full transition-all ${
-                            activeImage === index ? 'w-5 bg-ink-900' : 'w-1.5 bg-ink-300'
-                          }`}
-                          aria-label={`Show course image ${index + 1}`}
-                          aria-current={activeImage === index}
-                        />
-                      ))}
-                    </div>
-                    <button
-                      type="button"
-                      onClick={showNext}
-                      className="flex h-7 w-7 items-center justify-center rounded-full border border-ink-200 bg-white text-ink-600 transition-colors hover:border-ink-900 hover:bg-ink-900 hover:text-white"
-                      aria-label="Show next course image"
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <iframe
+                src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7513963995788394499?compact=1"
+                height="399"
+                width="504"
+                frameBorder="0"
+                allowFullScreen
+                title="Embedded LinkedIn post"
+                className="w-full max-w-[504px]"
+              />
             </div>
           </div>
         </div>
