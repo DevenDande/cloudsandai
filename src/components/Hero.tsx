@@ -91,12 +91,12 @@ export function Hero() {
             >
               <iframe
                 src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7513963995788394499?compact=1"
-                height="399"
+                height="560"
                 width="504"
                 frameBorder="0"
                 allowFullScreen
                 title="Embedded LinkedIn post"
-                className="w-full max-w-[504px]"
+                className="h-[560px] w-full max-w-[504px]"
               />
             </div>
           </div>
