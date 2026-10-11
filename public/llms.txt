@@ -88,6 +88,11 @@ Teaching is instructor-led and available in Nagpur, India, with online options. 
 ## Website Links
 
 - Home: https://cloudsandai.com/
+- Resources: https://cloudsandai.com/resources
+- Simple linear regression lab: https://cloudsandai.com/resources/simple-linear-regression
+- Multiple linear regression lab: https://cloudsandai.com/resources/multiple-linear-regression
+- Binary classification with logistic regression lab: https://cloudsandai.com/resources/logistic-classification
+- Decision tree classification lab: https://cloudsandai.com/resources/decision-tree-classification
 - Courses: https://cloudsandai.com/#courses
 - Curriculum: https://cloudsandai.com/#curriculum
 - Webinars and programming sessions: https://cloudsandai.com/#webinars

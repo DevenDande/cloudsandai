@@ -13,6 +13,20 @@ const resources = [
     href: '/resources/multiple-linear-regression',
     cta: 'Explore Interactive Lab',
   },
+  {
+    title: 'Binary Classification with Logistic Regression',
+    description:
+      'Learn how a model turns input features into class probabilities. Adjust the decision threshold, train logistic regression, and explore the decision boundary and confusion matrix.',
+    href: '/resources/logistic-classification',
+    cta: 'Explore Interactive Lab',
+  },
+  {
+    title: 'Decision Tree Classification',
+    description:
+      'Explore how a tree makes interpretable, rule-based predictions. Adjust tree depth and leaf size, compare Gini impurity with entropy, and visualize nonlinear decision regions.',
+    href: '/resources/decision-tree-classification',
+    cta: 'Explore Interactive Lab',
+  },
 ];
 
 export function ResourcesPage() {
@@ -27,7 +41,11 @@ export function ResourcesPage() {
               className="group flex h-full flex-col rounded-3xl border border-ink-100 bg-white p-6 shadow-[0_12px_35px_rgba(13,15,18,0.04)] transition-all duration-200 hover:-translate-y-1 hover:border-ink-200 hover:shadow-[0_18px_40px_rgba(13,15,18,0.08)]"
             >
               <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-accent-50 text-accent-700">
-                <span className="text-lg font-semibold">{resource.title.startsWith('Simple') ? 'SL' : 'ML'}</span>
+                <span className="text-lg font-semibold">
+                  {resource.title.startsWith('Simple') ? 'SL'
+                    : resource.title.startsWith('Multiple') ? 'ML'
+                      : resource.title.startsWith('Decision') ? 'DT' : 'LC'}
+                </span>
               </div>
 
               <p className="mono-label">Interactive resource</p>

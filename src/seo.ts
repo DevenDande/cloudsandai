@@ -59,6 +59,22 @@ export const pageMetadata: Record<string, PageMetadata> = {
     ogImage: '/og-multiple-linear-regression.png',
     ogImageAlt: 'Four home features contribute to a prediction, shown beside a plot comparing predicted and actual prices.',
   },
+  '/resources/logistic-classification': {
+    title: 'Binary Classification with Logistic Regression | cloudsandai',
+    description:
+      'Explore how logistic regression estimates class probabilities, draws a decision boundary, and turns probabilities into predictions using a threshold in this interactive classification lab.',
+    path: '/resources/logistic-classification',
+    ogImage: '/og-logistic-classification.png',
+    ogImageAlt: 'Two classes of observations separated by a logistic regression decision boundary.',
+  },
+  '/resources/decision-tree-classification': {
+    title: 'Decision Tree Classification Interactive Lab | cloudsandai',
+    description:
+      'Explore interpretable decision tree rules, compare Gini impurity with entropy, and visualize how tree depth shapes nonlinear classification regions in this hands-on lab.',
+    path: '/resources/decision-tree-classification',
+    ogImage: '/og-decision-tree-classification.png',
+    ogImageAlt: 'Two class clusters divided into rectangular decision regions by a decision tree.',
+  },
 };
 
 export function normalizePath(pathname: string) {

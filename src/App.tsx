@@ -19,6 +19,8 @@ import { Footer } from '@/components/Footer';
 import { ResourcesPage } from '@/components/ResourcesPage';
 import { SimpleLinearRegressionLab } from '@/components/SimpleLinearRegressionLab';
 import { MultipleLinearRegressionLab } from '@/components/MultipleLinearRegressionLab';
+import { LogisticClassificationLab } from '@/components/LogisticClassificationLab';
+import { DecisionTreeClassificationLab } from '@/components/DecisionTreeClassificationLab';
 import { normalizePath, pageMetadata } from '@/seo';
 
 function PageIntro({ title, description }: { title: string; description: string }) {
@@ -152,6 +154,30 @@ function PageContent({ path }: { path: string }) {
           description="Explore how multiple features combine in a linear model, see how feature scaling affects training, and fit predictions with gradient descent."
         />
         <MultipleLinearRegressionLab />
+      </>
+    );
+  }
+
+  if (path === '/resources/logistic-classification') {
+    return (
+      <>
+        <PageIntro
+          title="Binary Classification: Logistic Regression"
+          description="Explore how logistic regression estimates class probabilities, draws a decision boundary, and turns probabilities into predictions using a threshold."
+        />
+        <LogisticClassificationLab />
+      </>
+    );
+  }
+
+  if (path === '/resources/decision-tree-classification') {
+    return (
+      <>
+        <PageIntro
+          title="Decision Tree Classification: An Interactive Lab"
+          description="Explore how decision trees split data into interpretable rules, compare Gini impurity with entropy, and see how tree complexity shapes nonlinear decision regions."
+        />
+        <DecisionTreeClassificationLab />
       </>
     );
   }
