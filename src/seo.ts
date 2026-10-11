@@ -41,6 +41,12 @@ export const pageMetadata: Record<string, PageMetadata> = {
       'Explore practical machine learning and artificial intelligence learning resources from cloudsandai.',
     path: '/resources',
   },
+  '/resources/simple-linear-regression': {
+    title: 'Simple Linear Regression Interactive Lab | cloudsandai',
+    description:
+      'Explore an interactive simple linear regression lab with data editing, residual visualization, and gradient descent learning.',
+    path: '/resources/simple-linear-regression',
+  },
 };
 
 export function normalizePath(pathname: string) {

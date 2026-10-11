@@ -16,6 +16,8 @@ import { FAQ } from '@/components/FAQ';
 import { Contact } from '@/components/Contact';
 import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
+import { ResourcesPage } from '@/components/ResourcesPage';
+import { SimpleLinearRegressionLab } from '@/components/SimpleLinearRegressionLab';
 import { normalizePath, pageMetadata } from '@/seo';
 
 function PageIntro({ title, description }: { title: string; description: string }) {
@@ -119,6 +121,18 @@ function PageContent({ path }: { path: string }) {
     );
   }
 
+  if (path === '/resources/simple-linear-regression') {
+    return (
+      <>
+        <PageIntro
+          title="Simple Linear Regression: An Interactive Learning Lab"
+          description="Understand how a machine learning model learns a line from data, calculates errors, and improves its predictions using gradient descent."
+        />
+        <SimpleLinearRegressionLab />
+      </>
+    );
+  }
+
   if (path === '/resources') {
     return (
       <>
@@ -126,7 +140,7 @@ function PageContent({ path }: { path: string }) {
           title="Resources"
           description="Practical materials to support your machine learning and AI learning."
         />
-        <ComingSoon />
+        <ResourcesPage />
       </>
     );
   }
