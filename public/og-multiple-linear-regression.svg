@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f5f7f8"/>
+  <rect x="0" y="0" width="10" height="630" fill="#c66b46"/>
+  <text x="76" y="76" fill="#1a1d21" font-family="Avenir Next, Arial, sans-serif" font-size="29" font-weight="700">cloudsandai</text>
+  <circle cx="276" cy="66" r="5" fill="#c66b46"/>
+  <text x="76" y="119" fill="#637080" font-family="Menlo, monospace" font-size="13" font-weight="600" letter-spacing="2">INTERACTIVE LEARNING LAB</text>
+  <text x="76" y="232" fill="#1a1d21" font-family="Avenir Next, Arial, sans-serif" font-size="60" font-weight="700">Multiple Linear</text>
+  <text x="76" y="302" fill="#1a1d21" font-family="Avenir Next, Arial, sans-serif" font-size="60" font-weight="700">Regression</text>
+  <text x="78" y="354" fill="#596474" font-family="Avenir Next, Arial, sans-serif" font-size="21">Four features. One combined prediction.</text>
+  <line x1="78" y1="409" x2="535" y2="409" stroke="#dce2e6" stroke-width="2"/>
+  <circle cx="88" cy="456" r="5" fill="#c66b46"/>
+  <text x="105" y="461" fill="#364152" font-family="Menlo, monospace" font-size="12" font-weight="600" letter-spacing="1">FEATURES</text>
+  <path d="M191 456h30" stroke="#aab3bc" stroke-width="1.5"/>
+  <circle cx="238" cy="456" r="5" fill="#3b6df0"/>
+  <text x="255" y="461" fill="#364152" font-family="Menlo, monospace" font-size="12" font-weight="600" letter-spacing="1">WEIGHTS</text>
+  <path d="M341 456h30" stroke="#aab3bc" stroke-width="1.5"/>
+  <circle cx="388" cy="456" r="5" fill="#a7b84a"/>
+  <text x="405" y="461" fill="#364152" font-family="Menlo, monospace" font-size="12" font-weight="600" letter-spacing="1">PREDICTION</text>
+  <text x="78" y="550" fill="#8a949f" font-family="Menlo, monospace" font-size="12" letter-spacing="1">STANDARDIZE  +  TRAIN  +  EVALUATE</text>
+
+  <rect x="625" y="70" width="510" height="490" rx="20" fill="#ffffff" stroke="#e1e6e9" stroke-width="2"/>
+  <text x="660" y="111" fill="#707b88" font-family="Menlo, monospace" font-size="12" font-weight="600" letter-spacing="1.5">FOUR INPUTS, ONE MODEL</text>
+  <text x="660" y="158" fill="#1a1d21" font-family="Menlo, monospace" font-size="17" font-weight="600">y = b + w1x1 + w2x2 + w3x3 + w4x4</text>
+  <line x1="660" y1="181" x2="1100" y2="181" stroke="#e7ebee" stroke-width="1.5"/>
+  <g font-family="Avenir Next, Arial, sans-serif" font-size="14" fill="#364152">
+    <circle cx="677" cy="224" r="7" fill="#3b6df0"/><text x="697" y="229">Area</text><text x="828" y="229" fill="#74808d" font-family="Menlo, monospace" font-size="12">w1 x1</text>
+    <circle cx="677" cy="272" r="7" fill="#e49a52"/><text x="697" y="277">Bedrooms</text><text x="828" y="277" fill="#74808d" font-family="Menlo, monospace" font-size="12">w2 x2</text>
+    <circle cx="677" cy="320" r="7" fill="#91a84d"/><text x="697" y="325">Home age</text><text x="828" y="325" fill="#74808d" font-family="Menlo, monospace" font-size="12">w3 x3</text>
+    <circle cx="677" cy="368" r="7" fill="#bd6d83"/><text x="697" y="373">Commute</text><text x="828" y="373" fill="#74808d" font-family="Menlo, monospace" font-size="12">w4 x4</text>
+  </g>
+  <g stroke="#d9dfe4" stroke-width="4" stroke-linecap="round">
+    <line x1="875" y1="224" x2="900" y2="224"/><line x1="875" y1="272" x2="910" y2="272"/>
+    <line x1="875" y1="320" x2="897" y2="320"/><line x1="875" y1="368" x2="908" y2="368"/>
+  </g>
+  <rect x="921" y="205" width="169" height="184" rx="13" fill="#f7f8f9" stroke="#e7ebee"/>
+  <text x="1005" y="229" text-anchor="middle" fill="#7a8591" font-family="Menlo, monospace" font-size="10" font-weight="600" letter-spacing="1">ACTUAL / PREDICTED</text>
+  <line x1="946" y1="356" x2="1071" y2="246" stroke="#aeb8c1" stroke-width="2" stroke-dasharray="5 5"/>
+  <line x1="946" y1="356" x2="1071" y2="356" stroke="#7d8792" stroke-width="1.5"/>
+  <line x1="946" y1="240" x2="946" y2="356" stroke="#7d8792" stroke-width="1.5"/>
+  <g fill="#c66b46" stroke="#ffffff" stroke-width="2">
+    <circle cx="957" cy="344" r="5"/><circle cx="974" cy="325" r="5"/><circle cx="989" cy="319" r="5"/>
+    <circle cx="1004" cy="298" r="5"/><circle cx="1022" cy="284" r="5"/><circle cx="1037" cy="279" r="5"/>
+    <circle cx="1051" cy="258" r="5"/><circle cx="1063" cy="252" r="5"/>
+  </g>
+  <line x1="660" y1="414" x2="1100" y2="414" stroke="#e7ebee" stroke-width="1.5"/>
+  <rect x="660" y="438" width="440" height="78" rx="13" fill="#f5f7f8"/>
+  <text x="682" y="468" fill="#77828e" font-family="Menlo, monospace" font-size="11" font-weight="600" letter-spacing="1">MODEL OUTPUT</text>
+  <text x="682" y="496" fill="#1a1d21" font-family="Avenir Next, Arial, sans-serif" font-size="21" font-weight="700">Predicted home price</text>
+  <rect x="1018" y="456" width="62" height="39" rx="19" fill="#faeee9"/>
+  <text x="1049" y="481" text-anchor="middle" fill="#a44f32" font-family="Menlo, monospace" font-size="13" font-weight="600">ŷ</text>
+</svg>

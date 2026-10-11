@@ -6,6 +6,13 @@ const resources = [
     href: '/resources/simple-linear-regression',
     cta: 'Explore Interactive Lab',
   },
+  {
+    title: 'Multiple Linear Regression',
+    description:
+      'Explore how four input features work together to predict a target. Adjust model coefficients, standardize inputs, and train with gradient descent.',
+    href: '/resources/multiple-linear-regression',
+    cta: 'Explore Interactive Lab',
+  },
 ];
 
 export function ResourcesPage() {
@@ -20,7 +27,7 @@ export function ResourcesPage() {
               className="group flex h-full flex-col rounded-3xl border border-ink-100 bg-white p-6 shadow-[0_12px_35px_rgba(13,15,18,0.04)] transition-all duration-200 hover:-translate-y-1 hover:border-ink-200 hover:shadow-[0_18px_40px_rgba(13,15,18,0.08)]"
             >
               <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-accent-50 text-accent-700">
-                <span className="text-lg font-semibold">SL</span>
+                <span className="text-lg font-semibold">{resource.title.startsWith('Simple') ? 'SL' : 'ML'}</span>
               </div>
 
               <p className="mono-label">Interactive resource</p>

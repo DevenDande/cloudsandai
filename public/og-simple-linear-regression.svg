@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f5f7f8"/>
+  <rect x="0" y="0" width="10" height="630" fill="#3b6df0"/>
+  <text x="76" y="76" fill="#1a1d21" font-family="Avenir Next, Arial, sans-serif" font-size="29" font-weight="700">cloudsandai</text>
+  <circle cx="276" cy="66" r="5" fill="#3b6df0"/>
+  <text x="76" y="119" fill="#637080" font-family="Menlo, monospace" font-size="13" font-weight="600" letter-spacing="2">INTERACTIVE LEARNING LAB</text>
+  <text x="76" y="232" fill="#1a1d21" font-family="Avenir Next, Arial, sans-serif" font-size="60" font-weight="700">Simple Linear</text>
+  <text x="76" y="302" fill="#1a1d21" font-family="Avenir Next, Arial, sans-serif" font-size="60" font-weight="700">Regression</text>
+  <text x="78" y="354" fill="#596474" font-family="Avenir Next, Arial, sans-serif" font-size="21">Watch a model learn its line from data.</text>
+  <line x1="78" y1="409" x2="535" y2="409" stroke="#dce2e6" stroke-width="2"/>
+  <circle cx="88" cy="456" r="5" fill="#f08b54"/>
+  <text x="105" y="461" fill="#364152" font-family="Menlo, monospace" font-size="12" font-weight="600" letter-spacing="1">DATA</text>
+  <path d="M164 456h30" stroke="#aab3bc" stroke-width="1.5"/>
+  <circle cx="211" cy="456" r="5" fill="#3b6df0"/>
+  <text x="228" y="461" fill="#364152" font-family="Menlo, monospace" font-size="12" font-weight="600" letter-spacing="1">PREDICTION</text>
+  <path d="M326 456h30" stroke="#aab3bc" stroke-width="1.5"/>
+  <circle cx="373" cy="456" r="5" fill="#a7b84a"/>
+  <text x="390" y="461" fill="#364152" font-family="Menlo, monospace" font-size="12" font-weight="600" letter-spacing="1">LEARNING</text>
+  <text x="78" y="550" fill="#8a949f" font-family="Menlo, monospace" font-size="12" letter-spacing="1">SLOPE  +  BIAS  +  GRADIENT DESCENT</text>
+
+  <rect x="625" y="70" width="510" height="490" rx="20" fill="#ffffff" stroke="#e1e6e9" stroke-width="2"/>
+  <text x="660" y="111" fill="#707b88" font-family="Menlo, monospace" font-size="12" font-weight="600" letter-spacing="1.5">FIT A LINE TO OBSERVATIONS</text>
+  <rect x="940" y="88" width="157" height="34" rx="17" fill="#edf2ff"/>
+  <text x="1018" y="110" text-anchor="middle" fill="#315bd0" font-family="Menlo, monospace" font-size="12" font-weight="600">y = wx + b</text>
+  <g stroke="#e9edf0" stroke-width="1">
+    <line x1="690" y1="165" x2="1090" y2="165"/><line x1="690" y1="225" x2="1090" y2="225"/>
+    <line x1="690" y1="285" x2="1090" y2="285"/><line x1="690" y1="345" x2="1090" y2="345"/>
+    <line x1="690" y1="405" x2="1090" y2="405"/>
+    <line x1="770" y1="145" x2="770" y2="445"/><line x1="850" y1="145" x2="850" y2="445"/>
+    <line x1="930" y1="145" x2="930" y2="445"/><line x1="1010" y1="145" x2="1010" y2="445"/>
+  </g>
+  <line x1="690" y1="445" x2="1090" y2="445" stroke="#7d8792" stroke-width="2"/>
+  <line x1="690" y1="145" x2="690" y2="445" stroke="#7d8792" stroke-width="2"/>
+  <line x1="715" y1="411" x2="1070" y2="174" stroke="#3b6df0" stroke-width="5" stroke-linecap="round"/>
+  <g stroke="#e8a15b" stroke-width="2" stroke-dasharray="5 5">
+    <line x1="740" y1="385" x2="740" y2="394"/><line x1="793" y1="369" x2="793" y2="358"/>
+    <line x1="850" y1="332" x2="850" y2="325"/><line x1="906" y1="309" x2="906" y2="292"/>
+    <line x1="962" y1="270" x2="962" y2="259"/><line x1="1020" y1="236" x2="1020" y2="225"/>
+    <line x1="1062" y1="196" x2="1062" y2="198"/>
+  </g>
+  <g fill="#f08b54" stroke="#ffffff" stroke-width="3">
+    <circle cx="740" cy="394" r="7"/><circle cx="793" cy="358" r="7"/><circle cx="850" cy="325" r="7"/>
+    <circle cx="906" cy="292" r="7"/><circle cx="962" cy="259" r="7"/><circle cx="1020" cy="225" r="7"/><circle cx="1062" cy="198" r="7"/>
+  </g>
+  <text x="886" y="492" text-anchor="middle" fill="#707b88" font-family="Menlo, monospace" font-size="11" letter-spacing="1">FEATURE</text>
+  <text x="654" y="300" text-anchor="middle" fill="#707b88" font-family="Menlo, monospace" font-size="11" letter-spacing="1" transform="rotate(-90 654 300)">TARGET</text>
+  <circle cx="672" cy="528" r="5" fill="#f08b54"/><text x="686" y="532" fill="#596474" font-family="Avenir Next, Arial, sans-serif" font-size="13">observed data</text>
+  <line x1="815" y1="528" x2="843" y2="528" stroke="#3b6df0" stroke-width="3"/><text x="851" y="532" fill="#596474" font-family="Avenir Next, Arial, sans-serif" font-size="13">learned line</text>
+  <line x1="972" y1="528" x2="999" y2="528" stroke="#e8a15b" stroke-width="2" stroke-dasharray="4 4"/><text x="1007" y="532" fill="#596474" font-family="Avenir Next, Arial, sans-serif" font-size="13">residual</text>
+</svg>

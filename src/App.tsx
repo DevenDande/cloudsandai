@@ -18,6 +18,7 @@ import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
 import { ResourcesPage } from '@/components/ResourcesPage';
 import { SimpleLinearRegressionLab } from '@/components/SimpleLinearRegressionLab';
+import { MultipleLinearRegressionLab } from '@/components/MultipleLinearRegressionLab';
 import { normalizePath, pageMetadata } from '@/seo';
 
 function PageIntro({ title, description }: { title: string; description: string }) {
@@ -49,12 +50,22 @@ function PageMetadata({ path }: { path: string }) {
 
   useEffect(() => {
     const canonical = `https://cloudsandai.com${metadata.path}`;
+    const ogImage = metadata.ogImage ? `https://cloudsandai.com${metadata.ogImage}` : null;
     document.title = metadata.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', metadata.description);
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonical);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', metadata.title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', metadata.description);
     document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonical);
+    if (ogImage) {
+      document.querySelector('meta[property="og:image"]')?.setAttribute('content', ogImage);
+      document.querySelector('meta[property="og:image:alt"]')?.setAttribute('content', metadata.ogImageAlt ?? '');
+      document.querySelector('meta[property="og:image:type"]')?.setAttribute('content', 'image/png');
+      document.querySelector('meta[property="og:image:width"]')?.setAttribute('content', '1200');
+      document.querySelector('meta[property="og:image:height"]')?.setAttribute('content', '630');
+      document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', ogImage);
+      document.querySelector('meta[name="twitter:image:alt"]')?.setAttribute('content', metadata.ogImageAlt ?? '');
+    }
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', metadata.title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', metadata.description);
     document.querySelector('meta[name="twitter:url"]')?.setAttribute('content', canonical);
@@ -129,6 +140,18 @@ function PageContent({ path }: { path: string }) {
           description="Understand how a machine learning model learns a line from data, calculates errors, and improves its predictions using gradient descent."
         />
         <SimpleLinearRegressionLab />
+      </>
+    );
+  }
+
+  if (path === '/resources/multiple-linear-regression') {
+    return (
+      <>
+        <PageIntro
+          title="Multiple Linear Regression: An Interactive Learning Lab"
+          description="Explore how multiple features combine in a linear model, see how feature scaling affects training, and fit predictions with gradient descent."
+        />
+        <MultipleLinearRegressionLab />
       </>
     );
   }

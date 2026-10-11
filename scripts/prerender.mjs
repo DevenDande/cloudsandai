@@ -6,6 +6,10 @@ const template = await readFile(templatePath, 'utf8');
 
 for (const [route, metadata] of Object.entries(pageMetadata)) {
   const canonical = `https://cloudsandai.com${route}`;
+  const socialImage = metadata.ogImage
+    ? `https://cloudsandai.com${metadata.ogImage}`
+    : 'https://cloudsandai.com/1735043718836.jpeg';
+  const socialImageAlt = metadata.ogImageAlt ?? 'Deven Dande, AI/ML instructor, teaching a machine learning session';
   let prerendered = template.replace('<div id="root"></div>', `<div id="root">${render(route)}</div>`);
   prerendered = prerendered
     .replace(/<title>[^<]*<\/title>/, `<title>${metadata.title}</title>`)
@@ -15,9 +19,16 @@ for (const [route, metadata] of Object.entries(pageMetadata)) {
     .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${canonical}$2`)
     .replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${metadata.title}$2`)
     .replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${metadata.description}$2`)
+    .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${socialImage}$2`)
+    .replace(/(<meta property="og:image:alt" content=")[^"]*(")/, `$1${socialImageAlt}$2`)
+    .replace(/(<meta property="og:image:type" content=")[^"]*(")/, '$1image/png$2')
+    .replace(/(<meta property="og:image:width" content=")[^"]*(")/, '$11200$2')
+    .replace(/(<meta property="og:image:height" content=")[^"]*(")/, '$1630$2')
     .replace(/(<meta name="twitter:url" content=")[^"]*(")/, `$1${canonical}$2`)
     .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${metadata.title}$2`)
-    .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${metadata.description}$2`);
+    .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${metadata.description}$2`)
+    .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${socialImage}$2`)
+    .replace(/(<meta name="twitter:image:alt" content=")[^"]*(")/, `$1${socialImageAlt}$2`);
 
   if (route !== '/') {
     prerendered = prerendered.replace(/\s*<script id="structured-data" type="application\/ld\+json">[\s\S]*?<\/script>/, '');
