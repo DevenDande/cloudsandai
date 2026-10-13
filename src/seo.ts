@@ -8,21 +8,21 @@ export interface PageMetadata {
 
 export const pageMetadata: Record<string, PageMetadata> = {
   '/': {
-    title: 'cloudsandai by Deven Dande | AI/ML Foundations & AI Engineering',
+    title: 'AI/ML Learning in Nagpur | cloudsandai by Deven Dande',
     description:
-      'Learn AI/ML foundations from zero and build practical AI applications through structured AI engineering learning with Deven Dande at cloudsandai (Clouds and AI).',
+      'Learn AI/ML with Deven Dande at cloudsandai. Explore beginner foundations and practical AI engineering with LLMs, RAG, APIs and agentic AI.',
     path: '/',
   },
   '/courses': {
-    title: 'AI/ML Foundations & AI Engineering | cloudsandai',
+    title: 'AI/ML Courses in Nagpur | cloudsandai',
     description:
-      'Explore the AI/ML Foundations and AI Engineering learning paths at cloudsandai, with beginner-focused fundamentals and practical AI application development.',
+      'Explore 16-week AI/ML Foundations and AI Engineering courses by Deven Dande, with live classes, LMS recordings, an ML capstone and three guided AI projects.',
     path: '/courses',
   },
   '/about': {
-    title: 'About Deven Dande and cloudsandai | Nagpur',
+    title: 'Deven Dande | AI/ML Instructor at cloudsandai',
     description:
-      'Meet Deven Dande, founder and AI/ML instructor at cloudsandai (Clouds and AI), offering foundations-first machine learning education in Nagpur.',
+      'Learn about Deven Dande, the instructor behind cloudsandai, and his approach to teaching Python, machine learning, deep learning and applied AI.',
     path: '/about',
   },
   '/contact': {
@@ -76,6 +76,96 @@ export const pageMetadata: Record<string, PageMetadata> = {
     ogImageAlt: 'Two class clusters divided into rectangular decision regions by a decision tree.',
   },
 };
+
+const organization = {
+  '@type': 'EducationalOrganization',
+  '@id': 'https://cloudsandai.com/#organization',
+  name: 'cloudsandai',
+  alternateName: 'Clouds and AI',
+  url: 'https://cloudsandai.com/',
+  logo: 'https://cloudsandai.com/logo_cropped.png',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Nagpur',
+    addressRegion: 'Maharashtra',
+    addressCountry: 'IN',
+  },
+  sameAs: [
+    'https://www.linkedin.com/company/cloudsandai',
+    'https://www.instagram.com/cloudsandaidotcom',
+    'https://www.youtube.com/@cloudsandai',
+  ],
+};
+
+const instructor = {
+  '@type': 'Person',
+  '@id': 'https://cloudsandai.com/#deven-dande',
+  name: 'Deven Dande',
+  jobTitle: 'AI/ML Instructor',
+  url: 'https://cloudsandai.com/about',
+  sameAs: 'https://www.linkedin.com/in/devendande',
+  worksFor: { '@id': 'https://cloudsandai.com/#organization' },
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': 'https://cloudsandai.com/#website',
+  url: 'https://cloudsandai.com/',
+  name: 'cloudsandai',
+  publisher: { '@id': 'https://cloudsandai.com/#organization' },
+  inLanguage: 'en-IN',
+};
+
+export function getStructuredData(path: string) {
+  if (path === '/') {
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [
+        { ...organization, founder: { '@id': instructor['@id'] } },
+        website,
+        instructor,
+      ],
+    };
+  }
+
+  if (path === '/courses') {
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [
+        organization,
+        website,
+        {
+          '@type': 'ItemList',
+          '@id': 'https://cloudsandai.com/courses#course-list',
+          name: 'AI/ML courses at cloudsandai',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'AI/ML Foundations',
+              url: 'https://cloudsandai.com/courses#course-1',
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'AI Engineering',
+              url: 'https://cloudsandai.com/courses#course-2',
+            },
+          ],
+        },
+      ],
+    };
+  }
+
+  if (path === '/about') {
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [organization, instructor],
+    };
+  }
+
+  return null;
+}
 
 export function normalizePath(pathname: string) {
   const path = pathname.replace(/\/+$/, '') || '/';

@@ -14,6 +14,7 @@ import { About } from '@/components/About';
 import { WhoFor } from '@/components/WhoFor';
 import { CourseSelection } from '@/components/CourseSelection';
 import { FAQ } from '@/components/FAQ';
+import { courseFaqItems, homepageFaqItems } from '@/data/curriculum';
 import { Contact } from '@/components/Contact';
 import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
@@ -54,7 +55,11 @@ function PageMetadata({ path }: { path: string }) {
   useEffect(() => {
     const canonical = `https://cloudsandai.com${metadata.path}`;
     const ogImage = metadata.ogImage ? `https://cloudsandai.com${metadata.ogImage}` : null;
+    const ogImageType = metadata.ogImage ? 'image/png' : 'image/jpeg';
+    const ogImageWidth = 1200;
+    const ogImageHeight = metadata.ogImage ? 630 : 1500;
     document.title = metadata.title;
+    document.querySelector('meta[name="title"]')?.setAttribute('content', metadata.title);
     document.querySelector('meta[name="description"]')?.setAttribute('content', metadata.description);
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonical);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', metadata.title);
@@ -63,12 +68,12 @@ function PageMetadata({ path }: { path: string }) {
     if (ogImage) {
       document.querySelector('meta[property="og:image"]')?.setAttribute('content', ogImage);
       document.querySelector('meta[property="og:image:alt"]')?.setAttribute('content', metadata.ogImageAlt ?? '');
-      document.querySelector('meta[property="og:image:type"]')?.setAttribute('content', 'image/png');
-      document.querySelector('meta[property="og:image:width"]')?.setAttribute('content', '1200');
-      document.querySelector('meta[property="og:image:height"]')?.setAttribute('content', '630');
       document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', ogImage);
       document.querySelector('meta[name="twitter:image:alt"]')?.setAttribute('content', metadata.ogImageAlt ?? '');
     }
+    document.querySelector('meta[property="og:image:type"]')?.setAttribute('content', ogImageType);
+    document.querySelector('meta[property="og:image:width"]')?.setAttribute('content', String(ogImageWidth));
+    document.querySelector('meta[property="og:image:height"]')?.setAttribute('content', String(ogImageHeight));
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', metadata.title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', metadata.description);
     document.querySelector('meta[name="twitter:url"]')?.setAttribute('content', canonical);
@@ -91,6 +96,7 @@ function PageContent({ path }: { path: string }) {
         <Webinars />
         <DeepLearning />
         <CourseSelection />
+        <FAQ items={courseFaqItems} />
         <FinalCTA />
       </>
     );
@@ -203,7 +209,7 @@ function PageContent({ path }: { path: string }) {
       <PracticalOutcomes />
       <WhyApproach />
       <Contact />
-      <FAQ />
+      <FAQ items={homepageFaqItems} />
       <FinalCTA />
     </>
   );

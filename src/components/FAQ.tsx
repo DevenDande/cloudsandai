@@ -1,6 +1,9 @@
-import { faqItems } from '@/data/curriculum';
+interface FAQItem {
+  question: string;
+  answer: string;
+}
 
-export function FAQ() {
+export function FAQ({ items }: { items: FAQItem[] }) {
   return (
     <section id="faq" className="border-b border-ink-100 py-20 lg:py-28">
       <div className="mx-auto max-w-4xl px-6 lg:px-10">
@@ -12,7 +15,7 @@ export function FAQ() {
         </div>
 
         <div className="mt-10 space-y-3">
-          {faqItems.map((item) => (
+          {items.map((item) => (
             <article
               key={item.question}
               className="rounded-xl border border-ink-100 bg-white p-5 transition-colors hover:border-ink-200"

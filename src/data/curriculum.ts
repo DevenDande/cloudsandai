@@ -408,36 +408,54 @@ export const aiEngineeringProjects = [
   },
 ];
 
-export const faqItems: { question: string; answer: string }[] = [
+export const homepageFaqItems: { question: string; answer: string }[] = [
   {
-    question: 'What gap do the cloudsandai courses fill?',
+    question: 'What is cloudsandai?',
     answer:
-      'cloudsandai connects programming, mathematics, statistics, machine learning and practical AI application development in a single structured curriculum so learners can understand both the theory and the implementation.',
+      'cloudsandai is an instructor-led learning initiative offering AI/ML Foundations and AI Engineering courses, with concepts connected to programming, experimentation and practical projects.',
   },
   {
-    question: 'Why choose cloudsandai for AI and ML learning?',
+    question: 'Who teaches the courses at cloudsandai?',
     answer:
-      'cloudsandai takes a foundations-first, instructor-led approach. Learners build understanding through code, experiments and guided implementation before moving into practical AI application work.',
+      'The courses are taught by Deven Dande, with a foundations-first approach that connects concepts with code and practical implementation.',
   },
   {
-    question: 'Who are the cloudsandai courses for?',
+    question: 'Who is Deven Dande?',
     answer:
-      'AI/ML Foundations is designed for beginners, engineering students, college learners and anyone starting from zero. AI Engineering is designed for learners with Python proficiency who want to build real AI applications.',
+      'Deven Dande is the AI/ML instructor behind cloudsandai. He teaches Python, machine learning, deep learning and applied AI through structured, instructor-led learning.',
+  },
+  {
+    question: 'Where is cloudsandai based?',
+    answer:
+      'cloudsandai is based in Nagpur, Maharashtra, India, and offers learning options online as well.',
+  },
+];
+
+export const courseFaqItems: { question: string; answer: string }[] = [
+  {
+    question: 'What courses does cloudsandai offer?',
+    answer:
+      'cloudsandai offers AI/ML Foundations for beginners starting from zero and AI Engineering for learners with Python proficiency who want to build AI applications.',
   },
   {
     question: 'What is the difference between AI/ML Foundations and AI Engineering?',
     answer:
-      'AI/ML Foundations starts from zero and focuses on Python, mathematics, statistics and ML fundamentals. AI Engineering is a more application-focused track covering LLMs, RAG, APIs, agentic workflows and deployment.',
+      'AI/ML Foundations builds Python, mathematics, statistics and machine learning understanding, including introductory deep learning. AI Engineering focuses on building applications with LLMs, APIs, RAG, multimodal models and agentic workflows.',
   },
   {
-    question: 'What does AI/ML Foundations include?',
+    question: 'Can beginners join AI/ML Foundations without prior programming experience?',
     answer:
-      'The course covers Python programming and scientific computing, mathematics for machine learning, probability and statistics, core machine learning concepts, an introduction to deep learning, and a beginner-level capstone project.',
+      'Yes. AI/ML Foundations is designed for beginners starting from zero and introduces Python as part of the course.',
   },
   {
-    question: 'What does AI Engineering include?',
+    question: 'What are the prerequisites for AI Engineering?',
     answer:
-      'The course focuses on LLM fundamentals, model selection, APIs and FastAPI, retrieval-augmented generation, agentic AI workflows and AWS deployment. Every student completes all three guided, assessed project categories, choosing one instructor-approved application from each.',
+      'Learners should have Python programming proficiency and discuss readiness and learning goals with Deven during a consultation.',
+  },
+  {
+    question: 'Can I join AI Engineering without completing AI/ML Foundations?',
+    answer:
+      'Yes. Completing AI/ML Foundations is not required. Direct entry to AI Engineering is possible for learners with Python proficiency after a consultation with Deven.',
   },
   {
     question: 'How long are the courses?',
@@ -445,14 +463,44 @@ export const faqItems: { question: string; answer: string }[] = [
       'Both AI/ML Foundations and AI Engineering run for 16 weeks and combine live instructor-led classes with recordings uploaded to the LMS after class.',
   },
   {
-    question: 'Do I need a technical background for AI Engineering?',
+    question: 'Are the courses live or self-paced?',
     answer:
-      'Prospective students should have Python programming proficiency and complete a consultation with Deven before admission to discuss technical readiness and learning objectives.',
+      'The courses use live instructor-led classes. Class recordings are uploaded to the LMS after each class for review.',
   },
   {
-    question: 'How do I enrol in a cloudsandai course?',
+    question: 'Are class recordings available after live sessions?',
     answer:
-      'Contact Deven through the consultation flow, email or LinkedIn. You can ask questions about the curriculum, prerequisites and which learning path fits your goals before enrolling.',
+      'Yes. Recordings are uploaded to the LMS after class.',
+  },
+  {
+    question: 'What practical projects will I build during AI/ML Foundations?',
+    answer:
+      'You will independently complete one guided, assessed ML capstone. Example directions include a predictive model, dataset exploration with a classification model, or a simple image-classification neural network; these are possible directions, not separate required projects.',
+  },
+  {
+    question: 'What projects will I complete in AI Engineering?',
+    answer:
+      'Every student completes three guided, assessed end-to-end projects: one instructor-approved application in each category—Knowledge-Grounded AI, Multimodal AI and Agentic AI.',
+  },
+  {
+    question: 'How are the projects guided and assessed?',
+    answer:
+      'Projects use structured milestones and instructor guidance. Students demonstrate working functionality, explain implementation decisions and receive review of code and outputs.',
+  },
+  {
+    question: 'Do the courses guarantee placement or employment?',
+    answer:
+      'No. The courses focus on learning and practical project development; employment or placement outcomes are not guaranteed.',
+  },
+  {
+    question: 'How can I enquire about course fees and admission?',
+    answer:
+      'Book a consultation with Deven using the existing consultation links on the courses page to discuss fees, course fit and admission. Course prices are not published on the website.',
+  },
+  {
+    question: 'How do I book a consultation with Deven?',
+    answer:
+      'Use a Book a Consultation link on the courses page to open the existing Calendly consultation and choose an available time.',
   },
 ];
 
