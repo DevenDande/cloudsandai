@@ -1,6 +1,5 @@
 import { Cpu, ArrowRight } from 'lucide-react';
-import { deepNeuralNetworks } from '@/data/curriculum';
-import { CurriculumAccordion } from './CurriculumAccordion';
+import { AIEngineeringCurriculum } from './AIEngineeringCurriculum';
 
 export function DeepLearning() {
   return (
@@ -26,7 +25,7 @@ export function DeepLearning() {
         </div>
 
         <div className="mt-10">
-          <CurriculumAccordion module={deepNeuralNetworks} />
+          <AIEngineeringCurriculum />
         </div>
 
         {/* Topic highlight grid */}

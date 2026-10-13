@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { BookOpen, Brain, BarChart3, Cpu } from 'lucide-react';
 import { CurriculumAccordion } from './CurriculumAccordion';
+import { AIEngineeringCurriculum } from './AIEngineeringCurriculum';
 import {
-  deepNeuralNetworks,
   course1Modules,
   integratedProgrammingImplementation,
 } from '@/data/curriculum';
 
-const course1Icons = [BookOpen, BarChart3, Brain];
+const course1Icons = [BookOpen, BarChart3, Brain, Cpu];
 const implementationElements = [
   'Python',
   'NumPy',
@@ -88,25 +88,12 @@ export function Curriculum() {
               </p>
             </div>
 
-            {course1Modules.map((mod, i) => {
-              const Icon = course1Icons[i] || BookOpen;
-              return (
-                <div key={mod.number}>
-                  <div className="mb-2 flex items-center gap-2 text-ink-400">
-                    <Icon className="h-4 w-4" />
-                    <span className="mono-label">Module {mod.number} — Course 1</span>
-                  </div>
-                  <CurriculumAccordion module={mod} />
-                </div>
-              );
-            })}
-
             <div className="pt-4">
               <div className="mb-2 flex items-center gap-2 text-accent-600">
                 <Cpu className="h-4 w-4" />
-                <span className="mono-label !text-accent-600">AI Engineering practice modules</span>
+                <span className="mono-label !text-accent-600">AI Engineering curriculum</span>
               </div>
-              <CurriculumAccordion module={deepNeuralNetworks} />
+              <AIEngineeringCurriculum />
             </div>
           </div>
         )}

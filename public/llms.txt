@@ -19,48 +19,40 @@ Deven and his team have AWS certifications and hands-on experience delivering AI
 - Study classical machine learning algorithms and the complete machine learning workflow.
 - Use Python, algorithms, NumPy, Pandas, Matplotlib, data analysis, visualization, and scientific computing throughout the academic curriculum.
 - Translate mathematical equations into working implementations and computational experiments.
-- Progress from foundations into deep neural networks, CNNs, sequence models, attention, and transformers.
+- Progress from machine-learning foundations into practical AI application development.
 - Combine instructor-led explanation with programming and implementation sessions.
 
 ## Courses
 
-### Introduction to Machine Learning
+### AI/ML Foundations
 
-Foundation track covering three core areas:
+Beginner-focused, 12-week course covering Python and scientific computing, mathematics for machine learning, probability and statistics, machine learning fundamentals, an introduction to deep learning, and a capstone project. Programming and implementation are integrated throughout.
 
-- Mathematical Foundations for Machine Learning
-- Introduction to Statistical Methods
-- Machine Learning
+### AI Engineering
 
-Programming and implementation are integrated throughout the course, with 8 programming sessions connecting concepts to computation, coding, experimentation, visualization, and algorithm implementation. The track includes 120 hours and 60 lectures. The price is INR 15,000 total when paid in 2 installments, or INR 13,500 as a one-time payment.
-
-### Machine Learning + Deep Neural Networks
-
-Complete track containing everything in the Introduction to Machine Learning program, plus Deep Neural Networks, CNNs, sequence models, attention, transformers, advanced deep learning, and 6 additional deep-learning implementation sessions. Implementation continues throughout the advanced topics.
-
-The track retains the same three foundational areas and includes 180 hours, 90 lectures, and 14 programming or implementation sessions in total. The price is INR 20,000 total when paid in 2 installments, or INR 17,500 as a one-time payment.
+Application-focused, 12-week course for learners with Python proficiency. Topics include LLM fundamentals, hosted and open-source models, APIs and FastAPI, retrieval-augmented generation (RAG), agentic AI workflows, and AWS deployment. The course includes three end-to-end projects.
 
 ## Curriculum
 
 ### Mathematical Foundations for Machine Learning
 
-Linear systems, matrices, vector spaces, linear independence, basis, rank, norms, inner products, geometry, matrix decomposition, eigenvalues and eigenvectors, singular value decomposition, vector calculus, gradients, backpropagation, automatic differentiation, optimization, gradient descent, stochastic optimization, hyperparameter tuning, PCA, dimensionality reduction, and mathematical foundations of support vector machines and kernels.
+The essential mathematical tools used in the machine-learning modules: vectors and matrices, matrix multiplication, dot products, distances and similarity, derivatives and gradients, the chain rule, loss functions, gradient descent, stochastic gradient descent, and learning rates.
 
 ### Introduction to Statistical Methods
 
-Probability and statistics, conditional probability, Bayes theorem, random variables, expectation, variance, covariance, probability distributions, sampling, the Central Limit Theorem, confidence intervals, hypothesis testing, ANOVA, maximum likelihood, correlation, regression, time-series analysis, Gaussian Mixture Models, and Expectation Maximization.
+Descriptive statistics (mean, median, variance, and standard deviation), basic and conditional probability, independence, Bayes rule, random variables, expectation, variance, covariance, and Bernoulli and Gaussian distributions.
 
 ### Machine Learning
 
-Introduction and taxonomy of machine learning, learning-system design, data preprocessing and wrangling, model training and testing, performance metrics, regression, classification, logistic regression, decision trees, instance-based learning, support vector machines, Bayesian learning, ensemble learning, unsupervised learning, clustering, and model evaluation including bias, fairness, and interpretability.
+Machine-learning workflow, data preparation, model training and evaluation, regression and classification, decision trees, nearest neighbors, support vector machines, Bayesian learning, ensemble learning, clustering, and model evaluation including bias, fairness, and interpretability.
+
+### Introduction to Deep Learning
+
+An introduction to neurons, layers and weights, forward propagation, activation and loss functions, gradient descent and backpropagation, overfitting and regularization, and common deep-learning applications. CNNs, recurrent networks, and transformers are not part of this introductory module.
 
 ### Integrated Programming & Implementation
 
 Programming is not taught as a separate subject. It is used throughout the curriculum to turn mathematical and statistical concepts into working implementations and experiments. Learn the concept, code it, experiment with it, and understand it. Topics include Python syntax, data types, conditionals, loops, functions, modules, debugging, problem solving, recursion, computational thinking, code organization, complexity, data structures, searching, sorting, algorithms, NumPy, vectorization, broadcasting, matrix operations, numerical differentiation and integration, simulation, numerical optimization, Pandas, Matplotlib, data cleaning, exploratory data analysis, visualization, and machine learning implementation.
-
-### Deep Neural Networks
-
-Supervised, unsupervised, semi-supervised, and reinforcement learning; biological and artificial neurons; perceptrons; multilayer perceptrons; forward and backward propagation; computational graphs; activation functions; softmax regression; optimization; regularization; underfitting and overfitting; dropout; batch normalization; CNNs; transfer learning; RNNs; GRU and LSTM models; attention; self-attention; positional encoding; transformers; neural network search; time-series modelling and forecasting; federated learning; meta-learning; and online/incremental learning.
 
 ## Free Educational Content
 

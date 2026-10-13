@@ -232,11 +232,11 @@ export function Contact({ compact = false }: { compact?: boolean }) {
                     className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 transition-colors focus:border-ink-900 focus:outline-none focus:ring-1 focus:ring-ink-900"
                   >
                     <option value="">Select a course</option>
-                    <option value="Introduction to Machine Learning">
-                      Introduction to Machine Learning
+                    <option value="AI/ML Foundations">
+                      AI/ML Foundations
                     </option>
-                    <option value="Machine Learning + Deep Neural Networks">
-                      Machine Learning + Deep Neural Networks
+                    <option value="AI Engineering">
+                      AI Engineering
                     </option>
                     <option value="Not sure yet">Not sure yet</option>
                   </select>
