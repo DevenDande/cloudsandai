@@ -106,6 +106,7 @@ export function computeGradientDescentStep(
       b: currentB,
       gradientW: 0,
       gradientB: 0,
+      actualLearningRate: learningRate,
       loss: 0,
       valid: false,
       message: 'At least two valid observations are required for training.',
@@ -113,19 +114,47 @@ export function computeGradientDescentStep(
   }
 
   const { gradientW, gradientB } = computeGradients(rows, currentW, currentB);
-  const nextW = currentW - learningRate * gradientW;
-  const nextB = currentB - learningRate * gradientB;
-  const loss = computeMSE(rows, nextW, nextB);
-  const hasFiniteValues = [nextW, nextB, loss, gradientW, gradientB].every(Number.isFinite);
+  const currentLoss = computeMSE(rows, currentW, currentB);
+  let actualLearningRate = learningRate;
+  let nextW = currentW;
+  let nextB = currentB;
+  let loss = currentLoss;
+
+  for (let attempt = 0; attempt < 64; attempt += 1) {
+    nextW = currentW - actualLearningRate * gradientW;
+    nextB = currentB - actualLearningRate * gradientB;
+    loss = computeMSE(rows, nextW, nextB);
+
+    if (
+      [nextW, nextB, loss, gradientW, gradientB].every(Number.isFinite) &&
+      loss <= currentLoss
+    ) {
+      return {
+        w: nextW,
+        b: nextB,
+        gradientW,
+        gradientB,
+        actualLearningRate,
+        loss,
+        valid: true,
+        message: actualLearningRate < learningRate
+          ? `Learning rate reduced to ${actualLearningRate} to prevent loss from increasing.`
+          : 'Gradient descent step completed.',
+      };
+    }
+
+    actualLearningRate /= 2;
+  }
 
   return {
-    w: nextW,
-    b: nextB,
+    w: currentW,
+    b: currentB,
     gradientW,
     gradientB,
-    loss,
-    valid: hasFiniteValues,
-    message: hasFiniteValues ? 'Gradient descent step completed.' : 'Training produced non-finite values and stopped safely.',
+    actualLearningRate,
+    loss: currentLoss,
+    valid: false,
+    message: 'Training could not find a finite step that reduces loss and stopped safely.',
   };
 }
 

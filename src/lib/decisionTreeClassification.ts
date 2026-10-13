@@ -1,4 +1,4 @@
-import { parseBoundedLabNumber } from './interactiveLabLimits';
+import { MAX_CLASSIFICATION_INPUT_MAGNITUDE, parseBoundedLabNumber } from './interactiveLabLimits';
 
 export type DatasetRow = {
   id: number;
@@ -54,8 +54,8 @@ export const defaultDatasetRows: DatasetRow[] = [
 
 export function getValidObservations(rows: DatasetRow[]): Observation[] {
   return rows.flatMap((row) => {
-    const studyHours = parseBoundedLabNumber(row.studyHours);
-    const practiceTests = parseBoundedLabNumber(row.practiceTests);
+    const studyHours = parseBoundedLabNumber(row.studyHours, MAX_CLASSIFICATION_INPUT_MAGNITUDE);
+    const practiceTests = parseBoundedLabNumber(row.practiceTests, MAX_CLASSIFICATION_INPUT_MAGNITUDE);
     if (
       row.studyHours.trim() === '' ||
       row.practiceTests.trim() === '' ||

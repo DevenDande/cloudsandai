@@ -19,7 +19,7 @@ import {
 import {
   MAX_LAB_OBSERVATIONS,
   MAX_LAB_PARAMETER_MAGNITUDE,
-  MAX_LAB_TRAINING_ITERATIONS,
+  MAX_REGRESSION_TRAINING_ITERATIONS,
 } from '@/lib/interactiveLabLimits';
 
 type ModelState = {
@@ -70,13 +70,6 @@ function buildChart(availableRows: Observation[], w: number, b: number) {
   return { linePoints, scatterPoints, xScale, yScale, range };
 }
 
-function getMaxLearningRate(rows: Observation[]) {
-  const meanSquaredMagnitude = rows.length
-    ? rows.reduce((sum, row) => sum + row.x * row.x + 1, 0) / rows.length
-    : 1;
-  return Math.min(1, 0.9 / meanSquaredMagnitude);
-}
-
 export function SimpleLinearRegressionLab() {
   const validRows = useMemo(() => getValidObservations(defaultDatasetRows), []);
   const [dataset, setDataset] = useState<DatasetRow[]>(defaultDatasetRows);
@@ -97,9 +90,7 @@ export function SimpleLinearRegressionLab() {
     isTraining: false,
   });
   const [closedForm, setClosedForm] = useState<ReturnType<typeof computeClosedFormSolution> | null>(null);
-
   const validObservations = useMemo(() => getValidObservations(dataset), [dataset]);
-  const maxLearningRate = useMemo(() => getMaxLearningRate(validObservations), [validObservations]);
   const currentLoss = useMemo(() => computeMSE(validObservations, model.w, model.b), [validObservations, model.w, model.b]);
   const residuals = useMemo(() => computeResiduals(validObservations, model.w, model.b), [validObservations, model.w, model.b]);
   const gradients = useMemo(() => computeGradients(validObservations, model.w, model.b), [validObservations, model.w, model.b]);
@@ -158,6 +149,9 @@ export function SimpleLinearRegressionLab() {
         const nextIteration = prev.iteration + 1;
         const nextHistory = [...prev.history, { iteration: nextIteration, loss: step.loss }];
         const shouldStop = nextIteration >= prev.iterations;
+        const rateNote = step.actualLearningRate < prev.learningRate
+          ? ` Learning rate reduced to ${formatMetric(step.actualLearningRate, 10)} for stability.`
+          : '';
 
         return {
           ...prev,
@@ -167,8 +161,8 @@ export function SimpleLinearRegressionLab() {
           history: nextHistory,
           isTraining: !shouldStop,
           status: shouldStop
-            ? `Training finished after ${nextIteration} iterations.`
-            : `Iteration ${nextIteration}: loss ${formatMetric(step.loss)}`,
+            ? `Training finished after ${nextIteration} iterations.${rateNote}`
+            : `Iteration ${nextIteration}: loss ${formatMetric(step.loss)}.${rateNote}`,
         };
       });
     }, 350);
@@ -178,25 +172,16 @@ export function SimpleLinearRegressionLab() {
 
   const changeDataset = (nextDataset: DatasetRow[]) => {
     const observations = getValidObservations(nextDataset);
-    const learningRateLimit = getMaxLearningRate(observations);
     setDataset(nextDataset);
     setModel((previous) => {
-      const learningRate = Math.min(previous.learningRate, learningRateLimit);
       return {
         ...previous,
-        learningRate,
         iteration: 0,
         history: defaultHistory(observations, previous.w, previous.b),
         isTraining: false,
-        status: learningRate < previous.learningRate
-          ? 'Dataset updated; progress reset and learning rate reduced for stability.'
-          : 'Dataset updated; training progress reset.',
+        status: 'Dataset updated; training progress reset.',
       };
     });
-    setInitialSettings((previous) => ({
-      ...previous,
-      learningRate: Math.min(previous.learningRate, learningRateLimit),
-    }));
   };
 
   const updateRow = (id: number, field: 'x' | 'y', value: string) => {
@@ -249,7 +234,9 @@ export function SimpleLinearRegressionLab() {
       iteration: nextIteration,
       history: [...prev.history, { iteration: nextIteration, loss: step.loss }],
       isTraining: false,
-      status: `Updated after step ${nextIteration}.`,
+      status: step.actualLearningRate < model.learningRate
+        ? `Updated after step ${nextIteration}. Learning rate reduced to ${formatMetric(step.actualLearningRate, 10)} for stability.`
+        : `Updated after step ${nextIteration}.`,
     }));
   };
 
@@ -296,20 +283,20 @@ export function SimpleLinearRegressionLab() {
     }
 
     if (field === 'iterations') {
-      const iterations = Math.min(MAX_LAB_TRAINING_ITERATIONS, Math.max(1, Math.round(parsed)));
+      const iterations = Math.min(MAX_REGRESSION_TRAINING_ITERATIONS, Math.max(1, Math.round(parsed)));
       setInitialSettings((prev) => ({ ...prev, iterations }));
-      setModel((prev) => ({ ...prev, iterations, isTraining: false, status: `Training schedule set to ${iterations} iterations (maximum ${MAX_LAB_TRAINING_ITERATIONS}).` }));
+      setModel((prev) => ({ ...prev, iterations, isTraining: false, status: `Training schedule set to ${iterations} iterations (maximum ${MAX_REGRESSION_TRAINING_ITERATIONS}).` }));
       return;
     }
 
     if (field === 'learningRate') {
-      const learningRate = Math.max(1e-12, Math.min(parsed, maxLearningRate));
+      const learningRate = Math.max(1e-12, Math.min(parsed, 1));
       setInitialSettings((prev) => ({ ...prev, learningRate }));
       setModel((prev) => ({
         ...prev,
         learningRate,
         isTraining: false,
-        status: learningRate < parsed ? `Learning rate limited to ${formatMetric(maxLearningRate, 10)} for this dataset.` : 'Learning rate updated.',
+        status: learningRate < parsed ? 'Learning rate limited to 1.' : 'Learning rate updated.',
       }));
       return;
     }
@@ -504,8 +491,8 @@ export function SimpleLinearRegressionLab() {
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <label className="block text-sm text-ink-600"><span className="mb-2 block">Initial weight</span><input type="number" min={-MAX_LAB_PARAMETER_MAGNITUDE} max={MAX_LAB_PARAMETER_MAGNITUDE} value={initialSettings.initialW} step="0.05" onChange={(event) => updateInitialSetting('initialW', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
             <label className="block text-sm text-ink-600"><span className="mb-2 block">Initial bias</span><input type="number" min={-MAX_LAB_PARAMETER_MAGNITUDE} max={MAX_LAB_PARAMETER_MAGNITUDE} value={initialSettings.initialB} step="0.05" onChange={(event) => updateInitialSetting('initialB', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
-            <label className="block text-sm text-ink-600"><span className="mb-2 block">Learning rate (maximum {formatMetric(maxLearningRate, 10)})</span><input type="number" value={initialSettings.learningRate} min="0.000000000001" max={maxLearningRate} step="0.001" onChange={(event) => updateInitialSetting('learningRate', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
-            <label className="block text-sm text-ink-600"><span className="mb-2 block">Iterations (max {MAX_LAB_TRAINING_ITERATIONS})</span><input type="number" value={initialSettings.iterations} min="1" max={MAX_LAB_TRAINING_ITERATIONS} step="1" onChange={(event) => updateInitialSetting('iterations', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
+            <label className="block text-sm text-ink-600"><span className="mb-2 block">Learning rate (maximum 1)</span><input type="number" value={initialSettings.learningRate} min="0.000000000001" max="1" step="0.001" onChange={(event) => updateInitialSetting('learningRate', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
+            <label className="block text-sm text-ink-600"><span className="mb-2 block">Iterations (max {MAX_REGRESSION_TRAINING_ITERATIONS})</span><input type="number" value={initialSettings.iterations} min="1" max={MAX_REGRESSION_TRAINING_ITERATIONS} step="1" onChange={(event) => updateInitialSetting('iterations', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
           </div>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -573,11 +560,11 @@ export function SimpleLinearRegressionLab() {
             <li><span className="font-medium text-ink-900">3. Current MSE</span>: {formatMetric(currentLoss)}</li>
             <li><span className="font-medium text-ink-900">4. Gradient with respect to weight</span>: {formatNumber(gradients.gradientW)}</li>
             <li><span className="font-medium text-ink-900">5. Gradient with respect to bias</span>: {formatNumber(gradients.gradientB)}</li>
-            <li><span className="font-medium text-ink-900">6. Weight update</span>: w_new = w − α∂J/∂w = {formatNumber(model.w)} − {formatNumber(model.learningRate)} × {formatNumber(gradients.gradientW)} = {formatNumber(nextStep?.w ?? model.w)}</li>
-            <li><span className="font-medium text-ink-900">7. Bias update</span>: b_new = b − α∂J/∂b = {formatNumber(model.b)} − {formatNumber(model.learningRate)} × {formatNumber(gradients.gradientB)} = {formatNumber(nextStep?.b ?? model.b)}</li>
+            <li><span className="font-medium text-ink-900">6. Weight update</span>: w_new = w − α∂J/∂w = {formatNumber(model.w)} − {formatNumber(nextStep?.actualLearningRate ?? model.learningRate)} × {formatNumber(gradients.gradientW)} = {formatNumber(nextStep?.w ?? model.w)}</li>
+            <li><span className="font-medium text-ink-900">7. Bias update</span>: b_new = b − α∂J/∂b = {formatNumber(model.b)} − {formatNumber(nextStep?.actualLearningRate ?? model.learningRate)} × {formatNumber(gradients.gradientB)} = {formatNumber(nextStep?.b ?? model.b)}</li>
             <li><span className="font-medium text-ink-900">8. Result</span>: {`w = ${formatNumber(nextStep?.w ?? model.w)}, b = ${formatNumber(nextStep?.b ?? model.b)}, loss = ${formatNumber(nextStep?.loss ?? currentLoss)}`}</li>
           </ol>
-          <p>The gradient tells us the direction of steepest increase in error, so subtracting it moves the model toward a lower loss. The learning rate controls the step size.</p>
+          <p>The gradient tells us the direction of steepest increase in error, so subtracting it moves the model toward a lower loss. The learning rate controls the step size; if a step would increase loss, it is automatically reduced to keep training stable.</p>
         </div>
       </details>
 

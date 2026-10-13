@@ -126,7 +126,13 @@ export function computeGradientDescentStep(
   standardize: boolean,
 ) {
   if (rows.length < 2) {
-    return { ...model, loss: computeMSE(rows, model, stats, standardize), valid: false, message: 'Enter at least two complete observations to train.' };
+    return {
+      ...model,
+      actualLearningRate: learningRate,
+      loss: computeMSE(rows, model, stats, standardize),
+      valid: false,
+      message: 'Enter at least two complete observations to train.',
+    };
   }
 
   const gradients = Array.from({ length: model.weights.length }, () => 0);
@@ -141,18 +147,38 @@ export function computeGradientDescentStep(
     });
   });
 
-  const nextModel = {
-    weights: model.weights.map((weight, index) => weight - learningRate * (2 / rows.length) * gradients[index]),
-    bias: model.bias - learningRate * (2 / rows.length) * biasGradient,
-  };
-  const loss = computeMSE(rows, nextModel, stats, standardize);
-  const valid = [...nextModel.weights, nextModel.bias, loss].every(Number.isFinite);
+  const currentLoss = computeMSE(rows, model, stats, standardize);
+  let actualLearningRate = learningRate;
+
+  for (let attempt = 0; attempt < 64; attempt += 1) {
+    const nextModel = {
+      weights: model.weights.map((weight, index) => weight - actualLearningRate * (2 / rows.length) * gradients[index]),
+      bias: model.bias - actualLearningRate * (2 / rows.length) * biasGradient,
+    };
+    const loss = computeMSE(rows, nextModel, stats, standardize);
+    const finite = [...nextModel.weights, nextModel.bias, loss].every(Number.isFinite);
+
+    if (finite && loss <= currentLoss) {
+      return {
+        ...nextModel,
+        actualLearningRate,
+        loss,
+        valid: true,
+        message: actualLearningRate < learningRate
+          ? `Learning rate reduced to ${actualLearningRate} to prevent loss from increasing.`
+          : 'Gradient descent step completed.',
+      };
+    }
+
+    actualLearningRate /= 2;
+  }
 
   return {
-    ...nextModel,
-    loss,
-    valid,
-    message: valid ? 'Gradient descent step completed.' : 'Training produced non-finite values and stopped safely.',
+    ...model,
+    actualLearningRate,
+    loss: currentLoss,
+    valid: false,
+    message: 'Training could not find a finite step that reduces loss and stopped safely.',
   };
 }
 

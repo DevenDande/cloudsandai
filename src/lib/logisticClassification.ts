@@ -1,4 +1,4 @@
-import { parseBoundedLabNumber } from './interactiveLabLimits';
+import { MAX_CLASSIFICATION_INPUT_MAGNITUDE, parseBoundedLabNumber } from './interactiveLabLimits';
 
 export type DatasetRow = {
   id: number;
@@ -45,8 +45,8 @@ export const defaultTrainingConfig = {
 
 export function getValidObservations(rows: DatasetRow[]): Observation[] {
   return rows.flatMap((row) => {
-    const studyHours = parseBoundedLabNumber(row.studyHours);
-    const practiceTests = parseBoundedLabNumber(row.practiceTests);
+    const studyHours = parseBoundedLabNumber(row.studyHours, MAX_CLASSIFICATION_INPUT_MAGNITUDE);
+    const practiceTests = parseBoundedLabNumber(row.practiceTests, MAX_CLASSIFICATION_INPUT_MAGNITUDE);
     if (
       row.studyHours.trim() === '' ||
       row.practiceTests.trim() === '' ||
@@ -123,6 +123,7 @@ export function computeGradientDescentStep(
   if (rows.length < 2 || new Set(rows.map((row) => row.label)).size < 2) {
     return {
       ...model,
+      actualLearningRate: learningRate,
       loss: computeLogLoss(rows, model, stats),
       valid: false,
       message: 'Add at least two complete observations, including both classes, to train.',
@@ -141,21 +142,41 @@ export function computeGradientDescentStep(
     biasGradient += error;
   });
 
-  const nextModel: ModelParameters = {
-    weights: [
-      model.weights[0] - learningRate * weightGradient0 / rows.length,
-      model.weights[1] - learningRate * weightGradient1 / rows.length,
-    ],
-    bias: model.bias - learningRate * biasGradient / rows.length,
-  };
-  const loss = computeLogLoss(rows, nextModel, stats);
-  const valid = [...nextModel.weights, nextModel.bias, loss].every(Number.isFinite);
+  const currentLoss = computeLogLoss(rows, model, stats);
+  let actualLearningRate = learningRate;
+
+  for (let attempt = 0; attempt < 64; attempt += 1) {
+    const nextModel: ModelParameters = {
+      weights: [
+        model.weights[0] - actualLearningRate * weightGradient0 / rows.length,
+        model.weights[1] - actualLearningRate * weightGradient1 / rows.length,
+      ],
+      bias: model.bias - actualLearningRate * biasGradient / rows.length,
+    };
+    const loss = computeLogLoss(rows, nextModel, stats);
+    const finite = [...nextModel.weights, nextModel.bias, loss].every(Number.isFinite);
+
+    if (finite && loss <= currentLoss) {
+      return {
+        ...nextModel,
+        actualLearningRate,
+        loss,
+        valid: true,
+        message: actualLearningRate < learningRate
+          ? `Learning rate reduced to ${actualLearningRate} to prevent loss from increasing.`
+          : 'Gradient descent step completed.',
+      };
+    }
+
+    actualLearningRate /= 2;
+  }
 
   return {
-    ...nextModel,
-    loss,
-    valid,
-    message: valid ? 'Gradient descent step completed.' : 'Training produced non-finite values and stopped safely.',
+    ...model,
+    actualLearningRate,
+    loss: currentLoss,
+    valid: false,
+    message: 'Training could not find a finite step that reduces loss and stopped safely.',
   };
 }
 

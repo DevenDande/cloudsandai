@@ -20,7 +20,7 @@ import {
 import {
   MAX_LAB_OBSERVATIONS,
   MAX_LAB_PARAMETER_MAGNITUDE,
-  MAX_LAB_TRAINING_ITERATIONS,
+  MAX_REGRESSION_TRAINING_ITERATIONS,
 } from '@/lib/interactiveLabLimits';
 
 type HistoryPoint = { iteration: number; loss: number };
@@ -54,20 +54,6 @@ function initialModel(rows: DatasetRow[], standardize = true): LabModel {
   };
 }
 
-function getMaxLearningRate(
-  rows: ReturnType<typeof getValidObservations>,
-  stats: ReturnType<typeof getFeatureStats>,
-  standardize: boolean,
-) {
-  const meanSquaredMagnitude = rows.length
-    ? rows.reduce((sum, row) => {
-        const features = transformFeatures(row.features, stats, standardize);
-        return sum + features.reduce((magnitude, value) => magnitude + value * value, 0) + 1;
-      }, 0) / rows.length
-    : regressionFeatures.length + 1;
-  return Math.min(1, 0.9 / meanSquaredMagnitude);
-}
-
 function buildComparisonChart(actual: number[], predicted: number[]) {
   const width = 500;
   const height = 300;
@@ -93,10 +79,6 @@ export function MultipleLinearRegressionLab() {
   const [model, setModel] = useState<LabModel>(() => initialModel(defaultDatasetRows));
   const validObservations = useMemo(() => getValidObservations(dataset), [dataset]);
   const featureStats = useMemo(() => getFeatureStats(validObservations), [validObservations]);
-  const maxLearningRate = useMemo(
-    () => getMaxLearningRate(validObservations, featureStats, standardize),
-    [featureStats, standardize, validObservations],
-  );
   const currentParameters = useMemo<ModelParameters>(() => ({ weights: model.weights, bias: model.bias }), [model.weights, model.bias]);
   const currentLoss = useMemo(
     () => computeMSE(validObservations, currentParameters, featureStats, standardize),
@@ -145,6 +127,9 @@ export function MultipleLinearRegressionLab() {
         }
 
         const iteration = previous.iteration + 1;
+        const rateNote = step.actualLearningRate < previous.learningRate
+          ? ` Learning rate reduced to ${formatMetric(step.actualLearningRate, 10)} for stability.`
+          : '';
         return {
           ...previous,
           weights: step.weights,
@@ -152,7 +137,9 @@ export function MultipleLinearRegressionLab() {
           iteration,
           history: [...previous.history, { iteration, loss: step.loss }],
           isTraining: iteration < previous.iterations,
-          status: iteration >= previous.iterations ? `Training finished after ${iteration} iterations.` : `Iteration ${iteration}: MSE ${formatMetric(step.loss)}`,
+          status: iteration >= previous.iterations
+            ? `Training finished after ${iteration} iterations.${rateNote}`
+            : `Iteration ${iteration}: MSE ${formatMetric(step.loss)}.${rateNote}`,
         };
       });
     }, 120);
@@ -164,19 +151,15 @@ export function MultipleLinearRegressionLab() {
     setDataset(nextDataset);
     const observations = getValidObservations(nextDataset);
     const nextStats = getFeatureStats(observations);
-    const learningRateLimit = getMaxLearningRate(observations, nextStats, standardize);
     setModel((previous) => ({
       ...previous,
-      learningRate: Math.min(previous.learningRate, learningRateLimit),
       iteration: 0,
       history: [{
         iteration: 0,
         loss: computeMSE(observations, { weights: previous.weights, bias: previous.bias }, nextStats, standardize),
       }],
       isTraining: false,
-      status: previous.learningRate > learningRateLimit
-        ? 'Dataset updated; progress reset and learning rate reduced for stability.'
-        : 'Dataset updated; training progress reset.',
+      status: 'Dataset updated; training progress reset.',
     }));
   };
 
@@ -245,7 +228,9 @@ export function MultipleLinearRegressionLab() {
       iteration,
       history: [...previous.history, { iteration, loss: step.loss }],
       isTraining: false,
-      status: `Updated after step ${iteration}.`,
+      status: step.actualLearningRate < model.learningRate
+        ? `Updated after step ${iteration}. Learning rate reduced to ${formatMetric(step.actualLearningRate, 10)} for stability.`
+        : `Updated after step ${iteration}.`,
     }));
   };
 
@@ -259,13 +244,12 @@ export function MultipleLinearRegressionLab() {
     setStandardize(enabled);
     setModel((previous) => ({
       ...previous,
-      learningRate: Math.min(previous.learningRate, getMaxLearningRate(validObservations, featureStats, enabled)),
       iteration: 0,
       history: [{ iteration: 0, loss: computeMSE(validObservations, { weights: previous.weights, bias: previous.bias }, featureStats, enabled) }],
       isTraining: false,
       status: enabled
         ? 'Features standardized; training progress reset.'
-        : 'Feature scaling disabled; training progress reset and learning rate reduced for stability.',
+        : 'Feature scaling disabled; training progress reset.',
     }));
   };
 
@@ -388,18 +372,18 @@ export function MultipleLinearRegressionLab() {
           <p className="mono-label">Section C</p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">Fit and evaluate</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            <label className="text-sm text-ink-600">Learning rate (maximum {formatMetric(maxLearningRate, 10)})<input aria-label="Learning rate" type="number" min="0.000000000001" max={maxLearningRate} step="0.005" value={model.learningRate} onChange={(event) => {
+            <label className="text-sm text-ink-600">Learning rate (maximum 1)<input aria-label="Learning rate" type="number" min="0.000000000001" max="1" step="0.005" value={model.learningRate} onChange={(event) => {
               const value = Number(event.target.value);
               if (Number.isFinite(value) && value > 0) {
-                const learningRate = Math.min(value, maxLearningRate);
-                setModel((previous) => ({ ...previous, learningRate, isTraining: false, status: learningRate < value ? `Learning rate limited to ${formatMetric(maxLearningRate, 10)} for these data and scaling settings.` : 'Learning rate updated.' }));
+                const learningRate = Math.min(value, 1);
+                setModel((previous) => ({ ...previous, learningRate, isTraining: false, status: learningRate < value ? 'Learning rate limited to 1.' : 'Learning rate updated.' }));
               }
             }} className="mt-2 w-full rounded-lg border border-ink-200 px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
-            <label className="text-sm text-ink-600">Training steps (maximum {MAX_LAB_TRAINING_ITERATIONS})<input aria-label="Training steps" type="number" min="1" max={MAX_LAB_TRAINING_ITERATIONS} step="1" value={model.iterations} onChange={(event) => setModel((previous) => {
+            <label className="text-sm text-ink-600">Training steps (maximum {MAX_REGRESSION_TRAINING_ITERATIONS})<input aria-label="Training steps" type="number" min="1" max={MAX_REGRESSION_TRAINING_ITERATIONS} step="1" value={model.iterations} onChange={(event) => setModel((previous) => {
               const value = Number(event.target.value);
               if (!Number.isFinite(value) || value < 1) return previous;
-              const iterations = Math.min(MAX_LAB_TRAINING_ITERATIONS, Math.round(value));
-              return { ...previous, iterations, isTraining: false, status: iterations < value ? `Training steps limited to ${MAX_LAB_TRAINING_ITERATIONS}.` : 'Training schedule updated.' };
+              const iterations = Math.min(MAX_REGRESSION_TRAINING_ITERATIONS, Math.round(value));
+              return { ...previous, iterations, isTraining: false, status: iterations < value ? `Training steps limited to ${MAX_REGRESSION_TRAINING_ITERATIONS}.` : 'Training schedule updated.' };
             })} className="mt-2 w-full rounded-lg border border-ink-200 px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
           </div>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
