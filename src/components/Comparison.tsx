@@ -42,7 +42,7 @@ export function Comparison() {
         <div className="max-w-2xl">
           <p className="mono-label">Comparison</p>
           <h2 className="mt-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-4xl">
-            Compare the Two 12-Week Courses
+            Compare the Two 16-Week Programs
           </h2>
         </div>
 
