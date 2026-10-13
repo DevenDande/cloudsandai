@@ -1,3 +1,5 @@
+import { parseBoundedLabNumber } from './interactiveLabLimits';
+
 export type Observation = {
   x: number;
   y: number;
@@ -29,12 +31,7 @@ export const defaultTrainingConfig = {
 };
 
 export function parseNumericInput(value: string | number | null | undefined): number | null {
-  if (value === null || value === undefined || value === '') {
-    return null;
-  }
-
-  const numeric = typeof value === 'number' ? value : Number(value);
-  return Number.isFinite(numeric) ? numeric : null;
+  return parseBoundedLabNumber(value);
 }
 
 export function getValidObservations(rows: DatasetRow[]): Observation[] {

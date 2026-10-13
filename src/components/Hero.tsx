@@ -59,9 +59,9 @@ export function Hero() {
               className="mt-5 max-w-xl animate-fade-up opacity-0"
               style={{ animationDelay: '0.45s' }}
             >
-              <p className="text-sm font-medium text-ink-600">Advanced AI &amp; Cloud tracks coming soon</p>
+              <p className="text-sm font-medium text-ink-600">AI/ML Foundations → AI Engineering</p>
               <p className="mt-1 text-xs leading-relaxed text-ink-400">
-                Agentic AI · AWS Bedrock &amp; SageMaker · AI Deployment on Cloud
+                Understand AI/ML fundamentals, then build and deploy AI applications.
               </p>
             </div>
 

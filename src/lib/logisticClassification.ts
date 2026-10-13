@@ -1,3 +1,5 @@
+import { parseBoundedLabNumber } from './interactiveLabLimits';
+
 export type DatasetRow = {
   id: number;
   studyHours: string;
@@ -43,14 +45,13 @@ export const defaultTrainingConfig = {
 
 export function getValidObservations(rows: DatasetRow[]): Observation[] {
   return rows.flatMap((row) => {
-    const studyHours = Number(row.studyHours);
-    const practiceTests = Number(row.practiceTests);
-
+    const studyHours = parseBoundedLabNumber(row.studyHours);
+    const practiceTests = parseBoundedLabNumber(row.practiceTests);
     if (
       row.studyHours.trim() === '' ||
       row.practiceTests.trim() === '' ||
-      !Number.isFinite(studyHours) ||
-      !Number.isFinite(practiceTests)
+      studyHours === null ||
+      practiceTests === null
     ) {
       return [];
     }

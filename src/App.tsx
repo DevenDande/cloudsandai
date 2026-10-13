@@ -81,8 +81,8 @@ function PageContent({ path }: { path: string }) {
     return (
       <>
         <PageIntro
-          title="Machine Learning & Deep Learning Courses"
-          description="Three core academic areas taught through integrated Python, scientific computing, experimentation and machine learning implementation."
+          title="AI/ML Foundations & AI Engineering"
+          description="Two 12-week learning paths: one for beginners starting from zero, and one for Python-ready learners building practical AI applications."
         />
         <Courses />
         <Comparison />

@@ -8,10 +8,10 @@ export function Courses() {
         <div className="max-w-2xl">
           <p className="mono-label">Courses</p>
           <h2 className="mt-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-4xl lg:text-5xl">
-            Choose Your Learning Path
+            Two Clear Learning Paths
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-500">
-            Two structured programs. One foundations-first approach.
+            Start with AI/ML Foundations or move directly into AI Engineering with the required Python background.
           </p>
         </div>
 
@@ -137,7 +137,7 @@ export function Courses() {
                 ))}
               </div>
 
-              {/* Practice sessions */}
+              {/* Learning highlights */}
               <div
                 className={`mt-6 border-t pt-5 ${
                   course.highlighted ? 'border-white/10' : 'border-ink-100'
@@ -154,11 +154,11 @@ export function Courses() {
                       course.highlighted ? 'text-ink-300' : 'text-ink-400'
                     }`}
                   >
-                    Sessions
+                    Learning highlights
                   </span>
                 </div>
                 <div className="mt-3 space-y-2">
-                  {course.webinars.map((w, i) => (
+                  {course.learningHighlights.map((highlight, i) => (
                     <div key={i} className="flex items-center gap-2">
                       <Award
                         className={`h-3.5 w-3.5 ${
@@ -170,17 +170,10 @@ export function Courses() {
                           course.highlighted ? 'text-ink-200' : 'text-ink-700'
                         }`}
                       >
-                        {w}
+                        {highlight}
                       </span>
                     </div>
                   ))}
-                  <div
-                    className={`mt-2 text-sm font-medium ${
-                      course.highlighted ? 'text-white' : 'text-ink-900'
-                    }`}
-                  >
-                    Total: {course.totalWebinars} Sessions
-                  </div>
                 </div>
               </div>
 

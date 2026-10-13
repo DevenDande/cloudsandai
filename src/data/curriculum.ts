@@ -551,47 +551,47 @@ export const faqItems: { question: string; answer: string }[] = [
   {
     question: 'What gap do the cloudsandai courses fill?',
     answer:
-      'cloudsandai connects mathematical foundations, statistics, programming, scientific computing and machine learning in one structured curriculum, helping learners understand both how AI and ML methods work and why they work.',
+      'cloudsandai connects programming, mathematics, statistics, machine learning and practical AI application development in a single structured curriculum so learners can understand both the theory and the implementation.',
   },
   {
     question: 'Why choose cloudsandai for AI and ML learning?',
     answer:
-      'cloudsandai takes a foundations-first, instructor-led approach. Concepts are studied alongside computation and implementation so learners can build a connected understanding of mathematics, statistics, programming, machine learning and deep learning.',
+      'cloudsandai takes a foundations-first, instructor-led approach. Learners build understanding through code, experiments and guided implementation before moving into practical AI application work.',
   },
   {
     question: 'Who are the cloudsandai courses for?',
     answer:
-      'The courses are designed for polytechnic and engineering students, recent graduates, data analysts and data scientists, ML engineers who want to understand the fundamentals, and curious learners irrespective of background.',
+      'AI/ML Foundations is designed for beginners, engineering students, college learners and anyone starting from zero. AI Engineering is designed for learners with Python proficiency who want to build real AI applications.',
   },
   {
-    question: 'What does a foundations-first approach to AI and ML mean?',
+    question: 'What is the difference between AI/ML Foundations and AI Engineering?',
     answer:
-      'It means building mathematical and statistical understanding while using programming throughout to implement concepts, test ideas and experiment before relying on advanced models. The curriculum connects theory, computation and implementation.',
+      'AI/ML Foundations starts from zero and focuses on Python, mathematics, statistics and ML fundamentals. AI Engineering is a more application-focused track covering LLMs, RAG, APIs, agentic workflows and deployment.',
   },
   {
-    question: 'What does Course 1 include?',
+    question: 'What does AI/ML Foundations include?',
     answer:
-      'Course 1 covers three core areas: Mathematical Foundations for Machine Learning, Introduction to Statistical Methods, and Machine Learning. Programming and scientific computing are integrated throughout the curriculum through 8 programming sessions. It includes 120 hours and 60 lectures.',
+      'The course covers Python programming and scientific computing, mathematics for machine learning, probability and statistics, core machine learning concepts, an introduction to deep learning, and a beginner-level capstone project.',
   },
   {
-    question: 'What does Course 2 include?',
+    question: 'What does AI Engineering include?',
     answer:
-      'Course 2 includes everything in Course 1, plus Deep Neural Networks and 6 additional deep-learning implementation sessions, for 14 Programming Sessions total. It includes 180 hours and 90 lectures.',
+      'The course focuses on LLM fundamentals, model selection, APIs and FastAPI, retrieval-augmented generation, agentic AI workflows and AWS deployment. It includes three end-to-end projects and is intended for practical AI application builders.',
   },
   {
-    question: 'What topics are covered in the curriculum?',
+    question: 'How long are the courses?',
     answer:
-      'The curriculum covers mathematics, statistical methods and machine learning, with Python, NumPy, Pandas, Matplotlib, scientific computing and algorithm implementation integrated throughout. Advanced topics include neural networks, CNNs, sequence models, attention and transformers.',
+      'Both AI/ML Foundations and AI Engineering run for 12 weeks and combine live instructor-led classes with recordings available on the LMS after class.',
   },
   {
-    question: 'How do I choose between Course 1 and Course 2?',
+    question: 'Do I need a technical background for AI Engineering?',
     answer:
-      'Choose Course 1 for the three core academic areas with integrated programming and implementation. Choose Course 2 if you want everything in Course 1 plus Deep Neural Networks and additional deep-learning implementation sessions.',
+      'Prospective students should have Python programming proficiency and complete a consultation with Deven before admission to discuss technical readiness and learning objectives.',
   },
   {
     question: 'How do I enrol in a cloudsandai course?',
     answer:
-      'Contact Deven using the enquiry form, email, phone or LinkedIn. You can ask questions about the curriculum and which learning path is right for you before enrolling.',
+      'Contact Deven through the consultation flow, email or LinkedIn. You can ask questions about the curriculum, prerequisites and which learning path fits your goals before enrolling.',
   },
 ];
 
@@ -606,8 +606,7 @@ export interface CourseCardData {
   additionalDuration?: string;
   additionalLectures?: string;
   coreAreas: { title: string; description: string }[];
-  webinars: string[];
-  totalWebinars: string;
+  learningHighlights: string[];
   highlighted: boolean;
   badge?: string;
 }
@@ -615,69 +614,98 @@ export interface CourseCardData {
 export const courses: CourseCardData[] = [
   {
     id: 'course-1',
-    title: 'Introduction to Machine Learning',
-    label: 'FOUNDATION TRACK',
+    title: 'AI/ML Foundations',
+    label: '12 WEEKS · BEGINNERS',
     description:
-      'A structured Machine Learning course where mathematics, statistics and machine learning develop through Python, scientific computing and implementation.',
-    summary: '3 Core Areas + 8 Integrated Programming Sessions',
-    duration: '120 hrs',
-    lectures: '60 lectures',
+      'Learn the fundamentals of programming, mathematics and machine learning through intuitive explanations, coding exercises and a beginner-friendly capstone project.',
+    summary: 'Python • Math • ML • Capstone',
+    duration: '12 weeks',
+    lectures: 'Beginner-focused path',
     coreAreas: [
       {
-        title: 'Mathematical Foundations for Machine Learning',
-        description: 'Mathematics required to understand how machine learning works.',
+        title: 'Python Programming and Scientific Computing',
+        description: 'Python fundamentals, data structures and practical numerical computing with real examples.',
       },
       {
-        title: 'Introduction to Statistical Methods',
-        description: 'Probability, statistics, distributions, estimation and hypothesis testing for ML.',
+        title: 'Mathematics for Machine Learning',
+        description: 'Vectors, matrices, derivatives, gradients and optimization intuition for ML models.',
       },
       {
-        title: 'Machine Learning',
-        description: 'Core algorithms, intuition, implementation, evaluation and experimentation.',
+        title: 'Probability, Statistics and Machine Learning',
+        description: 'Understand data, uncertainty, model evaluation and core learning algorithms.',
+      },
+      {
+        title: 'Introduction to Deep Learning',
+        description: 'Neurons, layers, activation functions and the intuition behind learning in neural networks.',
+      },
+      {
+        title: 'Capstone Project',
+        description: 'Apply your learning to a real dataset and explain your model, results and limitations.',
       },
     ],
-    webinars: ['8 Integrated Programming Sessions'],
-    totalWebinars: '8',
+    learningHighlights: [
+      'Python and scientific computing',
+      'Mathematics for ML',
+      'Probability and statistics',
+      'Machine learning fundamentals',
+      'Introduction to deep learning',
+      'Capstone project',
+    ],
     highlighted: false,
+    badge: 'Starts from zero',
   },
   {
     id: 'course-2',
-    title: 'Machine Learning + Deep Neural Networks',
-    label: 'COMPLETE TRACK',
+    title: 'AI Engineering',
+    label: '12 WEEKS · PYTHON PROFICIENCY',
     description:
-      'Includes everything in Course 1, then extends into Deep Neural Networks and advanced deep learning with 6 additional implementation sessions.',
-    summary: '3 Core Areas + Deep Learning Extension',
-    duration: '180 hrs',
-    lectures: '90 lectures',
-    additionalDuration: '60',
-    additionalLectures: '30 lectures',
+      'Learn to build, integrate and deploy modern AI applications using large language models, APIs, open-source models, agentic workflows and cloud infrastructure.',
+    summary: 'LLMs • RAG • APIs • Agents • AWS',
+    duration: '12 weeks',
+    lectures: 'Python proficiency required',
     coreAreas: [
       {
-        title: 'Mathematical Foundations for Machine Learning',
-        description: 'Mathematics required to understand how machine learning works.',
+        title: 'LLM Fundamentals',
+        description: 'Tokens, context windows, prompting, structured outputs and model evaluation.',
       },
       {
-        title: 'Introduction to Statistical Methods',
-        description: 'Probability, statistics, distributions, estimation and hypothesis testing for ML.',
+        title: 'Models and Open-Source Ecosystems',
+        description: 'Hugging Face, Ollama, local inference and selecting between hosted and local models.',
       },
       {
-        title: 'Machine Learning',
-        description: 'Core algorithms, intuition, implementation, evaluation and experimentation.',
+        title: 'APIs and Application Development',
+        description: 'HTTP, JSON, Python backend development and FastAPI-based application design.',
+      },
+      {
+        title: 'Retrieval-Augmented Generation',
+        description: 'Document ingestion, embeddings, retrieval and grounded answers with citations.',
+      },
+      {
+        title: 'Agentic AI',
+        description: 'Tool calling, state management, bounded execution and human approval flows.',
+      },
+      {
+        title: 'AWS and Deployment',
+        description: 'Deploy a lightweight AI application with logging, cost and latency considerations.',
       },
     ],
-    webinars: ['8 Integrated Programming Sessions', '6 Additional Deep Learning Implementation Sessions'],
-    totalWebinars: '14',
+    learningHighlights: [
+      'LLM fundamentals',
+      'Local and hosted model workflows',
+      'APIs and FastAPI',
+      'RAG and grounded QA',
+      'Agentic AI workflows',
+      'AWS deployment',
+    ],
     highlighted: true,
-    badge: 'Includes Course 1',
   },
 ];
 
 export const comparisonRows: { feature: string; course1: string; course2: string }[] = [
-  { feature: 'Core academic areas', course1: '3', course2: '4' },
-  { feature: 'Integrated programming sessions', course1: '8', course2: '8' },
-  { feature: 'Deep Neural Networks', course1: 'dash', course2: 'check' },
-  { feature: 'Additional deep learning implementation sessions', course1: 'dash', course2: '6' },
-  { feature: 'Total programming & implementation sessions', course1: '8', course2: '14' },
-  { feature: 'Duration', course1: '120 hrs', course2: '180 hrs (additional 60 hrs)' },
-  { feature: 'Lectures', course1: '60', course2: '90 (additional 30 lectures)' },
+  { feature: 'Duration', course1: '12 weeks', course2: '12 weeks' },
+  { feature: 'Audience', course1: 'Beginners from zero', course2: 'Python-ready learners' },
+  { feature: 'Prerequisites', course1: 'None', course2: 'Python proficiency + consultation' },
+  { feature: 'Learning focus', course1: 'AI/ML fundamentals', course2: 'AI application building' },
+  { feature: 'Capstone / projects', course1: '1 capstone project', course2: '3 end-to-end projects' },
+  { feature: 'Core technologies', course1: 'Python · math · ML', course2: 'LLMs · APIs · RAG · agents · AWS' },
 ];

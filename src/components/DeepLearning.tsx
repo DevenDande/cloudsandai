@@ -10,17 +10,17 @@ export function DeepLearning() {
         <div className="max-w-3xl">
           <div className="flex items-center gap-3">
             <Cpu className="h-5 w-5 text-accent-500" />
-            <p className="mono-label !text-accent-600">Course 2 Extension</p>
+            <p className="mono-label !text-accent-600">AI Engineering</p>
           </div>
           <h2 className="mt-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-4xl lg:text-5xl">
-            Deep Neural Networks
+            Practical AI Applications
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-500">
-            Progress from classical machine learning into modern deep learning.
+            Move beyond fundamentals to build LLM-powered apps, document-grounded workflows, agentic systems and cloud-deployed solutions.
           </p>
           <div className="mt-4">
             <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-medium text-accent-700">
-              Included in Course 2
+              12-week application-first course
             </span>
           </div>
         </div>
@@ -32,16 +32,16 @@ export function DeepLearning() {
         {/* Topic highlight grid */}
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {[
-            'Fundamentals',
-            'Feedforward Networks',
-            'Optimization',
-            'Regularization',
-            'CNNs',
-            'Sequence Models',
-            'Attention',
-            'Transformers',
-            'Neural Network Search',
-            'Time Series Forecasting',
+            'LLMs',
+            'RAG',
+            'FastAPI',
+            'Agentic AI',
+            'Tool Calling',
+            'Embeddings',
+            'Grounded Answers',
+            'Model Evaluation',
+            'AWS Deployment',
+            'Application Security',
           ].map((topic, i) => (
             <div
               key={i}
@@ -60,7 +60,7 @@ export function DeepLearning() {
             href="/contact"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-ink-800"
           >
-            Enquire About Course 2
+            Enquire About AI Engineering
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
           <a

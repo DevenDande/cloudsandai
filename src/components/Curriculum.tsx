@@ -33,7 +33,7 @@ export function Curriculum() {
             The Curriculum
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-500">
-            Three academic areas form the course structure. Programming and implementation are integrated throughout both courses.
+            Two focused 12-week courses cover the fundamentals of AI and machine learning, then move into practical AI application development.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export function Curriculum() {
                 : 'text-ink-500 hover:text-ink-900'
             }`}
           >
-            Course 1 — Foundation
+            AI/ML Foundations
           </button>
           <button
             onClick={() => setTab('course2')}
@@ -57,7 +57,7 @@ export function Curriculum() {
                 : 'text-ink-500 hover:text-ink-900'
             }`}
           >
-            Course 2 — Complete
+            AI Engineering
           </button>
         </div>
 
@@ -84,8 +84,7 @@ export function Curriculum() {
           <div className="mt-8 space-y-4">
             <div className="rounded-xl border border-accent-200 bg-accent-50/40 p-4">
               <p className="text-sm text-accent-800">
-                <span className="font-medium">Course 2</span> includes all of Course 1
-                plus the Deep Neural Networks module below and additional implementation sessions.
+                <span className="font-medium">AI Engineering</span> focuses on LLMs, RAG, APIs, agentic workflows and deployment, building on the fundamentals from AI/ML Foundations.
               </p>
             </div>
 
@@ -105,7 +104,7 @@ export function Curriculum() {
             <div className="pt-4">
               <div className="mb-2 flex items-center gap-2 text-accent-600">
                 <Cpu className="h-4 w-4" />
-                <span className="mono-label !text-accent-600">Course 2 Extension</span>
+                <span className="mono-label !text-accent-600">AI Engineering practice modules</span>
               </div>
               <CurriculumAccordion module={deepNeuralNetworks} />
             </div>

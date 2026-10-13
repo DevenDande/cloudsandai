@@ -16,6 +16,11 @@ import {
   type DatasetRow,
   type Observation,
 } from '@/lib/simpleLinearRegression';
+import {
+  MAX_LAB_OBSERVATIONS,
+  MAX_LAB_PARAMETER_MAGNITUDE,
+  MAX_LAB_TRAINING_ITERATIONS,
+} from '@/lib/interactiveLabLimits';
 
 type ModelState = {
   w: number;
@@ -65,6 +70,13 @@ function buildChart(availableRows: Observation[], w: number, b: number) {
   return { linePoints, scatterPoints, xScale, yScale, range };
 }
 
+function getMaxLearningRate(rows: Observation[]) {
+  const meanSquaredMagnitude = rows.length
+    ? rows.reduce((sum, row) => sum + row.x * row.x + 1, 0) / rows.length
+    : 1;
+  return Math.min(1, 0.9 / meanSquaredMagnitude);
+}
+
 export function SimpleLinearRegressionLab() {
   const validRows = useMemo(() => getValidObservations(defaultDatasetRows), []);
   const [dataset, setDataset] = useState<DatasetRow[]>(defaultDatasetRows);
@@ -87,6 +99,7 @@ export function SimpleLinearRegressionLab() {
   const [closedForm, setClosedForm] = useState<ReturnType<typeof computeClosedFormSolution> | null>(null);
 
   const validObservations = useMemo(() => getValidObservations(dataset), [dataset]);
+  const maxLearningRate = useMemo(() => getMaxLearningRate(validObservations), [validObservations]);
   const currentLoss = useMemo(() => computeMSE(validObservations, model.w, model.b), [validObservations, model.w, model.b]);
   const residuals = useMemo(() => computeResiduals(validObservations, model.w, model.b), [validObservations, model.w, model.b]);
   const gradients = useMemo(() => computeGradients(validObservations, model.w, model.b), [validObservations, model.w, model.b]);
@@ -163,16 +176,43 @@ export function SimpleLinearRegressionLab() {
     return () => window.clearTimeout(timer);
   }, [model.isTraining, model.iteration, model.iterations, validObservations, model.learningRate]);
 
+  const changeDataset = (nextDataset: DatasetRow[]) => {
+    const observations = getValidObservations(nextDataset);
+    const learningRateLimit = getMaxLearningRate(observations);
+    setDataset(nextDataset);
+    setModel((previous) => {
+      const learningRate = Math.min(previous.learningRate, learningRateLimit);
+      return {
+        ...previous,
+        learningRate,
+        iteration: 0,
+        history: defaultHistory(observations, previous.w, previous.b),
+        isTraining: false,
+        status: learningRate < previous.learningRate
+          ? 'Dataset updated; progress reset and learning rate reduced for stability.'
+          : 'Dataset updated; training progress reset.',
+      };
+    });
+    setInitialSettings((previous) => ({
+      ...previous,
+      learningRate: Math.min(previous.learningRate, learningRateLimit),
+    }));
+  };
+
   const updateRow = (id: number, field: 'x' | 'y', value: string) => {
-    setDataset((current) => current.map((row) => (row.id === id ? { ...row, [field]: value } : row)));
+    changeDataset(dataset.map((row) => (row.id === id ? { ...row, [field]: value } : row)));
   };
 
   const addRow = () => {
-    setDataset((current) => [...current, { id: Date.now() + Math.random(), x: '', y: '' }]);
+    if (dataset.length < MAX_LAB_OBSERVATIONS) {
+      changeDataset([...dataset, { id: Date.now() + Math.random(), x: '', y: '' }]);
+    }
   };
 
   const removeRow = (id: number) => {
-    setDataset((current) => (current.length <= 2 ? current : current.filter((row) => row.id !== id)));
+    if (dataset.length > 2) {
+      changeDataset(dataset.filter((row) => row.id !== id));
+    }
   };
 
   const resetDataset = () => {
@@ -182,7 +222,7 @@ export function SimpleLinearRegressionLab() {
       w: initialSettings.initialW,
       b: initialSettings.initialB,
       iteration: 0,
-      history: defaultHistory(validRows, initialSettings.initialW, initialSettings.initialB),
+      history: defaultHistory(getValidObservations(defaultDatasetRows), initialSettings.initialW, initialSettings.initialB),
       status: 'Dataset reset to the default observations.',
       isTraining: false,
     }));
@@ -255,32 +295,36 @@ export function SimpleLinearRegressionLab() {
       return;
     }
 
+    if (field === 'iterations') {
+      const iterations = Math.min(MAX_LAB_TRAINING_ITERATIONS, Math.max(1, Math.round(parsed)));
+      setInitialSettings((prev) => ({ ...prev, iterations }));
+      setModel((prev) => ({ ...prev, iterations, isTraining: false, status: `Training schedule set to ${iterations} iterations (maximum ${MAX_LAB_TRAINING_ITERATIONS}).` }));
+      return;
+    }
+
+    if (field === 'learningRate') {
+      const learningRate = Math.max(1e-12, Math.min(parsed, maxLearningRate));
+      setInitialSettings((prev) => ({ ...prev, learningRate }));
+      setModel((prev) => ({
+        ...prev,
+        learningRate,
+        isTraining: false,
+        status: learningRate < parsed ? `Learning rate limited to ${formatMetric(maxLearningRate, 10)} for this dataset.` : 'Learning rate updated.',
+      }));
+      return;
+    }
+
+    const parameter = Math.max(-MAX_LAB_PARAMETER_MAGNITUDE, Math.min(parsed, MAX_LAB_PARAMETER_MAGNITUDE));
     setInitialSettings((prev) => ({
       ...prev,
-      [field]: field === 'iterations' ? Math.max(1, Math.round(parsed)) : parsed,
+      [field]: parameter,
     }));
-
     setModel((prev) => {
-      if (field === 'initialW' || field === 'initialB') {
-        return {
-          ...prev,
-          [field === 'initialW' ? 'w' : 'b']: parsed,
-          status: 'Starting configuration updated.',
-        };
-      }
-
-      if (field === 'learningRate') {
-        return {
-          ...prev,
-          learningRate: Math.max(parsed, 0.0001),
-          status: 'Learning rate updated.',
-        };
-      }
-
       return {
         ...prev,
-        iterations: Math.max(1, Math.round(parsed)),
-        status: 'Training schedule updated.',
+        [field === 'initialW' ? 'w' : 'b']: parameter,
+        isTraining: false,
+        status: 'Starting configuration updated.',
       };
     });
   };
@@ -335,8 +379,8 @@ export function SimpleLinearRegressionLab() {
               <tbody>
                 {dataset.map((row) => (
                   <tr key={row.id} className="border-t border-ink-100">
-                    <td className="px-4 py-3"><input aria-label={`Feature value for row ${row.id}`} value={row.x} onChange={(event) => updateRow(row.id, 'x', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 outline-none transition focus:border-accent-500" /></td>
-                    <td className="px-4 py-3"><input aria-label={`Target value for row ${row.id}`} value={row.y} onChange={(event) => updateRow(row.id, 'y', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 outline-none transition focus:border-accent-500" /></td>
+                    <td className="px-4 py-3"><input aria-label={`Feature value for row ${row.id}`} type="number" min={-100_000} max={100_000} value={row.x} onChange={(event) => updateRow(row.id, 'x', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 outline-none transition focus:border-accent-500" /></td>
+                    <td className="px-4 py-3"><input aria-label={`Target value for row ${row.id}`} type="number" min={-100_000} max={100_000} value={row.y} onChange={(event) => updateRow(row.id, 'y', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900 outline-none transition focus:border-accent-500" /></td>
                     <td className="px-4 py-3"><div className="flex justify-end"><button type="button" onClick={() => removeRow(row.id)} disabled={dataset.length <= 2} className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-ink-200 text-ink-600 transition-colors hover:border-error-400 hover:text-error-600 disabled:cursor-not-allowed disabled:opacity-40" aria-label={`Delete row ${row.id}`}><Trash2 className="h-4 w-4" /></button></div></td>
                   </tr>
                 ))}
@@ -345,13 +389,15 @@ export function SimpleLinearRegressionLab() {
           </div>
 
           <div className="mt-4 flex flex-wrap items-center gap-3">
-            <button type="button" onClick={addRow} className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-ink-700"><Plus className="h-4 w-4" /> Add observation</button>
+            <button type="button" onClick={addRow} disabled={dataset.length >= MAX_LAB_OBSERVATIONS} className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-ink-700 disabled:cursor-not-allowed disabled:opacity-50"><Plus className="h-4 w-4" /> Add observation</button>
           </div>
 
-          <p className="mt-4 text-sm text-ink-500">
-            {dataset.length === 0 || validObservations.length < 2
-              ? 'Need at least two valid observations to train.'
-              : 'Dataset is valid and ready to train.'}
+          <p role="status" className="mt-4 text-sm text-ink-500">
+            {validObservations.length < 2
+              ? 'Enter at least two complete observations with values between −100,000 and 100,000 to train.'
+              : validObservations.length < dataset.length
+                ? `${dataset.length - validObservations.length} incomplete or out-of-range row(s) are excluded. Complete all rows with values between −100,000 and 100,000.`
+                : `Dataset is ready. Maximum ${MAX_LAB_OBSERVATIONS} observations.`}
           </p>
         </section>
 
@@ -456,15 +502,15 @@ export function SimpleLinearRegressionLab() {
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">Gradient descent</h2>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            <label className="block text-sm text-ink-600"><span className="mb-2 block">Initial weight</span><input type="number" value={initialSettings.initialW} step="0.05" onChange={(event) => updateInitialSetting('initialW', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
-            <label className="block text-sm text-ink-600"><span className="mb-2 block">Initial bias</span><input type="number" value={initialSettings.initialB} step="0.05" onChange={(event) => updateInitialSetting('initialB', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
-            <label className="block text-sm text-ink-600"><span className="mb-2 block">Learning rate</span><input type="number" value={initialSettings.learningRate} min="0.0001" step="0.001" onChange={(event) => updateInitialSetting('learningRate', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
-            <label className="block text-sm text-ink-600"><span className="mb-2 block">Iterations</span><input type="number" value={initialSettings.iterations} min="1" step="1" onChange={(event) => updateInitialSetting('iterations', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
+            <label className="block text-sm text-ink-600"><span className="mb-2 block">Initial weight</span><input type="number" min={-MAX_LAB_PARAMETER_MAGNITUDE} max={MAX_LAB_PARAMETER_MAGNITUDE} value={initialSettings.initialW} step="0.05" onChange={(event) => updateInitialSetting('initialW', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
+            <label className="block text-sm text-ink-600"><span className="mb-2 block">Initial bias</span><input type="number" min={-MAX_LAB_PARAMETER_MAGNITUDE} max={MAX_LAB_PARAMETER_MAGNITUDE} value={initialSettings.initialB} step="0.05" onChange={(event) => updateInitialSetting('initialB', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
+            <label className="block text-sm text-ink-600"><span className="mb-2 block">Learning rate (maximum {formatMetric(maxLearningRate, 10)})</span><input type="number" value={initialSettings.learningRate} min="0.000000000001" max={maxLearningRate} step="0.001" onChange={(event) => updateInitialSetting('learningRate', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
+            <label className="block text-sm text-ink-600"><span className="mb-2 block">Iterations (max {MAX_LAB_TRAINING_ITERATIONS})</span><input type="number" value={initialSettings.iterations} min="1" max={MAX_LAB_TRAINING_ITERATIONS} step="1" onChange={(event) => updateInitialSetting('iterations', event.target.value)} className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
           </div>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <button type="button" onClick={applyStep} className="inline-flex items-center justify-center gap-2 rounded-full bg-accent-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-accent-700"><Play className="h-4 w-4" /> Take One Step</button>
-            <button type="button" onClick={() => setModel((prev) => ({ ...prev, isTraining: !prev.isTraining, status: prev.isTraining ? 'Training paused.' : 'Training started.' }))} className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-4 py-2.5 text-sm font-medium text-ink-900 hover:border-ink-900">{model.isTraining ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}{model.isTraining ? 'Pause' : 'Train'}</button>
+            <button type="button" onClick={applyStep} disabled={model.iteration >= model.iterations} className="inline-flex items-center justify-center gap-2 rounded-full bg-accent-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-accent-700 disabled:cursor-not-allowed disabled:opacity-50"><Play className="h-4 w-4" /> Take One Step</button>
+            <button type="button" onClick={() => setModel((prev) => ({ ...prev, isTraining: !prev.isTraining, status: prev.isTraining ? 'Training paused.' : 'Training started.' }))} disabled={!model.isTraining && model.iteration >= model.iterations} className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-4 py-2.5 text-sm font-medium text-ink-900 hover:border-ink-900 disabled:cursor-not-allowed disabled:opacity-50">{model.isTraining ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}{model.isTraining ? 'Pause' : 'Train'}</button>
             <button type="button" onClick={resetParameters} className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-4 py-2.5 text-sm font-medium text-ink-900 hover:border-ink-900"><RotateCcw className="h-4 w-4" /> Reset Parameters</button>
             <button type="button" onClick={resetAll} className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-4 py-2.5 text-sm font-medium text-ink-900 hover:border-ink-900"><RotateCcw className="h-4 w-4" /> Reset All</button>
           </div>

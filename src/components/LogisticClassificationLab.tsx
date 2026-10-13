@@ -12,6 +12,12 @@ import {
   type DatasetRow,
   type ModelParameters,
 } from '@/lib/logisticClassification';
+import { parseBoundedLabNumber } from '@/lib/interactiveLabLimits';
+import {
+  MAX_LAB_OBSERVATIONS,
+  MAX_LAB_PARAMETER_MAGNITUDE,
+  MAX_LAB_TRAINING_ITERATIONS,
+} from '@/lib/interactiveLabLimits';
 
 type LabModel = ModelParameters & {
   iteration: number;
@@ -169,12 +175,15 @@ export function LogisticClassificationLab() {
   };
 
   const addObservation = () => {
+    if (dataset.length >= MAX_LAB_OBSERVATIONS) {
+      return;
+    }
     changeDataset([...dataset, { id: Date.now(), studyHours: '', practiceTests: '', label: '0' }]);
   };
 
   const updateParameter = (index: 0 | 1 | null, value: string) => {
-    if (value.trim() === '' || !Number.isFinite(Number(value))) return;
-    const parsed = Number(value);
+    const parsed = parseBoundedLabNumber(value);
+    if (parsed === null) return;
     setModel((previous) => {
       const weights: [number, number] = index === null
         ? previous.weights
@@ -253,10 +262,10 @@ export function LogisticClassificationLab() {
                 {dataset.map((row) => (
                   <tr key={row.id} className="border-t border-ink-100">
                     <td className="px-2 py-2">
-                      <input aria-label={`Study hours, observation ${row.id}`} type="number" step="0.5" value={row.studyHours} onChange={(event) => updateRow(row.id, 'studyHours', event.target.value)} className="w-28 rounded-lg border border-ink-200 px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500" />
+                      <input aria-label={`Study hours, observation ${row.id}`} type="number" min="0" max="100000" step="0.5" value={row.studyHours} onChange={(event) => updateRow(row.id, 'studyHours', event.target.value)} className="w-28 rounded-lg border border-ink-200 px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500" />
                     </td>
                     <td className="px-2 py-2">
-                      <input aria-label={`Practice tests, observation ${row.id}`} type="number" step="1" value={row.practiceTests} onChange={(event) => updateRow(row.id, 'practiceTests', event.target.value)} className="w-28 rounded-lg border border-ink-200 px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500" />
+                      <input aria-label={`Practice tests, observation ${row.id}`} type="number" min="0" max="100000" step="1" value={row.practiceTests} onChange={(event) => updateRow(row.id, 'practiceTests', event.target.value)} className="w-28 rounded-lg border border-ink-200 px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500" />
                     </td>
                     <td className="px-2 py-2">
                       <select aria-label={`Outcome, observation ${row.id}`} value={row.label} onChange={(event) => changeDataset(dataset.map((item) => item.id === row.id ? { ...item, label: event.target.value === '1' ? '1' : '0' } : item))} className="rounded-lg border border-ink-200 bg-white px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500">
@@ -278,8 +287,14 @@ export function LogisticClassificationLab() {
           </div>
 
           <div className="mt-4 flex flex-wrap items-center gap-3">
-            <button type="button" onClick={addObservation} className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white hover:bg-ink-700"><Plus className="h-4 w-4" /> Add observation</button>
-            <p className="text-sm text-ink-500">{validObservations.length} complete observations</p>
+            <button type="button" onClick={addObservation} disabled={dataset.length >= MAX_LAB_OBSERVATIONS} className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white hover:bg-ink-700 disabled:cursor-not-allowed disabled:opacity-50"><Plus className="h-4 w-4" /> Add observation</button>
+            <p role="status" className="text-sm text-ink-500">
+              {validObservations.length} complete observations. {validObservations.length < dataset.length
+                ? `${dataset.length - validObservations.length} incomplete or out-of-range row(s) are excluded; values must be between −100,000 and 100,000. `
+                : ''}{new Set(validObservations.map((row) => row.label)).size < 2
+                ? 'Both outcome classes must be present to train logistic regression. '
+                : ''}Maximum {MAX_LAB_OBSERVATIONS} observations.
+            </p>
           </div>
         </section>
 
@@ -296,12 +311,12 @@ export function LogisticClassificationLab() {
             {(['Study hours weight', 'Practice tests weight'] as const).map((label, index) => (
               <label key={label} className="flex items-center justify-between gap-3 text-sm text-ink-600">
                 <span>{label}</span>
-                <input aria-label={label} type="number" step="0.1" value={model.weights[index]} onChange={(event) => updateParameter(index as 0 | 1, event.target.value)} className="w-28 rounded-lg border border-ink-200 bg-white px-3 py-2 text-right text-ink-900 outline-none focus:border-accent-500" />
+                <input aria-label={label} type="number" min={-MAX_LAB_PARAMETER_MAGNITUDE} max={MAX_LAB_PARAMETER_MAGNITUDE} step="0.1" value={model.weights[index]} onChange={(event) => updateParameter(index as 0 | 1, event.target.value)} className="w-28 rounded-lg border border-ink-200 bg-white px-3 py-2 text-right text-ink-900 outline-none focus:border-accent-500" />
               </label>
             ))}
             <label className="flex items-center justify-between gap-3 text-sm text-ink-600">
               <span>Bias / intercept</span>
-              <input aria-label="Bias or intercept" type="number" step="0.1" value={model.bias} onChange={(event) => updateParameter(null, event.target.value)} className="w-28 rounded-lg border border-ink-200 bg-white px-3 py-2 text-right text-ink-900 outline-none focus:border-accent-500" />
+              <input aria-label="Bias or intercept" type="number" min={-MAX_LAB_PARAMETER_MAGNITUDE} max={MAX_LAB_PARAMETER_MAGNITUDE} step="0.1" value={model.bias} onChange={(event) => updateParameter(null, event.target.value)} className="w-28 rounded-lg border border-ink-200 bg-white px-3 py-2 text-right text-ink-900 outline-none focus:border-accent-500" />
             </label>
           </div>
 
@@ -364,13 +379,13 @@ export function LogisticClassificationLab() {
           <p className="mono-label">Section D</p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">Train and evaluate</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            <label className="text-sm text-ink-600">Learning rate
-              <input aria-label="Learning rate" type="number" min="0.001" max="2" step="0.01" value={learningRate} onChange={(event) => {
+            <label className="text-sm text-ink-600">Learning rate (maximum 1)
+              <input aria-label="Learning rate" type="number" min="0.001" max="1" step="0.01" value={learningRate} onChange={(event) => {
                 const value = Number(event.target.value);
-                if (Number.isFinite(value) && value > 0 && value <= 2) setLearningRate(value);
+                if (Number.isFinite(value) && value > 0 && value <= 1) setLearningRate(value);
               }} className="mt-2 w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500" />
             </label>
-            <label className="text-sm text-ink-600">Training iterations
+            <label className="text-sm text-ink-600">Training iterations (maximum {MAX_LAB_TRAINING_ITERATIONS})
               <input aria-label="Training iterations" type="number" min="1" max="1000" step="1" value={iterations} onChange={(event) => {
                 const value = Number(event.target.value);
                 if (Number.isInteger(value) && value >= 1 && value <= 1000) setIterations(value);
@@ -380,7 +395,7 @@ export function LogisticClassificationLab() {
           <div className="mt-4 flex flex-wrap gap-2">
             <button type="button" onClick={() => setModel((previous) => ({ ...previous, isTraining: true, status: 'Training logistic regression…' }))} disabled={model.isTraining} className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white hover:bg-ink-700 disabled:opacity-50"><Play className="h-4 w-4" /> Train</button>
             <button type="button" onClick={() => setModel((previous) => ({ ...previous, isTraining: false, status: 'Training paused.' }))} disabled={!model.isTraining} className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-900 hover:border-ink-900 disabled:opacity-50"><Pause className="h-4 w-4" /> Pause</button>
-            <button type="button" onClick={takeStep} disabled={model.isTraining} className="rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-900 hover:border-ink-900 disabled:opacity-50">Take one step</button>
+            <button type="button" onClick={takeStep} disabled={model.isTraining || model.iteration >= iterations} className="rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-900 hover:border-ink-900 disabled:opacity-50">Take one step</button>
           </div>
           <p role="status" className="mt-3 min-h-5 text-xs leading-relaxed text-ink-500">{model.status}</p>
 

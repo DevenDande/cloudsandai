@@ -17,6 +17,11 @@ import {
   type FeatureKey,
   type ModelParameters,
 } from '@/lib/multipleLinearRegression';
+import {
+  MAX_LAB_OBSERVATIONS,
+  MAX_LAB_PARAMETER_MAGNITUDE,
+  MAX_LAB_TRAINING_ITERATIONS,
+} from '@/lib/interactiveLabLimits';
 
 type HistoryPoint = { iteration: number; loss: number };
 type LabModel = ModelParameters & {
@@ -49,6 +54,20 @@ function initialModel(rows: DatasetRow[], standardize = true): LabModel {
   };
 }
 
+function getMaxLearningRate(
+  rows: ReturnType<typeof getValidObservations>,
+  stats: ReturnType<typeof getFeatureStats>,
+  standardize: boolean,
+) {
+  const meanSquaredMagnitude = rows.length
+    ? rows.reduce((sum, row) => {
+        const features = transformFeatures(row.features, stats, standardize);
+        return sum + features.reduce((magnitude, value) => magnitude + value * value, 0) + 1;
+      }, 0) / rows.length
+    : regressionFeatures.length + 1;
+  return Math.min(1, 0.9 / meanSquaredMagnitude);
+}
+
 function buildComparisonChart(actual: number[], predicted: number[]) {
   const width = 500;
   const height = 300;
@@ -74,6 +93,10 @@ export function MultipleLinearRegressionLab() {
   const [model, setModel] = useState<LabModel>(() => initialModel(defaultDatasetRows));
   const validObservations = useMemo(() => getValidObservations(dataset), [dataset]);
   const featureStats = useMemo(() => getFeatureStats(validObservations), [validObservations]);
+  const maxLearningRate = useMemo(
+    () => getMaxLearningRate(validObservations, featureStats, standardize),
+    [featureStats, standardize, validObservations],
+  );
   const currentParameters = useMemo<ModelParameters>(() => ({ weights: model.weights, bias: model.bias }), [model.weights, model.bias]);
   const currentLoss = useMemo(
     () => computeMSE(validObservations, currentParameters, featureStats, standardize),
@@ -140,15 +163,20 @@ export function MultipleLinearRegressionLab() {
   const changeDataset = (nextDataset: DatasetRow[]) => {
     setDataset(nextDataset);
     const observations = getValidObservations(nextDataset);
+    const nextStats = getFeatureStats(observations);
+    const learningRateLimit = getMaxLearningRate(observations, nextStats, standardize);
     setModel((previous) => ({
       ...previous,
+      learningRate: Math.min(previous.learningRate, learningRateLimit),
       iteration: 0,
       history: [{
         iteration: 0,
-        loss: computeMSE(observations, { weights: previous.weights, bias: previous.bias }, getFeatureStats(observations), standardize),
+        loss: computeMSE(observations, { weights: previous.weights, bias: previous.bias }, nextStats, standardize),
       }],
       isTraining: false,
-      status: 'Dataset updated; training progress reset.',
+      status: previous.learningRate > learningRateLimit
+        ? 'Dataset updated; progress reset and learning rate reduced for stability.'
+        : 'Dataset updated; training progress reset.',
     }));
   };
 
@@ -161,6 +189,12 @@ export function MultipleLinearRegressionLab() {
   };
 
   const addObservation = () => {
+    if (dataset.length >= MAX_LAB_OBSERVATIONS) {
+      return;
+    }
+    if (dataset.length >= MAX_LAB_OBSERVATIONS) {
+      return;
+    }
     const id = Date.now();
     changeDataset([...dataset, {
       id,
@@ -225,10 +259,13 @@ export function MultipleLinearRegressionLab() {
     setStandardize(enabled);
     setModel((previous) => ({
       ...previous,
+      learningRate: Math.min(previous.learningRate, getMaxLearningRate(validObservations, featureStats, enabled)),
       iteration: 0,
       history: [{ iteration: 0, loss: computeMSE(validObservations, { weights: previous.weights, bias: previous.bias }, featureStats, enabled) }],
       isTraining: false,
-      status: enabled ? 'Features standardized; training progress reset.' : 'Feature scaling disabled; training progress reset.',
+      status: enabled
+        ? 'Features standardized; training progress reset.'
+        : 'Feature scaling disabled; training progress reset and learning rate reduced for stability.',
     }));
   };
 
@@ -273,6 +310,8 @@ export function MultipleLinearRegressionLab() {
                         <input
                           aria-label={`${feature.label}, observation ${row.id}`}
                           type="number"
+                          min="-100000"
+                          max="100000"
                           value={row.values[feature.key]}
                           onChange={(event) => updateFeature(row.id, feature.key, event.target.value)}
                           className="w-24 rounded-lg border border-ink-200 px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500"
@@ -283,6 +322,8 @@ export function MultipleLinearRegressionLab() {
                       <input
                         aria-label={`Price, observation ${row.id}`}
                         type="number"
+                        min="-100000"
+                        max="100000"
                         value={row.target}
                         onChange={(event) => updateTarget(row.id, event.target.value)}
                         className="w-24 rounded-lg border border-ink-200 px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500"
@@ -302,8 +343,12 @@ export function MultipleLinearRegressionLab() {
           </div>
 
           <div className="mt-4 flex flex-wrap items-center gap-3">
-            <button type="button" onClick={addObservation} className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white hover:bg-ink-700"><Plus className="h-4 w-4" /> Add observation</button>
-            <p className="text-sm text-ink-500">{validObservations.length} complete observations</p>
+            <button type="button" onClick={addObservation} disabled={dataset.length >= MAX_LAB_OBSERVATIONS} className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white hover:bg-ink-700 disabled:cursor-not-allowed disabled:opacity-50"><Plus className="h-4 w-4" /> Add observation</button>
+            <p role="status" className="text-sm text-ink-500">
+              {validObservations.length} complete observations. {validObservations.length < dataset.length
+                ? `${dataset.length - validObservations.length} incomplete or out-of-range row(s) are excluded; values must be between −100,000 and 100,000. `
+                : ''}Maximum ${MAX_LAB_OBSERVATIONS} observations.
+            </p>
           </div>
         </section>
 
@@ -322,12 +367,12 @@ export function MultipleLinearRegressionLab() {
             {regressionFeatures.map((feature, index) => (
               <label key={feature.key} className="flex items-center justify-between gap-3 text-sm text-ink-600">
                 <span className="min-w-0">{feature.label}</span>
-                <input aria-label={`Weight for ${feature.label}`} type="number" step="0.1" value={model.weights[index]} onChange={(event) => updateParameter(index, event.target.value)} className="w-28 rounded-lg border border-ink-200 bg-white px-3 py-2 text-right text-ink-900 outline-none focus:border-accent-500" />
+                <input aria-label={`Weight for ${feature.label}`} type="number" min={-MAX_LAB_PARAMETER_MAGNITUDE} max={MAX_LAB_PARAMETER_MAGNITUDE} step="0.1" value={model.weights[index]} onChange={(event) => updateParameter(index, event.target.value)} className="w-28 rounded-lg border border-ink-200 bg-white px-3 py-2 text-right text-ink-900 outline-none focus:border-accent-500" />
               </label>
             ))}
             <label className="flex items-center justify-between gap-3 text-sm text-ink-600">
               <span>Bias / intercept</span>
-              <input aria-label="Bias or intercept" type="number" step="0.1" value={model.bias} onChange={(event) => updateParameter(null, event.target.value)} className="w-28 rounded-lg border border-ink-200 bg-white px-3 py-2 text-right text-ink-900 outline-none focus:border-accent-500" />
+              <input aria-label="Bias or intercept" type="number" min={-MAX_LAB_PARAMETER_MAGNITUDE} max={MAX_LAB_PARAMETER_MAGNITUDE} step="0.1" value={model.bias} onChange={(event) => updateParameter(null, event.target.value)} className="w-28 rounded-lg border border-ink-200 bg-white px-3 py-2 text-right text-ink-900 outline-none focus:border-accent-500" />
             </label>
           </div>
 
@@ -343,12 +388,23 @@ export function MultipleLinearRegressionLab() {
           <p className="mono-label">Section C</p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">Fit and evaluate</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            <label className="text-sm text-ink-600">Learning rate<input aria-label="Learning rate" type="number" min="0.000001" max="1" step="0.005" value={model.learningRate} onChange={(event) => setModel((previous) => ({ ...previous, learningRate: Math.max(0.000001, Number(event.target.value) || 0.000001), isTraining: false, status: 'Learning rate updated.' }))} className="mt-2 w-full rounded-lg border border-ink-200 px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
-            <label className="text-sm text-ink-600">Training steps<input aria-label="Training steps" type="number" min="1" step="1" value={model.iterations} onChange={(event) => setModel((previous) => ({ ...previous, iterations: Math.max(1, Math.round(Number(event.target.value) || 1)), isTraining: false, status: 'Training schedule updated.' }))} className="mt-2 w-full rounded-lg border border-ink-200 px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
+            <label className="text-sm text-ink-600">Learning rate (maximum {formatMetric(maxLearningRate, 10)})<input aria-label="Learning rate" type="number" min="0.000000000001" max={maxLearningRate} step="0.005" value={model.learningRate} onChange={(event) => {
+              const value = Number(event.target.value);
+              if (Number.isFinite(value) && value > 0) {
+                const learningRate = Math.min(value, maxLearningRate);
+                setModel((previous) => ({ ...previous, learningRate, isTraining: false, status: learningRate < value ? `Learning rate limited to ${formatMetric(maxLearningRate, 10)} for these data and scaling settings.` : 'Learning rate updated.' }));
+              }
+            }} className="mt-2 w-full rounded-lg border border-ink-200 px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
+            <label className="text-sm text-ink-600">Training steps (maximum {MAX_LAB_TRAINING_ITERATIONS})<input aria-label="Training steps" type="number" min="1" max={MAX_LAB_TRAINING_ITERATIONS} step="1" value={model.iterations} onChange={(event) => setModel((previous) => {
+              const value = Number(event.target.value);
+              if (!Number.isFinite(value) || value < 1) return previous;
+              const iterations = Math.min(MAX_LAB_TRAINING_ITERATIONS, Math.round(value));
+              return { ...previous, iterations, isTraining: false, status: iterations < value ? `Training steps limited to ${MAX_LAB_TRAINING_ITERATIONS}.` : 'Training schedule updated.' };
+            })} className="mt-2 w-full rounded-lg border border-ink-200 px-3 py-2 text-ink-900 outline-none focus:border-accent-500" /></label>
           </div>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            <button type="button" onClick={takeStep} className="inline-flex items-center justify-center gap-2 rounded-full bg-accent-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-accent-700"><Play className="h-4 w-4" /> Take one step</button>
-            <button type="button" onClick={() => setModel((previous) => ({ ...previous, isTraining: !previous.isTraining, status: previous.isTraining ? 'Training paused.' : 'Training started.' }))} className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-4 py-2.5 text-sm font-medium text-ink-900 hover:border-ink-900">{model.isTraining ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}{model.isTraining ? 'Pause training' : 'Train model'}</button>
+            <button type="button" onClick={takeStep} disabled={model.iteration >= model.iterations} className="inline-flex items-center justify-center gap-2 rounded-full bg-accent-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-accent-700 disabled:cursor-not-allowed disabled:opacity-50"><Play className="h-4 w-4" /> Take one step</button>
+            <button type="button" onClick={() => setModel((previous) => ({ ...previous, isTraining: !previous.isTraining, status: previous.isTraining ? 'Training paused.' : 'Training started.' }))} disabled={!model.isTraining && model.iteration >= model.iterations} className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-4 py-2.5 text-sm font-medium text-ink-900 hover:border-ink-900 disabled:cursor-not-allowed disabled:opacity-50">{model.isTraining ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}{model.isTraining ? 'Pause training' : 'Train model'}</button>
             <button type="button" onClick={() => setModel(initialModel(dataset, standardize))} className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-4 py-2.5 text-sm font-medium text-ink-900 hover:border-ink-900"><RotateCcw className="h-4 w-4" /> Reset parameters</button>
           </div>
           <p role="status" className="mt-4 text-sm text-ink-600">{model.status} <span className="font-medium text-ink-900">Step {model.iteration}</span></p>

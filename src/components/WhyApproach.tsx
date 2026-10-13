@@ -23,8 +23,8 @@ const reasons = [
   },
   {
     icon: BrainCircuit,
-    title: 'Deep Learning Progression',
-    text: 'Course 2 builds on the previous foundation and moves into DNNs, CNNs, RNNs, attention, transformers and additional deep learning techniques.',
+    title: 'AI Engineering Progression',
+    text: 'Move from fundamentals into practical AI applications with LLMs, retrieval, APIs, agentic workflows and cloud deployment.',
   },
 ];
 

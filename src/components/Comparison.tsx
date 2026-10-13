@@ -42,7 +42,7 @@ export function Comparison() {
         <div className="max-w-2xl">
           <p className="mono-label">Comparison</p>
           <h2 className="mt-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-4xl">
-            Compare the Courses
+            Compare the Two 12-Week Courses
           </h2>
         </div>
 
@@ -54,12 +54,12 @@ export function Comparison() {
                   Feature
                 </th>
                 <th className="px-5 py-4 text-center text-sm font-medium text-ink-900">
-                  Course 1
-                  <span className="block text-xs font-normal text-ink-400">Foundation</span>
+                  AI/ML Foundations
+                  <span className="block text-xs font-normal text-ink-400">Beginners</span>
                 </th>
                 <th className="px-5 py-4 text-center text-sm font-medium text-accent-700">
-                  Course 2
-                  <span className="block text-xs font-normal text-accent-500">Complete</span>
+                  AI Engineering
+                  <span className="block text-xs font-normal text-accent-500">Application-first</span>
                 </th>
               </tr>
             </thead>
@@ -94,7 +94,7 @@ export function Comparison() {
         </div>
 
         <p className="mt-4 text-sm text-ink-500">
-          Course 2 includes the complete Course 1 curriculum.
+          AI Engineering is for Python-ready learners who want to build practical AI applications.
         </p>
       </div>
     </section>

@@ -9,6 +9,7 @@ import {
   predictClass,
   type Criterion,
 } from '@/lib/decisionTreeClassification';
+import { MAX_LAB_OBSERVATIONS } from '@/lib/interactiveLabLimits';
 
 const plot = { width: 560, height: 360, pad: 40, columns: 28, rows: 18 };
 
@@ -87,6 +88,12 @@ export function DecisionTreeClassificationLab() {
     setMinSamplesLeaf(1);
   };
 
+  const addObservation = () => {
+    if (dataset.length < MAX_LAB_OBSERVATIONS) {
+      setDataset((current) => [...current, { id: Date.now(), studyHours: '', practiceTests: '', label: '0' }]);
+    }
+  };
+
   return (
     <div className="mx-auto max-w-8xl px-6 pb-20 pt-8 lg:px-10">
       <div className="mb-8 flex items-center justify-between gap-4">
@@ -111,8 +118,8 @@ export function DecisionTreeClassificationLab() {
               <tbody>
                 {dataset.map((row) => (
                   <tr key={row.id} className="border-t border-ink-100">
-                    <td className="px-2 py-2"><input aria-label={`Study hours, observation ${row.id}`} type="number" step="0.5" value={row.studyHours} onChange={(event) => updateFeature(row.id, 'studyHours', event.target.value)} className="w-28 rounded-lg border border-ink-200 px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500" /></td>
-                    <td className="px-2 py-2"><input aria-label={`Practice tests, observation ${row.id}`} type="number" step="0.5" value={row.practiceTests} onChange={(event) => updateFeature(row.id, 'practiceTests', event.target.value)} className="w-28 rounded-lg border border-ink-200 px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500" /></td>
+                    <td className="px-2 py-2"><input aria-label={`Study hours, observation ${row.id}`} type="number" min="0" max="100000" step="0.5" value={row.studyHours} onChange={(event) => updateFeature(row.id, 'studyHours', event.target.value)} className="w-28 rounded-lg border border-ink-200 px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500" /></td>
+                    <td className="px-2 py-2"><input aria-label={`Practice tests, observation ${row.id}`} type="number" min="0" max="100000" step="0.5" value={row.practiceTests} onChange={(event) => updateFeature(row.id, 'practiceTests', event.target.value)} className="w-28 rounded-lg border border-ink-200 px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500" /></td>
                     <td className="px-2 py-2">
                       <select aria-label={`Outcome, observation ${row.id}`} value={row.label} onChange={(event) => setDataset((current) => current.map((item) => item.id === row.id ? { ...item, label: event.target.value === '1' ? '1' : '0' } : item))} className="rounded-lg border border-ink-200 bg-white px-2.5 py-2 text-sm text-ink-900 outline-none focus:border-accent-500">
                         <option value="0">0 · Fail</option><option value="1">1 · Pass</option>
@@ -125,8 +132,16 @@ export function DecisionTreeClassificationLab() {
             </table>
           </div>
           <div className="mt-4 flex flex-wrap items-center gap-3">
-            <button type="button" onClick={() => setDataset((current) => [...current, { id: Date.now(), studyHours: '', practiceTests: '', label: '0' }])} className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white hover:bg-ink-700"><Plus className="h-4 w-4" /> Add observation</button>
-            <p className="text-sm text-ink-500">{observations.length} complete observations</p>
+            <button type="button" onClick={addObservation} disabled={dataset.length >= MAX_LAB_OBSERVATIONS} className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-4 py-2 text-sm font-medium text-white hover:bg-ink-700 disabled:cursor-not-allowed disabled:opacity-50"><Plus className="h-4 w-4" /> Add observation</button>
+            <p role="status" className="text-sm text-ink-500">
+              {observations.length} complete observations. {observations.length < 2
+                ? 'At least two complete observations are needed for a useful tree. '
+                : ''}{observations.length < dataset.length
+                ? `${dataset.length - observations.length} incomplete or out-of-range row(s) are excluded; values must be between −100,000 and 100,000. `
+                : ''}{new Set(observations.map((row) => row.label)).size < 2
+                ? 'Only one outcome class is present, so the tree will predict that class without a useful split. '
+                : ''}Maximum {MAX_LAB_OBSERVATIONS} observations.
+            </p>
           </div>
         </section>
 

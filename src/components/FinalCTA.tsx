@@ -14,8 +14,8 @@ export function FinalCTA() {
           Then Go Deeper.
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-400">
-          Learn theory and computation together, then continue into deep neural networks
-          with Course 2.
+          Learn the fundamentals, then move into practical AI engineering with LLMs,
+          RAG, APIs and deployment workflows.
         </p>
 
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">

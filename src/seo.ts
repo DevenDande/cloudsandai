@@ -8,15 +8,15 @@ export interface PageMetadata {
 
 export const pageMetadata: Record<string, PageMetadata> = {
   '/': {
-    title: 'cloudsandai by Deven Dande | AI/ML Classes in Nagpur',
+    title: 'cloudsandai by Deven Dande | AI/ML Foundations & AI Engineering',
     description:
-      'Looking for AI/ML classes in Nagpur? Learn machine learning, deep learning, Python and mathematics with Deven Dande at cloudsandai (Clouds and AI).',
+      'Learn AI/ML foundations from zero and build practical AI applications through structured AI engineering learning with Deven Dande at cloudsandai (Clouds and AI).',
     path: '/',
   },
   '/courses': {
-    title: 'AI & Machine Learning Courses in Nagpur | cloudsandai',
+    title: 'AI/ML Foundations & AI Engineering | cloudsandai',
     description:
-      'Explore instructor-led AI and machine learning courses in Nagpur with Deven Dande. Learn mathematics, Python, scientific computing, machine learning and deep learning.',
+      'Explore the AI/ML Foundations and AI Engineering learning paths at cloudsandai, with beginner-focused fundamentals and practical AI application development.',
     path: '/courses',
   },
   '/about': {
