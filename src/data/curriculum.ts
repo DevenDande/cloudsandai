@@ -333,6 +333,81 @@ export const aiEngineeringCoreAreas = [
   },
 ];
 
+export const aiEngineeringProjects = [
+  {
+    number: 'Project 1 · Knowledge-Grounded AI',
+    title: 'Knowledge-Grounded AI',
+    summary:
+      'Build a knowledge-grounded application using a document intelligence assistant as the core example. Customize the use case from an instructor-approved brief.',
+    coreExample: 'Document Intelligence Assistant',
+    alternativeApplications: [
+      'Academic handbook assistant',
+      'Technical documentation assistant',
+      'Company policy assistant',
+    ],
+    capabilities: [
+      'RAG, document ingestion and text chunking',
+      'Embeddings and relevant information retrieval',
+      'LLM integration and source-grounded responses',
+      'A working application interface or API',
+    ],
+    deliverables: [
+      'Working application',
+      'Source code',
+      'Documentation',
+      'Basic evaluation of answer quality and retrieval performance',
+    ],
+  },
+  {
+    number: 'Project 2 · Multimodal AI',
+    title: 'Multimodal AI',
+    summary:
+      'Build a practical application integrating suitable audio, text or vision models. The speech and translation assistant is the core example; select a realistic, instructor-approved use case.',
+    coreExample: 'Speech and Translation Assistant',
+    alternativeApplications: [
+      'Lecture companion',
+      'Meeting summarizer',
+      'Image-and-text understanding application',
+    ],
+    capabilities: [
+      'Integrating suitable audio, text or vision models',
+      'Processing model inputs and outputs in an application',
+      'Backend integration and a user-facing interface',
+      'Basic testing of application outputs',
+    ],
+    deliverables: [
+      'Working application',
+      'Source code',
+      'Documentation',
+      'Demonstration of the complete multimodal application workflow',
+    ],
+  },
+  {
+    number: 'Project 3 · Agentic AI',
+    title: 'Agentic AI',
+    summary:
+      'Build a controlled, multi-step agent using a booking workflow agent as the core example. Customize the use case from an instructor-approved brief.',
+    coreExample: 'Booking Workflow Agent',
+    alternativeApplications: [
+      'Customer-support triage',
+      'Order-status assistant',
+      'Appointment scheduling agent',
+    ],
+    capabilities: [
+      'Tool calling and structured outputs',
+      'APIs and multi-step workflow execution',
+      'Validation, state management and error handling',
+      'Human approval before consequential actions',
+    ],
+    deliverables: [
+      'Working application',
+      'Source code',
+      'Documentation',
+      'Demonstration of the complete agentic workflow',
+    ],
+  },
+];
+
 export const faqItems: { question: string; answer: string }[] = [
   {
     question: 'What gap do the cloudsandai courses fill?',
@@ -362,12 +437,12 @@ export const faqItems: { question: string; answer: string }[] = [
   {
     question: 'What does AI Engineering include?',
     answer:
-      'The course focuses on LLM fundamentals, model selection, APIs and FastAPI, retrieval-augmented generation, agentic AI workflows and AWS deployment. It includes three end-to-end projects and is intended for practical AI application builders.',
+      'The course focuses on LLM fundamentals, model selection, APIs and FastAPI, retrieval-augmented generation, agentic AI workflows and AWS deployment. Every student completes all three guided, assessed project categories, choosing one instructor-approved application from each.',
   },
   {
     question: 'How long are the courses?',
     answer:
-      'Both AI/ML Foundations and AI Engineering run for 12 weeks and combine live instructor-led classes with recordings available on the LMS after class.',
+      'Both AI/ML Foundations and AI Engineering run for 16 weeks and combine live instructor-led classes with recordings uploaded to the LMS after class.',
   },
   {
     question: 'Do I need a technical background for AI Engineering?',
@@ -401,41 +476,39 @@ export const courses: CourseCardData[] = [
   {
     id: 'course-1',
     title: 'AI/ML Foundations',
-    label: '12 WEEKS · BEGINNERS',
+    label: '16 WEEKS · BEGINNERS',
     description:
-      'Learn the fundamentals of programming, mathematics and machine learning through intuitive explanations, coding exercises and a beginner-friendly capstone project.',
+      'Build a strong foundation in Python, mathematics, probability, statistics, machine learning and introductory deep learning through code, experimentation and a guided capstone project.',
     summary: 'Python • Math • ML • Capstone',
-    duration: '12 weeks',
+    duration: '16 weeks',
     lectures: 'Beginner-focused path',
     coreAreas: [
       {
         title: 'Python Programming and Scientific Computing',
-        description: 'Python fundamentals, data structures and practical numerical computing with real examples.',
+        description: 'Python fundamentals, data structures and numerical computing with real examples and datasets.',
       },
       {
-        title: 'Mathematics for Machine Learning',
-        description: 'Vectors, matrices, derivatives, gradients and optimization intuition for ML models.',
+        title: 'Mathematics, Probability and Statistics',
+        description: 'Vectors, gradients, optimization, uncertainty and the ideas needed to understand ML models.',
       },
       {
-        title: 'Probability, Statistics and Machine Learning',
-        description: 'Understand data, uncertainty, model evaluation and core learning algorithms.',
+        title: 'Core Machine Learning and Model Evaluation',
+        description: 'Understand supervised learning, training workflows, evaluation and model limitations.',
       },
       {
         title: 'Introduction to Deep Learning',
-        description: 'Neurons, layers, activation functions and the intuition behind learning in neural networks.',
+        description: 'Neural networks, activation functions and the intuition behind learning in deep models.',
       },
       {
-        title: 'Capstone Project',
-        description: 'Apply your learning to a real dataset and explain your model, results and limitations.',
+        title: 'Guided Capstone Project',
+        description: 'Apply your learning to a real dataset, explain the model and discuss its strengths and limitations.',
       },
     ],
     learningHighlights: [
-      'Python and scientific computing',
-      'Mathematics for ML',
-      'Probability and statistics',
-      'Machine learning fundamentals',
-      'Introduction to deep learning',
-      'Capstone project',
+      'Build predictive models',
+      'Analyze real datasets',
+      'Train your first neural network',
+      'One guided capstone project',
     ],
     highlighted: false,
     badge: 'Starts from zero',
@@ -443,27 +516,25 @@ export const courses: CourseCardData[] = [
   {
     id: 'course-2',
     title: 'AI Engineering',
-    label: '12 WEEKS · PYTHON PROFICIENCY',
+    label: '16 WEEKS · PYTHON PROFICIENCY',
     description:
-      'Learn to build, integrate and deploy modern AI applications using large language models, APIs, open-source models, agentic workflows and cloud infrastructure.',
+      'Learn to integrate modern AI models, APIs, tools and cloud infrastructure to build useful AI applications across three guided and assessed projects.',
     summary: 'LLMs • RAG • APIs • Agents • AWS',
-    duration: '12 weeks',
+    duration: '16 weeks',
     lectures: 'Python proficiency required',
     coreAreas: aiEngineeringCoreAreas,
     learningHighlights: [
-      'LLM fundamentals',
-      'Local and hosted model workflows',
-      'APIs and FastAPI',
-      'RAG and grounded QA',
-      'Agentic AI workflows',
-      'AWS deployment',
+      'Knowledge-Grounded AI',
+      'Multimodal AI',
+      'Agentic AI',
+      'Guided and assessed project work',
     ],
     highlighted: true,
   },
 ];
 
 export const comparisonRows: { feature: string; course1: string; course2: string }[] = [
-  { feature: 'Duration', course1: '12 weeks', course2: '12 weeks' },
+  { feature: 'Duration', course1: '16 weeks', course2: '16 weeks' },
   { feature: 'Audience', course1: 'Beginners from zero', course2: 'Python-ready learners' },
   { feature: 'Prerequisites', course1: 'None', course2: 'Python proficiency + consultation' },
   { feature: 'Learning focus', course1: 'AI/ML fundamentals', course2: 'AI application building' },

@@ -19,7 +19,7 @@ export function DeepLearning() {
           </p>
           <div className="mt-4">
             <span className="inline-flex items-center rounded-full bg-accent-100 px-3 py-1 text-xs font-medium text-accent-700">
-              12-week application-first course
+              16-week application-first course
             </span>
           </div>
         </div>

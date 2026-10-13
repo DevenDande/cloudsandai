@@ -5,6 +5,7 @@ import { Philosophy } from '@/components/Philosophy';
 import { Courses } from '@/components/Courses';
 import { Comparison } from '@/components/Comparison';
 import { Roadmap } from '@/components/Roadmap';
+import { PracticalOutcomes } from '@/components/PracticalOutcomes';
 import { Curriculum } from '@/components/Curriculum';
 import { Webinars } from '@/components/Webinars';
 import { DeepLearning } from '@/components/DeepLearning';
@@ -82,7 +83,7 @@ function PageContent({ path }: { path: string }) {
       <>
         <PageIntro
           title="AI/ML Foundations & AI Engineering"
-          description="Two 12-week learning paths: one for beginners starting from zero, and one for Python-ready learners building practical AI applications."
+          description="Two 16-week learning paths: one for beginners starting from zero, and one for Python-ready learners building practical AI applications."
         />
         <Courses />
         <Comparison />
@@ -199,6 +200,7 @@ function PageContent({ path }: { path: string }) {
       <Hero />
       <Philosophy />
       <Roadmap />
+      <PracticalOutcomes />
       <WhyApproach />
       <Contact />
       <FAQ />

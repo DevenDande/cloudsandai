@@ -19,6 +19,7 @@ export function Courses() {
           {courses.map((course) => (
             <div
               key={course.id}
+              id={course.id}
               className={`relative flex flex-col rounded-2xl border p-8 transition-all lg:p-10 ${
                 course.highlighted
                   ? 'border-ink-900 bg-ink-950 text-white shadow-xl shadow-ink-900/10'

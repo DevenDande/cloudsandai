@@ -30,7 +30,7 @@ export function CourseSelection() {
               Learn Python, mathematics, statistics and machine learning fundamentals through guided practice, hands-on coding and a beginner-level capstone project.
             </p>
             <div className="mt-6 space-y-2">
-              {['Beginners from zero', '12 weeks', 'Python and scientific computing', 'Capstone project', 'Theory ↔ Computation ↔ Implementation'].map(
+              {['Beginners from zero', '16 weeks', 'Python and scientific computing', 'Capstone project', 'Theory ↔ Computation ↔ Implementation'].map(
                 (item, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-success-500" />
@@ -67,6 +67,7 @@ export function CourseSelection() {
             </p>
             <div className="mt-6 space-y-2">
               {[
+                '16 weeks',
                 'Python proficiency and consultation with Deven before admission',
                 'LLMs, RAG and API integration',
                 'Three end-to-end AI engineering projects',

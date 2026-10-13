@@ -20,7 +20,7 @@ export function Webinars() {
               Build from zero to practical ML understanding
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-500">
-              AI/ML Foundations develops Python, mathematics, statistics and machine learning fundamentals through live teaching, coding exercises and a beginner-level capstone project.
+              Learn Python, mathematics, statistics, machine learning and introductory deep learning, then build predictive models, analyze real datasets and train your first neural network.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -48,15 +48,15 @@ export function Webinars() {
               Build production-minded AI applications
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-500">
-              AI Engineering focuses on the systems, tools and workflows behind modern AI apps: LLMs, RAG, APIs, agentic AI and cloud deployment.
+              Complete one instructor-approved application in each of three categories: Knowledge-Grounded AI, Multimodal AI and Agentic AI. All three projects are guided, assessed and demonstrated.
             </p>
 
             <div className="mt-8 inline-flex items-center gap-3 rounded-xl border border-ink-100 bg-white px-5 py-4">
               <span className="font-mono text-3xl font-semibold text-ink-900">3</span>
               <span className="text-sm text-ink-500">
-                End-to-end
+                Guided,
                 <br />
-                Projects
+                assessed projects
               </span>
             </div>
 
@@ -70,18 +70,19 @@ export function Webinars() {
                 <span className="flex h-7 w-7 items-center justify-center rounded bg-ink-100 font-mono text-xs font-medium text-ink-600">
                   1
                 </span>
-                <span className="text-sm text-ink-700">Document intelligence assistant</span>
+                <span className="text-sm text-ink-700">Knowledge-Grounded AI · Document Intelligence Assistant</span>
               </div>
-              <div className="flex items-center gap-1 pl-4 text-ink-300">
-                <span className="text-xs">+</span>
+              <div className="flex items-center gap-3 rounded-lg border border-ink-100 bg-white px-4 py-3">
+                <span className="flex h-7 w-7 items-center justify-center rounded bg-ink-100 font-mono text-xs font-medium text-ink-600">
+                  2
+                </span>
+                <span className="text-sm text-ink-700">Multimodal AI · Speech and Translation Assistant</span>
               </div>
               <div className="flex items-center gap-3 rounded-lg border border-accent-200 bg-accent-50/40 px-4 py-3">
                 <span className="flex h-7 w-7 items-center justify-center rounded bg-accent-100 font-mono text-xs font-medium text-accent-700">
-                  2
+                  3
                 </span>
-                <span className="text-sm font-medium text-accent-800">
-                  Local/cloud AI apps and agentic workflows
-                </span>
+                <span className="text-sm font-medium text-accent-800">Agentic AI · Booking Workflow Agent</span>
               </div>
             </div>
           </div>

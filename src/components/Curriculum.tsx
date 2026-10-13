@@ -3,6 +3,7 @@ import { BookOpen, Brain, BarChart3, Cpu } from 'lucide-react';
 import { CurriculumAccordion } from './CurriculumAccordion';
 import { AIEngineeringCurriculum } from './AIEngineeringCurriculum';
 import {
+  aiEngineeringProjects,
   course1Modules,
   integratedProgrammingImplementation,
 } from '@/data/curriculum';
@@ -33,7 +34,7 @@ export function Curriculum() {
             The Curriculum
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-ink-500">
-            Two focused 12-week courses cover the fundamentals of AI and machine learning, then move into practical AI application development.
+            Two focused 16-week courses cover the fundamentals of AI and machine learning, then move into practical AI application development.
           </p>
         </div>
 
@@ -86,6 +87,55 @@ export function Curriculum() {
               <p className="text-sm text-accent-800">
                 <span className="font-medium">AI Engineering</span> focuses on LLMs, RAG, APIs, agentic workflows and deployment, building on the fundamentals from AI/ML Foundations.
               </p>
+            </div>
+
+            <div className="mt-6 grid gap-4 lg:grid-cols-3">
+              {aiEngineeringProjects.map((project) => (
+                <article key={project.title} className="rounded-2xl border border-ink-200 bg-white p-5 shadow-sm">
+                  <p className="mono-label !text-accent-600">{project.number}</p>
+                  <h3 className="mt-3 text-lg font-semibold text-ink-900">{project.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-600">{project.summary}</p>
+
+                  <div className="mt-5 rounded-lg bg-ink-50 p-3">
+                    <p className="text-xs font-medium uppercase tracking-[0.12em] text-ink-400">Core example</p>
+                    <p className="mt-1 text-sm font-medium text-ink-800">{project.coreExample}</p>
+                    <p className="mt-3 text-xs font-medium uppercase tracking-[0.12em] text-ink-400">Alternative applications</p>
+                    <ul className="mt-2 space-y-1 text-sm text-ink-600">
+                      {project.alternativeApplications.map((application) => (
+                        <li key={application}>{application}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-5">
+                    <p className="text-xs font-medium uppercase tracking-[0.12em] text-ink-400">Capabilities</p>
+                    <ul className="mt-2 space-y-2 text-sm text-ink-700">
+                      {project.capabilities.map((capability) => (
+                        <li key={capability} className="flex items-start gap-2">
+                          <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent-500" />
+                          <span>{capability}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-5">
+                    <p className="text-xs font-medium uppercase tracking-[0.12em] text-ink-400">Deliverables</p>
+                    <ul className="mt-2 space-y-2 text-sm text-ink-700">
+                      {project.deliverables.map((deliverable) => (
+                        <li key={deliverable} className="flex items-start gap-2">
+                          <span className="mt-1 h-1.5 w-1.5 rounded-full bg-ink-500" />
+                          <span>{deliverable}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="rounded-xl border border-accent-200 bg-accent-50/40 p-4 text-sm text-accent-800">
+              <span className="font-medium">Guided implementation and assessment:</span> Every student completes all three projects—one instructor-approved application from each category. Each project is guided, assessed and demonstrated.
             </div>
 
             <div className="pt-4">

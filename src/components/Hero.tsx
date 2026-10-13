@@ -16,7 +16,7 @@ export function Hero() {
           <div className="lg:col-span-7">
             <div className="animate-fade-up opacity-0" style={{ animationDelay: '0.1s' }}>
               <p className="mono-label">
-                Mathematics · Statistics · Machine Learning · Deep Learning
+                AI/ML FOUNDATIONS · AI ENGINEERING · PRACTICAL PROJECTS
               </p>
             </div>
 
@@ -24,15 +24,14 @@ export function Hero() {
               className="mt-6 max-w-2xl text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl animate-fade-up opacity-0"
               style={{ animationDelay: '0.2s' }}
             >
-              Understand Clouds and AI from the Foundations Up
+              Understand AI. Build with AI.
             </h1>
 
             <p
               className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-500 animate-fade-up opacity-0"
               style={{ animationDelay: '0.3s' }}
             >
-              Learn mathematics, statistics, machine learning, programming, algorithms and
-              scientific computing together through a structured, instructor-led curriculum.
+              Start with the fundamentals of Python and machine learning, or build modern AI applications using LLMs, multimodal models, APIs and agentic workflows.
             </p>
 
             <div
@@ -40,7 +39,7 @@ export function Hero() {
               style={{ animationDelay: '0.4s' }}
             >
               <a
-                href="/courses"
+                href="/courses/"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-ink-800 hover:shadow-lg hover:shadow-ink-900/10"
               >
                 Explore Courses
@@ -55,13 +54,9 @@ export function Hero() {
               </a>
             </div>
 
-            <div
-              className="mt-5 max-w-xl animate-fade-up opacity-0"
-              style={{ animationDelay: '0.45s' }}
-            >
-              <p className="text-sm font-medium text-ink-600">AI/ML Foundations → AI Engineering</p>
-              <p className="mt-1 text-xs leading-relaxed text-ink-400">
-                Understand AI/ML fundamentals, then build and deploy AI applications.
+            <div className="mt-5 max-w-xl animate-fade-up opacity-0" style={{ animationDelay: '0.45s' }}>
+              <p className="text-sm font-medium text-ink-600">
+                Two 16-week learning paths · Live classes · Recordings on the LMS
               </p>
             </div>
 

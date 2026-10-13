@@ -26,11 +26,11 @@ Deven and his team have AWS certifications and hands-on experience delivering AI
 
 ### AI/ML Foundations
 
-Beginner-focused, 12-week course covering Python and scientific computing, mathematics for machine learning, probability and statistics, machine learning fundamentals, an introduction to deep learning, and a capstone project. Programming and implementation are integrated throughout.
+Beginner-focused, 16-week course covering Python and scientific computing, mathematics for machine learning, probability and statistics, machine learning fundamentals, an introduction to deep learning, and one guided capstone project. Programming and implementation are integrated throughout.
 
 ### AI Engineering
 
-Application-focused, 12-week course for learners with Python proficiency. Topics include LLM fundamentals, hosted and open-source models, APIs and FastAPI, retrieval-augmented generation (RAG), agentic AI workflows, and AWS deployment. The course includes three end-to-end projects.
+Application-focused, 16-week course for learners with Python proficiency. Topics include LLM fundamentals, hosted and open-source models, APIs and FastAPI, retrieval-augmented generation (RAG), agentic AI workflows, and AWS deployment. Every student completes all three guided, assessed projects, choosing one instructor-approved application in each category: Knowledge-Grounded AI (for example, a Document Intelligence Assistant, academic handbook assistant, technical documentation assistant, or company policy assistant); Multimodal AI (for example, a Speech and Translation Assistant, lecture companion, meeting summarizer, or image-and-text understanding application); and Agentic AI (for example, a Booking Workflow Agent, customer-support triage, order-status assistant, or appointment scheduling agent).
 
 ## Curriculum
 
