@@ -17,7 +17,7 @@ export function CourseSelection() {
             <div className="flex items-center justify-between">
               <span className="mono-label">AI/ML Foundations</span>
               <a
-                href="tel:+918830628242"
+                href="tel:+919028028869"
                 className="inline-flex items-center justify-center rounded-full bg-ink-100 px-3 py-1.5 text-xs font-medium text-ink-900 transition-colors hover:bg-ink-200"
               >
                 Call to know more
@@ -40,7 +40,7 @@ export function CourseSelection() {
               )}
             </div>
             <a
-              href="tel:+918830628242"
+              href="tel:+919028028869"
               className="group mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-ink-900 transition-colors hover:text-ink-700"
             >
               Call to know more
@@ -53,7 +53,7 @@ export function CourseSelection() {
             <div className="flex items-center justify-between">
               <span className="mono-label !text-accent-300">AI Engineering</span>
               <a
-                href="tel:+918830628242"
+                href="tel:+919028028869"
                 className="inline-flex items-center justify-center rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-white/15"
               >
                 Book a consultation
@@ -80,7 +80,7 @@ export function CourseSelection() {
               ))}
             </div>
             <a
-              href="tel:+918830628242"
+              href="tel:+919028028869"
               className="group mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-white transition-colors hover:text-accent-300"
             >
               Book a consultation

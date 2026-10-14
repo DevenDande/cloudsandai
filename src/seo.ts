@@ -103,7 +103,6 @@ const instructor = {
   name: 'Deven Dande',
   jobTitle: 'AI/ML Instructor',
   url: 'https://cloudsandai.com/about',
-  sameAs: 'https://www.linkedin.com/in/devendande',
   worksFor: { '@id': 'https://cloudsandai.com/#organization' },
 };
 

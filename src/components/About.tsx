@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight, Linkedin, Mail, Phone } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Mail, Phone } from 'lucide-react';
 
 const profileImages = [
   { src: '/1735043718836.jpeg', alt: 'Deven Dande teaching an AI and machine learning session' },
@@ -107,21 +107,6 @@ export function About({ compact = false }: { compact?: boolean }) {
 
             <div className="mt-8 space-y-3">
               <a
-                href="https://www.linkedin.com/in/devendande"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 transition-all hover:border-ink-200 hover:shadow-sm"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink-50 text-ink-700 transition-colors group-hover:bg-accent-500 group-hover:text-white">
-                  <Linkedin className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-ink-900">Connect on LinkedIn</p>
-                  <p className="text-xs text-ink-400">linkedin.com/in/devendande</p>
-                </div>
-              </a>
-
-              <a
                 href="mailto:deven@cloudsandai.com"
                 className="group flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 transition-all hover:border-ink-200 hover:shadow-sm"
               >
@@ -135,7 +120,7 @@ export function About({ compact = false }: { compact?: boolean }) {
               </a>
 
               <a
-                href="tel:+918830628242"
+                href="tel:+919028028869"
                 className="group flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 transition-all hover:border-ink-200 hover:shadow-sm"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink-50 text-ink-700 transition-colors group-hover:bg-ink-900 group-hover:text-white">
@@ -143,7 +128,7 @@ export function About({ compact = false }: { compact?: boolean }) {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-ink-900">Phone</p>
-                  <p className="text-xs text-ink-400">+91 8830628242</p>
+                  <p className="text-xs text-ink-400">+91 9028028869</p>
                 </div>
               </a>
             </div>

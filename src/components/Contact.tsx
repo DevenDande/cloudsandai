@@ -79,7 +79,7 @@ export function Contact({ compact = false }: { compact?: boolean }) {
               </a>
 
               <a
-                href="tel:+918830628242"
+                href="tel:+919028028869"
                 className="group flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 transition-all hover:border-ink-200 hover:shadow-sm"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-ink-50 text-ink-700 transition-colors group-hover:bg-ink-900 group-hover:text-white">
@@ -87,23 +87,7 @@ export function Contact({ compact = false }: { compact?: boolean }) {
                 </div>
                 <div className="flex-1">
                   <p className="text-xs text-ink-400">Phone</p>
-                  <p className="text-sm font-medium text-ink-900">+91 8830628242</p>
-                </div>
-                <ArrowUpRight className="h-4 w-4 text-ink-300 transition-colors group-hover:text-ink-700" />
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/devendande"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-xl border border-ink-100 bg-white p-4 transition-all hover:border-ink-200 hover:shadow-sm"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-ink-50 text-ink-700 transition-colors group-hover:bg-accent-500 group-hover:text-white">
-                  <Linkedin className="h-5 w-5" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-xs text-ink-400">LinkedIn</p>
-                  <p className="text-sm font-medium text-ink-900">linkedin.com/in/devendande</p>
+                  <p className="text-sm font-medium text-ink-900">+91 9028028869</p>
                 </div>
                 <ArrowUpRight className="h-4 w-4 text-ink-300 transition-colors group-hover:text-ink-700" />
               </a>

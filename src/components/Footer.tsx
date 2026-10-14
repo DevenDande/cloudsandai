@@ -30,15 +30,6 @@ export function Footer() {
 
             <div className="mt-6 flex items-center gap-3">
               <a
-                href="https://www.linkedin.com/in/devendande"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-200 text-ink-600 transition-colors hover:border-ink-900 hover:bg-ink-900 hover:text-white"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a
                 href="https://www.linkedin.com/company/cloudsandai"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -73,7 +64,7 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
               </a>
               <a
-                href="tel:+918830628242"
+                href="tel:+919028028869"
                 className="flex h-9 w-9 items-center justify-center rounded-lg border border-ink-200 text-ink-600 transition-colors hover:border-ink-900 hover:bg-ink-900 hover:text-white"
                 aria-label="Phone"
               >
@@ -113,20 +104,10 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:+918830628242"
+                  href="tel:+919028028869"
                   className="text-sm text-ink-500 transition-colors hover:text-ink-900"
                 >
-                  +91 8830628242
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/devendande"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-ink-500 transition-colors hover:text-ink-900"
-                >
-                  LinkedIn
+                  +91 9028028869
                 </a>
               </li>
               <li>
