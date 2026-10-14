@@ -18,6 +18,7 @@ import { courseFaqItems, homepageFaqItems } from '@/data/curriculum';
 import { Contact } from '@/components/Contact';
 import { FinalCTA } from '@/components/FinalCTA';
 import { Footer } from '@/components/Footer';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { ResourcesPage } from '@/components/ResourcesPage';
 import { SimpleLinearRegressionLab } from '@/components/SimpleLinearRegressionLab';
 import { MultipleLinearRegressionLab } from '@/components/MultipleLinearRegressionLab';
@@ -224,6 +225,7 @@ export default function App({ pathname }: { pathname?: string }) {
       <Navbar />
       <main><PageContent path={path} /></main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
