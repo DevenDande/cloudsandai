@@ -2,9 +2,9 @@ import { Instagram, Linkedin, Mail, Phone, Youtube } from 'lucide-react';
 
 const footerLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Learn', href: '/courses' },
-  { label: 'Resources', href: '/resources' },
-  { label: 'Labs', href: '/labs' },
+  { label: 'Resources', href: '/resources/' },
+  { label: 'Labs', href: '/labs/' },
+  { label: 'Programs', href: '/courses/' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];

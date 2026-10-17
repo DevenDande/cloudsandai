@@ -34,25 +34,25 @@ const learningAreas = [
     title: 'AI & Machine Learning',
     description: 'Free interactive labs for regression and classification.',
     label: 'Free resources',
-    href: '/resources',
+    href: '/resources/',
   },
   {
     title: 'Python & Deep Learning',
     description: 'Explore the foundations curriculum, including Python, scientific computing and introductory deep learning.',
     label: 'Paid program curriculum',
-    href: '/courses#course-1',
+    href: '/courses/#course-1',
   },
   {
     title: 'Generative AI & AI Engineering',
     description: 'Explore curriculum topics including LLMs, APIs, retrieval-augmented generation and AI application projects.',
     label: 'Paid program curriculum',
-    href: '/courses#course-2',
+    href: '/courses/#course-2',
   },
   {
     title: 'AWS & Cloud Engineering',
     description: 'See how AWS deployment fits into the AI Engineering learning path.',
     label: 'Paid program curriculum',
-    href: '/courses#course-2',
+    href: '/courses/#course-2',
   },
 ];
 
@@ -99,10 +99,10 @@ export function ResourcesPage() {
           <div className="max-w-2xl">
             <p className="mono-label">Learning areas</p>
             <h2 className="mt-4 text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
-              Explore by topic
+              Learning pathways
             </h2>
             <p className="mt-3 text-base leading-relaxed text-ink-500">
-              Start with free machine learning labs, or explore related topics in the paid structured program curricula.
+              Start with free browser-based machine learning experiments, or explore related topics covered in the optional structured program curricula.
             </p>
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">

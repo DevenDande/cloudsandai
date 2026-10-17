@@ -35,7 +35,7 @@ export function Roadmap() {
               </p>
             </div>
             <a
-              href="/courses#course-1"
+              href="/courses/#course-1"
               className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-ink-900 transition-colors hover:text-ink-700"
             >
               Explore Foundations
@@ -65,7 +65,7 @@ export function Roadmap() {
               </p>
             </div>
             <a
-              href="/courses#course-2"
+              href="/courses/#course-2"
               className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-white transition-colors hover:text-accent-300"
             >
               Explore AI Engineering

@@ -83,6 +83,7 @@ function PageContent({ path }: { path: string }) {
           description="The 16-week AI/ML Foundations and AI Engineering programs are paid, instructor-led options for learners seeking a structured path. Explore their curricula, workshops and limited-seat cohorts; tutorials and interactive resources remain free."
         />
         <Courses />
+        <Roadmap />
         <Comparison />
         <Curriculum />
         <Webinars />
@@ -99,7 +100,7 @@ function PageContent({ path }: { path: string }) {
       <>
         <PageIntro
           title="About cloudsandai"
-          description="A foundations-first, instructor-led learning initiative focused on mathematics, statistics, programming, scientific computing, machine learning and deep learning."
+          description="cloudsandai is an interactive AI and cloud learning platform with free resources and browser-based machine learning experiments, building toward practical AI and cloud engineering experiences."
         />
         <Philosophy />
         <About />
@@ -186,7 +187,7 @@ function PageContent({ path }: { path: string }) {
       <>
         <PageIntro
           title="Resources"
-          description="Practical materials to support your machine learning and AI learning."
+          description="Explore free browser-based machine learning experiments and learning pathways covering AI, Python, deep learning, generative AI, AWS and cloud engineering."
         />
         <ResourcesPage />
       </>
@@ -198,7 +199,6 @@ function PageContent({ path }: { path: string }) {
       <Hero />
       <ResourcesPage />
       <Philosophy />
-      <Roadmap />
       <PracticalOutcomes />
       <WhyApproach />
       <Contact />

@@ -412,22 +412,22 @@ export const homepageFaqItems: { question: string; answer: string }[] = [
   {
     question: 'What is cloudsandai?',
     answer:
-      'cloudsandai is an instructor-led learning initiative offering AI/ML Foundations and AI Engineering courses, with concepts connected to programming, experimentation and practical projects.',
+      'cloudsandai is an interactive AI and cloud learning platform with free educational resources, browser-based machine learning experiments and practical engineering experiences.',
   },
   {
-    question: 'Who teaches the courses at cloudsandai?',
+    question: 'What can I explore on cloudsandai?',
     answer:
-      'The courses are taught by Deven Dande, with a foundations-first approach that connects concepts with code and practical implementation.',
+      'Explore free resources and four browser-based machine learning experiments today. Optional structured programs cover deeper AI/ML foundations and AI engineering topics.',
+  },
+  {
+    question: 'Are more interactive labs planned?',
+    answer:
+      'Yes. Advanced AI and cloud engineering lab capabilities are planned and marked Coming Soon. The existing educational resources remain accessible.',
   },
   {
     question: 'Who is Deven Dande?',
     answer:
-      'Deven Dande is the AI/ML instructor behind cloudsandai. He teaches Python, machine learning, deep learning and applied AI through structured, instructor-led learning.',
-  },
-  {
-    question: 'Where is cloudsandai based?',
-    answer:
-      'Free learning resources are available online. Ask cloudsandai about delivery details for any currently offered structured program.',
+      'Deven Dande is the instructor and an AI/ML practitioner contributing to cloudsandai. His teaching and project experience support the platform’s practical learning approach.',
   },
 ];
 

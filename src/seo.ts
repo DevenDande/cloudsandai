@@ -8,33 +8,33 @@ export interface PageMetadata {
 
 export const pageMetadata: Record<string, PageMetadata> = {
   '/': {
-    title: 'Free AI & Machine Learning Resources | cloudsandai',
+    title: 'Interactive AI, ML & Cloud Learning Platform | cloudsandai',
     description:
-      'Explore free AI and machine learning tutorials and interactive labs. Paid 16-week programs offer guided learning, practical projects and AWS deployment.',
+      'Learn AI, machine learning and cloud engineering with free resources and browser-based ML experiments, with practical AI and cloud engineering labs on the roadmap.',
     path: '/',
   },
   '/courses': {
-    title: 'Structured AI & Machine Learning Programs | cloudsandai',
+    title: 'Optional AI/ML & AI Engineering Programs | cloudsandai',
     description:
-      'Explore cloudsandai’s paid 16-week AI/ML Foundations and AI Engineering programs, with guided curricula, practical projects, workshops and limited-seat cohorts.',
+      'Explore optional structured 16-week programs in AI/ML Foundations and AI Engineering, alongside their curricula, practical projects and workshop information.',
     path: '/courses',
   },
   '/about': {
-    title: 'About cloudsandai | AI, ML & Cloud Learning',
+    title: 'About cloudsandai | Interactive AI & Cloud Learning',
     description:
-      'Learn about Deven Dande, the instructor behind cloudsandai, and his approach to teaching Python, machine learning, deep learning and applied AI.',
+      'Discover cloudsandai, an interactive AI and cloud learning platform with free resources and browser-based machine learning experiments, building toward practical engineering experiences.',
     path: '/about',
   },
   '/contact': {
-    title: 'Contact cloudsandai | AI & Cloud Learning',
+    title: 'Contact cloudsandai | AI & Cloud Learning Platform',
     description:
       'Contact cloudsandai with questions about free learning resources, the AI/ML curriculum, structured programs, or an appointment with Deven.',
     path: '/contact',
   },
   '/resources': {
-    title: 'AI & Machine Learning Learning Resources | cloudsandai',
+    title: 'Free AI & Machine Learning Resources | cloudsandai',
     description:
-      'Explore free interactive regression and classification labs, plus learning pathways for Python, deep learning, generative AI, AWS and cloud engineering.',
+      'Explore free browser-based machine learning experiments in regression and classification, with learning pathways for Python, deep learning, generative AI, AWS and cloud engineering.',
     path: '/resources',
   },
   '/labs': {
@@ -105,7 +105,7 @@ const website = {
   '@id': 'https://cloudsandai.com/#website',
   url: 'https://cloudsandai.com/',
   name: 'cloudsandai',
-  description: 'Free AI and machine learning resources, with structured AI engineering programs that include AWS cloud deployment.',
+  description: 'An interactive AI and cloud learning platform with free resources, browser-based machine learning experiments and practical engineering experiences.',
   publisher: { '@id': 'https://cloudsandai.com/#organization' },
   inLanguage: 'en',
 };

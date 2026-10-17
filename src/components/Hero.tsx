@@ -16,7 +16,7 @@ export function Hero() {
           <div className="lg:col-span-7">
             <div className="animate-fade-up opacity-0" style={{ animationDelay: '0.1s' }}>
               <p className="mono-label">
-                FREE LEARNING RESOURCES · AI · MACHINE LEARNING · CLOUD
+                INTERACTIVE LEARNING · AI · MACHINE LEARNING · CLOUD ENGINEERING
               </p>
             </div>
 
@@ -31,7 +31,7 @@ export function Hero() {
               className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-500 animate-fade-up opacity-0"
               style={{ animationDelay: '0.3s' }}
             >
-              Learn and experiment with free machine learning resources. Explore the current interactive labs, with advanced AI and cloud engineering lab capabilities planned for the future.
+              Learn and experiment across AI, machine learning and cloud engineering. Start with free resources and browser-based ML experiments, with practical AI and cloud engineering labs on the roadmap.
             </p>
 
             <div
@@ -39,14 +39,14 @@ export function Hero() {
               style={{ animationDelay: '0.4s' }}
             >
               <a
-                href="/resources"
+                href="/resources/"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-ink-800 hover:shadow-lg hover:shadow-ink-900/10"
               >
                 Explore Free Resources
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
               <a
-                href="/labs"
+                href="/labs/"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-6 py-3 text-sm font-medium text-ink-900 transition-all hover:border-ink-400 hover:bg-ink-50"
               >
                 <FlaskConical className="h-4 w-4" />
@@ -56,7 +56,7 @@ export function Hero() {
 
             <div className="mt-5 max-w-xl animate-fade-up opacity-0" style={{ animationDelay: '0.45s' }}>
               <p className="text-sm font-medium text-ink-600">
-                Free resources · Paid 16-week programs · Practical projects
+                Free resources · Browser-based ML experiments · Practical engineering
               </p>
             </div>
 

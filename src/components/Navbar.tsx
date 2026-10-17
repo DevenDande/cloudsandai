@@ -4,9 +4,9 @@ import { Marquee } from '@/components/Marquee';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Learn', href: '/courses' },
-  { label: 'Resources', href: '/resources' },
-  { label: 'Labs', href: '/labs' },
+  { label: 'Resources', href: '/resources/' },
+  { label: 'Labs', href: '/labs/' },
+  { label: 'Programs', href: '/courses/' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -57,7 +57,7 @@ export function Navbar() {
 
         <div className="hidden lg:block">
           <a
-            href="/resources"
+            href="/resources/"
             onClick={() => setOpen(false)}
             className="group inline-flex items-center gap-1.5 rounded-full border border-ink-200 px-4 py-2 text-sm font-medium text-ink-900 transition-all hover:border-ink-900 hover:bg-ink-900 hover:text-white"
           >
@@ -92,7 +92,7 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="/resources"
+              href="/resources/"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-full bg-ink-900 px-4 py-2.5 text-sm font-medium text-white"
             >

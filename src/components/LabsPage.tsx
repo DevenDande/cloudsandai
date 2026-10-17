@@ -38,7 +38,7 @@ export function LabsPage() {
               Free educational resources will remain accessible. A future subscription is planned for additional advanced lab capabilities; no subscription or payment is required to use the resources available today.
             </p>
             <a
-              href="/resources"
+              href="/resources/"
               className="group mt-8 inline-flex items-center gap-2 rounded-full bg-ink-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-ink-800"
             >
               Explore Free Resources

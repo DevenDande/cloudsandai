@@ -14,19 +14,19 @@ export function FinalCTA() {
           Build Something Practical.
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-400">
-          Start with free tutorials and interactive resources, then explore a paid 16-week program if you want a guided learning path.
+          Start with free tutorials and interactive resources, then explore an optional structured program if you want a guided learning path.
         </p>
 
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
           <a
-            href="/resources"
+            href="/resources/"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink-900 transition-all hover:bg-ink-100"
           >
             Explore Free Resources
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
-            href="/courses"
+            href="/courses/"
             className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-medium text-white transition-all hover:border-white/40 hover:bg-white/5"
           >
             Explore Structured Programs
