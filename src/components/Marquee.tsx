@@ -2,7 +2,7 @@ const renderMarqueeContent = () => (
   <div className="flex shrink-0 items-center">
     <div className="flex items-center">
       <span className="whitespace-nowrap text-xs font-medium tracking-wide text-ink-600">
-        Live AI/ML Sessions | Outside College & Office Hours | Session Recordings on LMS | Learn Around Your Schedule | Built for Students & Working Professionals
+        Free AI & ML Tutorials | Interactive Learning Labs | Structured AI & AWS Programs | Practical Projects
       </span>
       <span className="mx-6 text-ink-300" aria-hidden="true">
         •

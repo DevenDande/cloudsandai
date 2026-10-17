@@ -1,6 +1,6 @@
 # cloudsandai
 
-> Foundations-first, instructor-led education in mathematics, statistical methods and machine learning, with programming and scientific computing integrated throughout. Founded and taught by Deven Dande in Nagpur, India, with online learning options.
+> A global online learning platform for AI, machine learning, AWS and cloud engineering. Tutorials and interactive resources are free. The guided AI/ML Foundations and AI Engineering programs are paid 16-week programs with practical projects and AWS deployment.
 
 ## About
 
@@ -10,7 +10,7 @@ The initiative's primary purpose is to respond to a problem Deven sees in the AI
 
 A second purpose is to democratize AI/ML education for non-English-speaking audiences. Deven plans to make explanations and learning resources available in Hindi as well, so language is less of a barrier for students who want to learn AI and machine learning.
 
-Deven and his team have AWS certifications and hands-on experience delivering AI/ML projects and proofs of concept for clients across India, the UK, the USA, and government sectors. For the past three years, the team has conducted AI/ML internships and training programs for polytechnic and engineering students in Nagpur, with more than 200 students reached.
+Deven and his team have AWS certifications and hands-on experience delivering AI/ML projects and proofs of concept for clients across India, the UK, the USA, and government sectors. The team has conducted AI/ML internships and training programs for polytechnic and engineering students, reaching more than 200 learners.
 
 ## Learning Approach
 
@@ -22,15 +22,15 @@ Deven and his team have AWS certifications and hands-on experience delivering AI
 - Progress from machine-learning foundations into practical AI application development.
 - Combine instructor-led explanation with programming and implementation sessions.
 
-## Courses
+## Structured Learning Programs
 
 ### AI/ML Foundations
 
-Beginner-focused, 16-week course covering Python and scientific computing, mathematics for machine learning, probability and statistics, machine learning fundamentals, an introduction to deep learning, and one guided capstone project. Programming and implementation are integrated throughout.
+Paid, beginner-focused 16-week program covering Python and scientific computing, mathematics for machine learning, probability and statistics, machine learning fundamentals, an introduction to deep learning, and one guided capstone project. Programming and implementation are integrated throughout.
 
 ### AI Engineering
 
-Application-focused, 16-week course for learners with Python proficiency. Topics include LLM fundamentals, hosted and open-source models, APIs and FastAPI, retrieval-augmented generation (RAG), agentic AI workflows, and AWS deployment. Every student completes all three guided, assessed projects, choosing one instructor-approved application in each category: Knowledge-Grounded AI (for example, a Document Intelligence Assistant, academic handbook assistant, technical documentation assistant, or company policy assistant); Multimodal AI (for example, a Speech and Translation Assistant, lecture companion, meeting summarizer, or image-and-text understanding application); and Agentic AI (for example, a Booking Workflow Agent, customer-support triage, order-status assistant, or appointment scheduling agent).
+Paid, application-focused 16-week program for learners with Python proficiency. Topics include LLM fundamentals, hosted and open-source models, APIs and FastAPI, retrieval-augmented generation (RAG), agentic AI workflows, and AWS deployment. Every student completes all three guided, assessed projects, choosing one instructor-approved application in each category: Knowledge-Grounded AI (for example, a Document Intelligence Assistant, academic handbook assistant, technical documentation assistant, or company policy assistant); Multimodal AI (for example, a Speech and Translation Assistant, lecture companion, meeting summarizer, or image-and-text understanding application); and Agentic AI (for example, a Booking Workflow Agent, customer-support triage, order-status assistant, or appointment scheduling agent).
 
 ## Curriculum
 
@@ -54,9 +54,13 @@ An introduction to neurons, layers and weights, forward propagation, activation 
 
 Programming is not taught as a separate subject. It is used throughout the curriculum to turn mathematical and statistical concepts into working implementations and experiments. Learn the concept, code it, experiment with it, and understand it. Topics include Python syntax, data types, conditionals, loops, functions, modules, debugging, problem solving, recursion, computational thinking, code organization, complexity, data structures, searching, sorting, algorithms, NumPy, vectorization, broadcasting, matrix operations, numerical differentiation and integration, simulation, numerical optimization, Pandas, Matplotlib, data cleaning, exploratory data analysis, visualization, and machine learning implementation.
 
-## Free Educational Content
+## Free Educational Resources
 
-Deven Dande will soon publish free AI/ML explanation videos through the cloudsandai website, YouTube, and Instagram. These explanations are intended to make foundational AI/ML concepts more accessible, including for Hindi-speaking learners. The YouTube channel link will be added to the website when it is available.
+The website currently offers free interactive labs for simple linear regression, multiple linear regression, logistic classification and decision tree classification. These practical resources help learners explore model behavior, training and evaluation. The 16-week guided programs are paid.
+
+## Interactive Labs
+
+The existing machine-learning interactive labs are free educational resources. cloudsandai is planning additional advanced subscription lab capabilities, including interactive model-training experiments and AI/cloud engineering scenarios. Advanced subscription labs are coming soon; no payment, account or subscription system is currently available.
 
 ## Audience and Delivery
 
@@ -67,7 +71,7 @@ Deven Dande will soon publish free AI/ML explanation videos through the cloudsan
 - Learners preparing for practical AI/ML work
 - Students seeking mathematics and programming foundations before deep learning
 
-Teaching is instructor-led and available in Nagpur, India, with online options. Contact Deven for current batch schedules, enrollment, and delivery details.
+Free resources are available online. Contact Deven for current information about structured program schedules, workshops and cohort availability.
 
 ## Contact and Social Links
 
@@ -84,7 +88,7 @@ Teaching is instructor-led and available in Nagpur, India, with online options. 
 - Multiple linear regression lab: [Multiple linear regression](https://cloudsandai.com/resources/multiple-linear-regression)
 - Binary classification with logistic regression lab: [Logistic classification](https://cloudsandai.com/resources/logistic-classification)
 - Decision tree classification lab: [Decision tree classification](https://cloudsandai.com/resources/decision-tree-classification)
-- Courses: [Courses](https://cloudsandai.com/#courses)
+- Structured programs: [Learn](https://cloudsandai.com/courses)
 - Curriculum: [Curriculum](https://cloudsandai.com/#curriculum)
 - Webinars and programming sessions: [Webinars and programming sessions](https://cloudsandai.com/#webinars)
 - About: [About cloudsandai](https://cloudsandai.com/#about)

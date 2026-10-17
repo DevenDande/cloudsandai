@@ -16,7 +16,7 @@ export function Roadmap() {
           {/* AI/ML Foundations Path */}
           <div className="rounded-2xl border border-ink-100 bg-white p-8">
             <div className="flex items-center justify-between">
-              <span className="mono-label">Course 1</span>
+              <span className="mono-label">Foundations Program</span>
               <span className="rounded-full bg-ink-100 px-3 py-1 text-xs font-medium text-ink-600">16 weeks</span>
             </div>
             <h3 className="mt-4 text-lg font-semibold text-ink-900">
@@ -35,7 +35,7 @@ export function Roadmap() {
               </p>
             </div>
             <a
-              href="/courses/#course-1"
+              href="/courses#course-1"
               className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-ink-900 transition-colors hover:text-ink-700"
             >
               Explore Foundations
@@ -46,7 +46,7 @@ export function Roadmap() {
           {/* AI Engineering Path */}
           <div className="rounded-2xl border border-ink-900 bg-ink-950 p-8 text-white">
             <div className="flex items-center justify-between">
-              <span className="mono-label !text-accent-300">Course 2</span>
+              <span className="mono-label !text-accent-300">AI Engineering Program</span>
               <span className="rounded-full bg-accent-500 px-3 py-1 text-xs font-medium text-white">16 weeks</span>
             </div>
             <h3 className="mt-4 text-lg font-semibold text-white">
@@ -65,7 +65,7 @@ export function Roadmap() {
               </p>
             </div>
             <a
-              href="/courses/#course-2"
+              href="/courses#course-2"
               className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-white transition-colors hover:text-accent-300"
             >
               Explore AI Engineering

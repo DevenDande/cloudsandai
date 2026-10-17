@@ -2,7 +2,9 @@ import { Instagram, Linkedin, Mail, Phone, Youtube } from 'lucide-react';
 
 const footerLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Courses', href: '/courses' },
+  { label: 'Learn', href: '/courses' },
+  { label: 'Resources', href: '/resources' },
+  { label: 'Labs', href: '/labs' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -20,7 +22,7 @@ export function Footer() {
             >
               <img
                 src="/logo_cropped.png"
-                alt="cloudsandai logo — machine learning and deep learning courses"
+                alt="cloudsandai logo — AI, machine learning and cloud learning resources"
                 className="h-10 w-auto object-contain"
               />
             </a>

@@ -427,7 +427,7 @@ export const homepageFaqItems: { question: string; answer: string }[] = [
   {
     question: 'Where is cloudsandai based?',
     answer:
-      'cloudsandai is based in Nagpur, Maharashtra, India, and offers learning options online as well.',
+      'Free learning resources are available online. Ask cloudsandai about delivery details for any currently offered structured program.',
   },
 ];
 
@@ -524,7 +524,7 @@ export const courses: CourseCardData[] = [
   {
     id: 'course-1',
     title: 'AI/ML Foundations',
-    label: '16 WEEKS · BEGINNERS',
+    label: 'PAID · 16 WEEKS · BEGINNERS',
     description:
       'Build a strong foundation in Python, mathematics, probability, statistics, machine learning and introductory deep learning through code, experimentation and a guided capstone project.',
     summary: 'Python • Math • ML • Capstone',
@@ -564,7 +564,7 @@ export const courses: CourseCardData[] = [
   {
     id: 'course-2',
     title: 'AI Engineering',
-    label: '16 WEEKS · PYTHON PROFICIENCY',
+    label: 'PAID · 16 WEEKS · PYTHON PROFICIENCY',
     description:
       'Learn to integrate modern AI models, APIs, tools and cloud infrastructure to build useful AI applications across three guided and assessed projects.',
     summary: 'LLMs • RAG • APIs • Agents • AWS',

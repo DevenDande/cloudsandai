@@ -24,6 +24,7 @@ import { SimpleLinearRegressionLab } from '@/components/SimpleLinearRegressionLa
 import { MultipleLinearRegressionLab } from '@/components/MultipleLinearRegressionLab';
 import { LogisticClassificationLab } from '@/components/LogisticClassificationLab';
 import { DecisionTreeClassificationLab } from '@/components/DecisionTreeClassificationLab';
+import { LabsPage } from '@/components/LabsPage';
 import { normalizePath, pageMetadata } from '@/seo';
 
 function PageIntro({ title, description }: { title: string; description: string }) {
@@ -35,16 +36,6 @@ function PageIntro({ title, description }: { title: string; description: string 
           {title}
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-500">{description}</p>
-      </div>
-    </section>
-  );
-}
-
-function ComingSoon() {
-  return (
-    <section className="border-b border-ink-100 py-20 lg:py-28">
-      <div className="mx-auto max-w-8xl px-6 text-center lg:px-10">
-        <p className="mono-label">Coming soon</p>
       </div>
     </section>
   );
@@ -88,8 +79,8 @@ function PageContent({ path }: { path: string }) {
     return (
       <>
         <PageIntro
-          title="AI/ML Foundations & AI Engineering"
-          description="Two 16-week learning paths: one for beginners starting from zero, and one for Python-ready learners building practical AI applications."
+          title="Structured AI & Machine Learning Programs"
+          description="The 16-week AI/ML Foundations and AI Engineering programs are paid, instructor-led options for learners seeking a structured path. Explore their curricula, workshops and limited-seat cohorts; tutorials and interactive resources remain free."
         />
         <Courses />
         <Comparison />
@@ -130,14 +121,14 @@ function PageContent({ path }: { path: string }) {
     );
   }
 
-  if (path === '/articles') {
+  if (path === '/labs') {
     return (
       <>
         <PageIntro
-          title="Articles"
-          description="Ideas and explanations for understanding machine learning and AI."
+          title="Interactive AI & Cloud Engineering Labs"
+          description="Explore free machine learning labs available today and the vision for future advanced simulations, model-training experiments and AI/cloud engineering labs."
         />
-        <ComingSoon />
+        <LabsPage />
       </>
     );
   }
@@ -205,6 +196,7 @@ function PageContent({ path }: { path: string }) {
   return (
     <>
       <Hero />
+      <ResourcesPage />
       <Philosophy />
       <Roadmap />
       <PracticalOutcomes />

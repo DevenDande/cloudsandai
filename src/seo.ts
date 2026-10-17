@@ -8,40 +8,40 @@ export interface PageMetadata {
 
 export const pageMetadata: Record<string, PageMetadata> = {
   '/': {
-    title: 'AI/ML Learning in Nagpur | cloudsandai by Deven Dande',
+    title: 'Free AI & Machine Learning Resources | cloudsandai',
     description:
-      'Learn AI/ML with Deven Dande at cloudsandai. Explore beginner foundations and practical AI engineering with LLMs, RAG, APIs and agentic AI.',
+      'Explore free AI and machine learning tutorials and interactive labs. Paid 16-week programs offer guided learning, practical projects and AWS deployment.',
     path: '/',
   },
   '/courses': {
-    title: 'AI/ML Courses in Nagpur | cloudsandai',
+    title: 'Structured AI & Machine Learning Programs | cloudsandai',
     description:
-      'Explore 16-week AI/ML Foundations and AI Engineering courses by Deven Dande, with live classes, LMS recordings, an ML capstone and three guided AI projects.',
+      'Explore cloudsandai’s paid 16-week AI/ML Foundations and AI Engineering programs, with guided curricula, practical projects, workshops and limited-seat cohorts.',
     path: '/courses',
   },
   '/about': {
-    title: 'Deven Dande | AI/ML Instructor at cloudsandai',
+    title: 'About cloudsandai | AI, ML & Cloud Learning',
     description:
       'Learn about Deven Dande, the instructor behind cloudsandai, and his approach to teaching Python, machine learning, deep learning and applied AI.',
     path: '/about',
   },
   '/contact': {
-    title: 'Contact cloudsandai | AI/ML Courses in Nagpur',
+    title: 'Contact cloudsandai | AI & Cloud Learning',
     description:
-      'Contact Deven Dande at cloudsandai to ask about AI and machine learning classes in Nagpur, course options, mathematics, Python or deep learning.',
+      'Contact cloudsandai with questions about free learning resources, the AI/ML curriculum, structured programs, or an appointment with Deven.',
     path: '/contact',
   },
-  '/articles': {
-    title: 'Articles | cloudsandai',
-    description:
-      'Explore articles on machine learning, artificial intelligence, mathematics and learning at cloudsandai.',
-    path: '/articles',
-  },
   '/resources': {
-    title: 'Resources | cloudsandai',
+    title: 'AI & Machine Learning Learning Resources | cloudsandai',
     description:
-      'Explore practical machine learning and artificial intelligence learning resources from cloudsandai.',
+      'Explore free interactive regression and classification labs, plus learning pathways for Python, deep learning, generative AI, AWS and cloud engineering.',
     path: '/resources',
+  },
+  '/labs': {
+    title: 'Interactive AI & Cloud Engineering Labs | cloudsandai',
+    description:
+      'Explore free machine learning labs and the planned vision for advanced AI simulations, model-training experiments and AWS/cloud engineering labs. Subscription access is coming soon.',
+    path: '/labs',
   },
   '/resources/simple-linear-regression': {
     title: 'Simple Linear Regression Interactive Lab | cloudsandai',
@@ -84,12 +84,6 @@ const organization = {
   alternateName: 'Clouds and AI',
   url: 'https://cloudsandai.com/',
   logo: 'https://cloudsandai.com/logo_cropped.png',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Nagpur',
-    addressRegion: 'Maharashtra',
-    addressCountry: 'IN',
-  },
   sameAs: [
     'https://www.linkedin.com/company/cloudsandai',
     'https://www.instagram.com/cloudsandaidotcom',
@@ -111,8 +105,9 @@ const website = {
   '@id': 'https://cloudsandai.com/#website',
   url: 'https://cloudsandai.com/',
   name: 'cloudsandai',
+  description: 'Free AI and machine learning resources, with structured AI engineering programs that include AWS cloud deployment.',
   publisher: { '@id': 'https://cloudsandai.com/#organization' },
-  inLanguage: 'en-IN',
+  inLanguage: 'en',
 };
 
 export function getStructuredData(path: string) {
@@ -168,5 +163,6 @@ export function getStructuredData(path: string) {
 
 export function normalizePath(pathname: string) {
   const path = pathname.replace(/\/+$/, '') || '/';
+  if (path === '/articles') return '/resources';
   return pageMetadata[path] ? path : '/';
 }

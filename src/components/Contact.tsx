@@ -56,10 +56,10 @@ export function Contact({ compact = false }: { compact?: boolean }) {
           <div className="lg:col-span-5">
             <p className="mono-label">Contact</p>
             <h2 className="mt-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-4xl">
-              Discuss the Courses
+              Questions About Learning?
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-ink-500">
-              Have questions about the curriculum or which learning path is right for you?
+              Have questions about the free resources or want to learn more about a structured program?
               Get in touch with Deven.
             </p>
 

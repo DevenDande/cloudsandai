@@ -6,7 +6,7 @@ export function Courses() {
     <section id="courses" className="border-b border-ink-100 py-20 lg:py-28">
       <div className="mx-auto max-w-8xl px-6 lg:px-10">
         <div className="max-w-2xl">
-          <p className="mono-label">Courses</p>
+          <p className="mono-label">Structured Programs</p>
           <h2 className="mt-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-4xl lg:text-5xl">
             Two Clear Learning Paths
           </h2>

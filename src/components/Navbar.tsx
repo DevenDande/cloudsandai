@@ -4,9 +4,9 @@ import { Marquee } from '@/components/Marquee';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Courses', href: '/courses' },
+  { label: 'Learn', href: '/courses' },
   { label: 'Resources', href: '/resources' },
-  { label: 'Articles', href: '/articles' },
+  { label: 'Labs', href: '/labs' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -37,7 +37,7 @@ export function Navbar() {
         >
           <img
             src="/logo_cropped.png"
-            alt="cloudsandai logo — machine learning and deep learning courses"
+            alt="cloudsandai logo — AI, machine learning and cloud learning resources"
             className="h-8 w-auto object-contain"
           />
         </a>
@@ -57,11 +57,11 @@ export function Navbar() {
 
         <div className="hidden lg:block">
           <a
-            href="/courses"
+            href="/resources"
             onClick={() => setOpen(false)}
             className="group inline-flex items-center gap-1.5 rounded-full border border-ink-200 px-4 py-2 text-sm font-medium text-ink-900 transition-all hover:border-ink-900 hover:bg-ink-900 hover:text-white"
           >
-            View Courses
+            Explore Free Resources
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </a>
         </div>
@@ -92,11 +92,11 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="/courses"
+              href="/resources"
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-full bg-ink-900 px-4 py-2.5 text-sm font-medium text-white"
             >
-              View Courses
+              Explore Free Resources
               <ArrowRight className="h-3.5 w-3.5" />
             </a>
           </div>

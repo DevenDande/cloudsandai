@@ -1,4 +1,4 @@
-import { ArrowRight, Mail, Linkedin } from 'lucide-react';
+import { ArrowRight, FlaskConical, Linkedin } from 'lucide-react';
 
 export function Hero() {
   return (
@@ -16,7 +16,7 @@ export function Hero() {
           <div className="lg:col-span-7">
             <div className="animate-fade-up opacity-0" style={{ animationDelay: '0.1s' }}>
               <p className="mono-label">
-                AI/ML FOUNDATIONS · AI ENGINEERING · PRACTICAL PROJECTS
+                FREE LEARNING RESOURCES · AI · MACHINE LEARNING · CLOUD
               </p>
             </div>
 
@@ -31,7 +31,7 @@ export function Hero() {
               className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-500 animate-fade-up opacity-0"
               style={{ animationDelay: '0.3s' }}
             >
-              Start with the fundamentals of Python and machine learning, or build modern AI applications using LLMs, multimodal models, APIs and agentic workflows.
+              Learn and experiment with free machine learning resources. Explore the current interactive labs, with advanced AI and cloud engineering lab capabilities planned for the future.
             </p>
 
             <div
@@ -39,24 +39,24 @@ export function Hero() {
               style={{ animationDelay: '0.4s' }}
             >
               <a
-                href="/courses/"
+                href="/resources"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-ink-800 hover:shadow-lg hover:shadow-ink-900/10"
               >
-                Explore Courses
+                Explore Free Resources
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
               <a
-                href="/contact"
+                href="/labs"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-6 py-3 text-sm font-medium text-ink-900 transition-all hover:border-ink-400 hover:bg-ink-50"
               >
-                <Mail className="h-4 w-4" />
-                Contact Deven
+                <FlaskConical className="h-4 w-4" />
+                Explore Labs
               </a>
             </div>
 
             <div className="mt-5 max-w-xl animate-fade-up opacity-0" style={{ animationDelay: '0.45s' }}>
               <p className="text-sm font-medium text-ink-600">
-                Two 16-week learning paths · Live classes · Recordings on the LMS
+                Free resources · Paid 16-week programs · Practical projects
               </p>
             </div>
 

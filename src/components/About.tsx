@@ -96,7 +96,7 @@ export function About({ compact = false }: { compact?: boolean }) {
             <p className="mt-4 text-lg leading-relaxed text-ink-500">
               {compact
                 ? 'Deven Dande and his team bring a foundations-first approach to AI/ML through structured, practical and instructor-led learning.'
-                : 'Deven Dande and his team bring a foundations-first approach to AI/ML, backed by AWS certifications and hands-on experience delivering AI/ML projects and POCs for clients across India, the UK, USA, and government sectors. For the past three years, the team has also conducted AI/ML internships and training programs for polytechnic and engineering students across Nagpur, focusing on practical, industry-oriented learning with 200+ happy and knowledgable students.'}
+                : 'Deven Dande and his team bring a foundations-first approach to AI/ML, backed by AWS certifications and hands-on experience delivering AI/ML projects and proofs of concept for clients across India, the UK, the USA, and government sectors. The team has also conducted AI/ML internships and training programs for polytechnic and engineering students, reaching more than 200 learners.'}
             </p>
 
             {compact && (

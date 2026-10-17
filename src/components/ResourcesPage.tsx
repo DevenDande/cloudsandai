@@ -29,11 +29,47 @@ const resources = [
   },
 ];
 
+const learningAreas = [
+  {
+    title: 'AI & Machine Learning',
+    description: 'Free interactive labs for regression and classification.',
+    label: 'Free resources',
+    href: '/resources',
+  },
+  {
+    title: 'Python & Deep Learning',
+    description: 'Explore the foundations curriculum, including Python, scientific computing and introductory deep learning.',
+    label: 'Paid program curriculum',
+    href: '/courses#course-1',
+  },
+  {
+    title: 'Generative AI & AI Engineering',
+    description: 'Explore curriculum topics including LLMs, APIs, retrieval-augmented generation and AI application projects.',
+    label: 'Paid program curriculum',
+    href: '/courses#course-2',
+  },
+  {
+    title: 'AWS & Cloud Engineering',
+    description: 'See how AWS deployment fits into the AI Engineering learning path.',
+    label: 'Paid program curriculum',
+    href: '/courses#course-2',
+  },
+];
+
 export function ResourcesPage() {
   return (
     <section className="border-b border-ink-100 py-20 lg:py-28">
       <div className="mx-auto max-w-8xl px-6 lg:px-10">
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="max-w-2xl">
+          <p className="mono-label">Free learning resources</p>
+          <h2 className="mt-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-4xl lg:text-5xl">
+            Learn by exploring and building
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-ink-500">
+            Work through interactive machine learning labs and practical examples, with more learning materials added as they are ready.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {resources.map((resource) => (
             <a
               key={resource.title}
@@ -48,7 +84,7 @@ export function ResourcesPage() {
                 </span>
               </div>
 
-              <p className="mono-label">Interactive resource</p>
+              <p className="mono-label">Free interactive resource</p>
               <h2 className="mt-4 text-2xl font-semibold tracking-tight text-ink-900">{resource.title}</h2>
               <p className="mt-4 flex-1 text-base leading-relaxed text-ink-500">{resource.description}</p>
 
@@ -58,6 +94,34 @@ export function ResourcesPage() {
               </span>
             </a>
           ))}
+        </div>
+        <div className="mt-20">
+          <div className="max-w-2xl">
+            <p className="mono-label">Learning areas</p>
+            <h2 className="mt-4 text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl">
+              Explore by topic
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-ink-500">
+              Start with free machine learning labs, or explore related topics in the paid structured program curricula.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {learningAreas.map((area) => (
+              <a
+                key={area.title}
+                href={area.href}
+                className="group rounded-2xl border border-ink-100 p-6 transition-colors hover:border-ink-300"
+              >
+                <p className="mono-label">{area.label}</p>
+                <h3 className="mt-3 text-lg font-semibold text-ink-900">{area.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-500">{area.description}</p>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-ink-900">
+                  Explore
+                  <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
