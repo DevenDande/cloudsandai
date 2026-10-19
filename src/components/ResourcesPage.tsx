@@ -146,7 +146,7 @@ export function ResourcesPage() {
               <h2 className="mt-4 text-2xl font-semibold tracking-tight text-ink-900">{resource.title}</h2>
               <p className="mt-4 flex-1 text-base leading-relaxed text-ink-500">{resource.description}</p>
 
-              <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-ink-900">
+              <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-ink-200 px-4 py-2 text-sm font-medium text-ink-900 transition-colors group-hover:border-ink-900 group-hover:bg-ink-900 group-hover:text-white">
                 {resource.cta}
                 <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
               </span>

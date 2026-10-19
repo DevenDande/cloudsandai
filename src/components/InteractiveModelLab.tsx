@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { useMemo, useState, type MouseEvent } from 'react';
+import { ArrowLeft, RotateCcw } from 'lucide-react';
 import {
   buildClassifier,
   classificationDataset,
@@ -159,6 +159,49 @@ export function InteractiveModelLab({ kind }: { kind: InteractiveModelKind }) {
   }));
   const scoreMin = Math.min(...selectedScores.map((point) => point.horizontal));
   const scoreMax = Math.max(...selectedScores.map((point) => point.horizontal));
+  const scoreExtent = Math.max(Math.abs(scoreMin), Math.abs(scoreMax), 1);
+
+  function resetLab() {
+    setNeighbors(3);
+    setSmoothing(0.25);
+    setTrees(7);
+    setRegularization(0.1);
+    setHiddenUnits(4);
+    setEpochs(200);
+    setClusterCount(3);
+    setClusterIterations(5);
+    setComponent(1);
+    setInputX('6');
+    setInputY('7');
+  }
+
+  function selectPoint(event: MouseEvent<SVGSVGElement>) {
+    const matrix = event.currentTarget.getScreenCTM();
+    if (!matrix) return;
+
+    const screenPoint = event.currentTarget.createSVGPoint();
+    screenPoint.x = event.clientX;
+    screenPoint.y = event.clientY;
+    const point = screenPoint.matrixTransform(matrix.inverse());
+    const clamp = (value: number) => Math.max(0, Math.min(10, value));
+
+    if (kind === 'pca') {
+      const horizontal = ((point.x - chart.size / 2) / (chart.size / 2 - chart.pad)) * scoreExtent;
+      const vertical = ((chart.size / 2 - point.y) / (chart.size / 2 - chart.pad)) * scoreExtent;
+      const pc1 = component === 1 ? horizontal : vertical;
+      const pc2 = component === 1 ? vertical : horizontal;
+      const standardizedX = pc1 * pca.component1[0] + pc2 * pca.component2[0];
+      const standardizedY = pc1 * pca.component1[1] + pc2 * pca.component2[1];
+      setInputX(String(clamp(pca.meanX + standardizedX * pca.standardDeviationX).toFixed(1)));
+      setInputY(String(clamp(pca.meanY + standardizedY * pca.standardDeviationY).toFixed(1)));
+      return;
+    }
+
+    const xValue = ((point.x - chart.pad) / (chart.size - chart.pad * 2)) * chart.extent;
+    const yValue = ((chart.size - chart.pad - point.y) / (chart.size - chart.pad * 2)) * chart.extent;
+    setInputX(String(clamp(xValue).toFixed(1)));
+    setInputY(String(clamp(yValue).toFixed(1)));
+  }
 
   return (
     <div className="mx-auto max-w-8xl px-6 pb-20 pt-8 lg:px-10">
@@ -170,20 +213,32 @@ export function InteractiveModelLab({ kind }: { kind: InteractiveModelKind }) {
 
       <section className="grid gap-8 xl:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-[28px] border border-ink-100 bg-white p-5 shadow-[0_12px_35px_rgba(13,15,18,0.04)] lg:p-7">
-          <p className="mono-label">Interactive model</p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">{details[kind].title}</h2>
-          <p className="mt-3 text-sm leading-relaxed text-ink-500">{details[kind].summary}</p>
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p className="mono-label">Interactive model</p>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">{details[kind].title}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-ink-500">{details[kind].summary}</p>
+            </div>
+            <button
+              type="button"
+              onClick={resetLab}
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-700 transition-colors hover:border-ink-900 hover:bg-ink-900 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
+            >
+              <RotateCcw className="h-4 w-4" aria-hidden="true" />
+              Reset lab
+            </button>
+          </div>
 
           {kind === 'pca' ? (
             <div className="mt-6 overflow-x-auto rounded-2xl border border-ink-100 bg-ink-50 p-3">
-              <svg viewBox={`0 0 ${chart.size} ${chart.size}`} className="mx-auto h-[320px] w-full max-w-[420px]" role="img" aria-label="PCA projection showing the first and second principal component scores">
+              <svg viewBox={`0 0 ${chart.size} ${chart.size}`} onClick={selectPoint} className="mx-auto h-[320px] w-full max-w-[420px] cursor-crosshair" role="img" aria-label="PCA projection showing the first and second principal component scores. Click to place a point.">
                 <line x1={chart.pad} y1={chart.size / 2} x2={chart.size - chart.pad} y2={chart.size / 2} stroke="#aeb5be" strokeDasharray="4 4" />
                 <line x1={chart.size / 2} y1={chart.pad} x2={chart.size / 2} y2={chart.size - chart.pad} stroke="#aeb5be" strokeDasharray="4 4" />
                 {selectedScores.map((point, index) => (
                   <circle
                     key={index}
-                    cx={chart.size / 2 + (point.horizontal / Math.max(Math.abs(scoreMin), Math.abs(scoreMax), 1)) * (chart.size / 2 - chart.pad)}
-                    cy={chart.size / 2 - (point.vertical / Math.max(Math.abs(scoreMin), Math.abs(scoreMax), 1)) * (chart.size / 2 - chart.pad)}
+                    cx={chart.size / 2 + (point.horizontal / scoreExtent) * (chart.size / 2 - chart.pad)}
+                    cy={chart.size / 2 - (point.vertical / scoreExtent) * (chart.size / 2 - chart.pad)}
                     r="5"
                     fill={point.label === 1 ? '#16864b' : '#e46d3a'}
                     fillOpacity="0.78"
@@ -191,6 +246,27 @@ export function InteractiveModelLab({ kind }: { kind: InteractiveModelKind }) {
                     <title>{`Study ${point.x}, practice ${point.y}; PC${component} score ${format(point.horizontal)}`}</title>
                   </circle>
                 ))}
+                {validInput && x !== null && y !== null && (() => {
+                  const standardizedX = (x - pca.meanX) / pca.standardDeviationX;
+                  const standardizedY = (y - pca.meanY) / pca.standardDeviationY;
+                  const pc1 = standardizedX * pca.component1[0] + standardizedY * pca.component1[1];
+                  const pc2 = standardizedX * pca.component2[0] + standardizedY * pca.component2[1];
+                  const horizontal = component === 1 ? pc1 : pc2;
+                  const vertical = component === 1 ? pc2 : pc1;
+                  return (
+                    <g>
+                      <circle
+                        cx={chart.size / 2 + (horizontal / scoreExtent) * (chart.size / 2 - chart.pad)}
+                        cy={chart.size / 2 - (vertical / scoreExtent) * (chart.size / 2 - chart.pad)}
+                        r="8"
+                        fill="#29384b"
+                        stroke="white"
+                        strokeWidth="2"
+                      />
+                      <title>{`Your point: study ${x}, practice ${y}`}</title>
+                    </g>
+                  );
+                })()}
                 <text x={chart.size / 2} y={chart.size - 3} textAnchor="middle" fontSize="11" fill="#5a626d">PC{component} score</text>
                 <text x="12" y={chart.size / 2} textAnchor="middle" fontSize="11" fill="#5a626d" transform={`rotate(-90 12 ${chart.size / 2})`}>PC{component === 1 ? 2 : 1} score</text>
               </svg>
@@ -199,9 +275,10 @@ export function InteractiveModelLab({ kind }: { kind: InteractiveModelKind }) {
             <div className="mt-6 overflow-x-auto rounded-2xl border border-ink-100 bg-ink-50 p-3">
               <svg
                 viewBox={`0 0 ${chart.size} ${chart.size}`}
-                className="mx-auto h-[320px] w-full max-w-[420px]"
+                onClick={selectPoint}
+                className="mx-auto h-[320px] w-full max-w-[420px] cursor-crosshair"
                 role="img"
-                aria-label={kind === 'kmeans' ? 'K-Means clusters, assignments and centroids' : `${details[kind].title} classification regions`}
+                aria-label={kind === 'kmeans' ? 'K-Means clusters, assignments and centroids. Click to place a point.' : `${details[kind].title} classification regions. Click to place a point.`}
               >
                 {kind === 'kmeans'
                   ? Array.from({ length: cellCount * cellCount }, (_unused, index) => {
@@ -282,6 +359,7 @@ export function InteractiveModelLab({ kind }: { kind: InteractiveModelKind }) {
               </span>
             ))}
           </div>
+          <p className="mt-3 text-xs text-ink-500">Click anywhere on the chart to place a point and explore its result.</p>
         </div>
 
         <aside className="rounded-[28px] border border-ink-100 bg-ink-50 p-5 lg:p-7">
