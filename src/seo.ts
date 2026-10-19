@@ -40,8 +40,8 @@ export const pageMetadata: Record<string, PageMetadata> = {
   '/labs': {
     title: 'Interactive AI Labs | cloudsandai',
     description:
-      'Explore free machine learning labs and the planned vision for advanced AI simulations and model-training experiments. Subscription access is coming soon.',
-    path: '/labs',
+      'Explore 11 free interactive machine-learning labs on cloudsandai. Experiment with regression, classification, clustering, decision trees, and neural networks.',
+    path: '/labs/',
   },
   '/resources/simple-linear-regression': {
     title: 'Simple Linear Regression Interactive Lab | cloudsandai',

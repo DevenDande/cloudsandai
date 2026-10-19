@@ -89,6 +89,13 @@ const resources = [
   },
 ];
 
+const homepageResourceHrefs = new Set([
+  '/resources/simple-linear-regression',
+  '/resources/logistic-classification',
+  '/resources/k-means-clustering',
+  '/resources/neural-network',
+]);
+
 const learningAreas = [
   {
     title: 'AI & Machine Learning',
@@ -116,7 +123,11 @@ const learningAreas = [
   },
 ];
 
-export function ResourcesPage() {
+export function ResourcesPage({ homepagePreview = false }: { homepagePreview?: boolean }) {
+  const visibleResources = homepagePreview
+    ? resources.filter((resource) => homepageResourceHrefs.has(resource.href))
+    : resources;
+
   return (
     <section className="border-b border-ink-100 py-20 lg:py-28">
       <div className="mx-auto max-w-8xl px-6 lg:px-10">
@@ -129,8 +140,8 @@ export function ResourcesPage() {
             Work through interactive machine learning labs and practical examples, with more learning materials added as they are ready.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {resources.map((resource) => (
+        <div className={`mt-12 grid gap-6 md:grid-cols-2 ${homepagePreview ? 'xl:grid-cols-4' : 'xl:grid-cols-3'}`}>
+          {visibleResources.map((resource) => (
             <a
               key={resource.title}
               href={resource.href}
@@ -153,6 +164,17 @@ export function ResourcesPage() {
             </a>
           ))}
         </div>
+        {homepagePreview && (
+          <div className="mt-8 flex justify-center">
+            <a
+              href="/resources/"
+              className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-ink-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-ink-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-600"
+            >
+              Explore more
+              <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </div>
+        )}
         <div className="mt-20">
           <div className="max-w-2xl">
             <p className="mono-label">Learning areas</p>

@@ -6,8 +6,8 @@ const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Resources', href: '/resources/' },
   { label: 'Labs', href: '/labs/' },
-  { label: 'Programs', href: '/courses/' },
-  { label: 'About', href: '/about' },
+  { label: 'Courses', href: '/courses/' },
+  { label: 'About Us', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -48,7 +48,7 @@ export function Navbar() {
               key={link.label}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="text-sm font-medium text-ink-500 transition-colors hover:text-ink-900"
+              className="text-sm font-medium text-ink-500 transition-colors hover:text-ink-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-600"
             >
               {link.label}
             </a>
@@ -71,6 +71,7 @@ export function Navbar() {
           className="flex h-10 w-10 items-center justify-center rounded-lg text-ink-700 lg:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
+          aria-controls="mobile-site-navigation"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -79,14 +80,14 @@ export function Navbar() {
       <Marquee />
 
       {open && (
-        <div className="border-t border-ink-100 bg-white lg:hidden">
+        <div id="mobile-site-navigation" className="border-t border-ink-100 bg-white lg:hidden">
           <div className="mx-auto flex max-w-8xl flex-col gap-1 px-6 py-4">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink-600 transition-colors hover:bg-ink-50 hover:text-ink-900"
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink-600 transition-colors hover:bg-ink-50 hover:text-ink-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
               >
                 {link.label}
               </a>

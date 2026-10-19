@@ -5,7 +5,7 @@ const templatePath = new URL('../dist/index.html', import.meta.url);
 const template = await readFile(templatePath, 'utf8');
 
 for (const [route, metadata] of Object.entries(pageMetadata)) {
-  const canonical = `https://cloudsandai.com${route}`;
+  const canonical = `https://cloudsandai.com${metadata.path}`;
   const socialImage = metadata.ogImage
     ? `https://cloudsandai.com${metadata.ogImage}`
     : 'https://cloudsandai.com/1735043718836.jpeg';

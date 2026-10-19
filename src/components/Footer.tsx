@@ -4,8 +4,8 @@ const footerLinks = [
   { label: 'Home', href: '/' },
   { label: 'Resources', href: '/resources/' },
   { label: 'Labs', href: '/labs/' },
-  { label: 'Programs', href: '/courses/' },
-  { label: 'About', href: '/about' },
+  { label: 'Courses', href: '/courses/' },
+  { label: 'About Us', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -83,7 +83,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm text-ink-500 transition-colors hover:text-ink-900"
+                    className="text-sm text-ink-500 transition-colors hover:text-ink-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600"
                   >
                     {link.label}
                   </a>

@@ -162,15 +162,7 @@ function PageContent({ path }: { path: string }) {
   }
 
   if (path === '/labs') {
-    return (
-      <>
-        <PageIntro
-          title="Interactive AI Labs"
-          description="Explore free machine learning labs available today and the vision for future advanced AI simulations and model-training experiments."
-        />
-        <LabsPage />
-      </>
-    );
+    return <LabsPage />;
   }
 
   if (path === '/resources/simple-linear-regression') {
@@ -249,7 +241,7 @@ function PageContent({ path }: { path: string }) {
   return (
     <>
       <Hero />
-      <ResourcesPage />
+      <ResourcesPage homepagePreview />
       <Philosophy />
       <PracticalOutcomes />
       <WhyApproach />
