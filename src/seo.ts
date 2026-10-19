@@ -34,7 +34,7 @@ export const pageMetadata: Record<string, PageMetadata> = {
   '/resources': {
     title: 'Free AI & Machine Learning Resources | cloudsandai',
     description:
-      'Explore free browser-based machine learning experiments in regression and classification, with learning pathways for Python, deep learning, generative AI, AWS and cloud engineering.',
+      'Explore free browser-based machine learning experiments in regression, classification and unsupervised learning, with learning pathways for AI, Python, deep learning and cloud engineering.',
     path: '/resources',
   },
   '/labs': {
@@ -74,6 +74,41 @@ export const pageMetadata: Record<string, PageMetadata> = {
     path: '/resources/decision-tree-classification',
     ogImage: '/og-decision-tree-classification.png',
     ogImageAlt: 'Two class clusters divided into rectangular decision regions by a decision tree.',
+  },
+  '/resources/k-means-clustering': {
+    title: 'K-Means Clustering Interactive Lab | cloudsandai',
+    description: 'Explore unsupervised learning with an interactive K-Means lab. Adjust the number of clusters and iterations, watch centroids move, and inspect point assignments.',
+    path: '/resources/k-means-clustering',
+  },
+  '/resources/knn-classification': {
+    title: 'K-Nearest Neighbors Interactive Lab | cloudsandai',
+    description: 'Explore K-nearest neighbors classification. Adjust k, inspect decision regions, and predict classes for custom feature values.',
+    path: '/resources/knn-classification',
+  },
+  '/resources/naive-bayes': {
+    title: 'Gaussian Naive Bayes Interactive Lab | cloudsandai',
+    description: 'Explore Gaussian Naive Bayes classification with feature distributions, adjustable variance smoothing, and interactive class predictions.',
+    path: '/resources/naive-bayes',
+  },
+  '/resources/random-forest': {
+    title: 'Random Forest Interactive Lab | cloudsandai',
+    description: 'Explore random forest classification by adjusting the number of decision trees and comparing predictions across the feature space.',
+    path: '/resources/random-forest',
+  },
+  '/resources/support-vector-machine': {
+    title: 'Support Vector Machine Interactive Lab | cloudsandai',
+    description: 'Explore a linear support vector machine, inspect its maximum-margin decision regions, and adjust regularization in an interactive lab.',
+    path: '/resources/support-vector-machine',
+  },
+  '/resources/pca': {
+    title: 'Principal Component Analysis Interactive Lab | cloudsandai',
+    description: 'Explore principal component analysis by projecting standardized feature data and comparing variance explained by each component.',
+    path: '/resources/pca',
+  },
+  '/resources/neural-network': {
+    title: 'Neural Network Classification Interactive Lab | cloudsandai',
+    description: 'Train a small neural network in your browser, adjust hidden units and training epochs, and inspect its classification regions.',
+    path: '/resources/neural-network',
   },
 };
 

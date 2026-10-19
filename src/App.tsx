@@ -24,8 +24,47 @@ import { SimpleLinearRegressionLab } from '@/components/SimpleLinearRegressionLa
 import { MultipleLinearRegressionLab } from '@/components/MultipleLinearRegressionLab';
 import { LogisticClassificationLab } from '@/components/LogisticClassificationLab';
 import { DecisionTreeClassificationLab } from '@/components/DecisionTreeClassificationLab';
+import { InteractiveModelLab, type InteractiveModelKind } from '@/components/InteractiveModelLab';
 import { LabsPage } from '@/components/LabsPage';
 import { normalizePath, pageMetadata } from '@/seo';
+
+const interactiveModelResources: Record<string, { title: string; description: string; kind: InteractiveModelKind }> = {
+  '/resources/k-means-clustering': {
+    title: 'K-Means Clustering: An Interactive Lab',
+    description: 'Explore unsupervised learning by assigning observations to clusters, adjusting k, and watching centroids move with each iteration.',
+    kind: 'kmeans',
+  },
+  '/resources/knn-classification': {
+    title: 'K-Nearest Neighbors: An Interactive Lab',
+    description: 'Explore how neighborhood size changes classification regions and use nearby observations to predict a new class.',
+    kind: 'knn',
+  },
+  '/resources/naive-bayes': {
+    title: 'Gaussian Naive Bayes: An Interactive Lab',
+    description: 'Explore how class priors and Gaussian feature likelihoods combine to make probabilistic classifications.',
+    kind: 'naive-bayes',
+  },
+  '/resources/random-forest': {
+    title: 'Random Forests: An Interactive Lab',
+    description: 'Explore how randomized decision trees combine their votes to classify observations.',
+    kind: 'random-forest',
+  },
+  '/resources/support-vector-machine': {
+    title: 'Support Vector Machines: An Interactive Lab',
+    description: 'Explore a linear maximum-margin classifier and adjust regularization to see how it changes the decision regions.',
+    kind: 'svm',
+  },
+  '/resources/pca': {
+    title: 'Principal Component Analysis: An Interactive Lab',
+    description: 'Explore how standardization and orthogonal principal components reveal the directions of greatest variation in data.',
+    kind: 'pca',
+  },
+  '/resources/neural-network': {
+    title: 'Neural Network Classification: An Interactive Lab',
+    description: 'Train a small feed-forward neural network and explore how its hidden layer shapes a classification boundary.',
+    kind: 'neural-network',
+  },
+};
 
 function PageIntro({ title, description }: { title: string; description: string }) {
   return (
@@ -178,6 +217,19 @@ function PageContent({ path }: { path: string }) {
           description="Explore how decision trees split data into interpretable rules, compare Gini impurity with entropy, and see how tree complexity shapes nonlinear decision regions."
         />
         <DecisionTreeClassificationLab />
+      </>
+    );
+  }
+
+  const interactiveModelResource = interactiveModelResources[path];
+  if (interactiveModelResource) {
+    return (
+      <>
+        <PageIntro
+          title={interactiveModelResource.title}
+          description={interactiveModelResource.description}
+        />
+        <InteractiveModelLab kind={interactiveModelResource.kind} />
       </>
     );
   }

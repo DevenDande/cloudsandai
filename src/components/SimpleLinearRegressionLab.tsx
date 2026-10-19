@@ -90,7 +90,12 @@ export function SimpleLinearRegressionLab() {
     isTraining: false,
   });
   const [closedForm, setClosedForm] = useState<ReturnType<typeof computeClosedFormSolution> | null>(null);
+  const [inferenceFeature, setInferenceFeature] = useState('5');
   const validObservations = useMemo(() => getValidObservations(dataset), [dataset]);
+  const inferenceValue = parseNumericInput(inferenceFeature);
+  const inferencePrediction = inferenceValue === null
+    ? null
+    : predict(model.w, model.b, inferenceValue);
   const currentLoss = useMemo(() => computeMSE(validObservations, model.w, model.b), [validObservations, model.w, model.b]);
   const residuals = useMemo(() => computeResiduals(validObservations, model.w, model.b), [validObservations, model.w, model.b]);
   const gradients = useMemo(() => computeGradients(validObservations, model.w, model.b), [validObservations, model.w, model.b]);
@@ -445,6 +450,44 @@ export function SimpleLinearRegressionLab() {
           <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-ink-900" /> Actual observations</span>
           <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-accent-600" /> Prediction</span>
           <span className="inline-flex items-center gap-2"><span className="h-2.5 w-6 rounded-full bg-warning-400" /> Residual</span>
+        </div>
+      </section>
+
+      <section className="mt-10 rounded-[28px] border border-ink-100 bg-white p-5 shadow-[0_12px_35px_rgba(13,15,18,0.04)] lg:p-7">
+        <p className="mono-label">Apply the model</p>
+        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">Try an input value</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-500">
+          Enter hours studied to get a predicted exam score from the current weight and bias. The result updates as you train or adjust the model.
+        </p>
+        <div className="mt-6 grid gap-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <label className="text-sm text-ink-600">
+            Hours studied (x)
+            <input
+              aria-label="Inference input: hours studied"
+              type="number"
+              min="-100000"
+              max="100000"
+              step="0.1"
+              value={inferenceFeature}
+              onChange={(event) => setInferenceFeature(event.target.value)}
+              className="mt-2 w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-ink-900 outline-none focus:border-accent-500"
+            />
+          </label>
+          <div className="rounded-2xl border border-ink-100 bg-ink-50 p-5" aria-live="polite">
+            <p className="text-sm font-medium text-ink-500">Predicted exam score</p>
+            {inferencePrediction !== null ? (
+              <>
+                <p className="mt-2 text-3xl font-semibold tracking-tight text-ink-900">{formatNumber(inferencePrediction)}</p>
+                <p className="mt-2 text-xs text-ink-500">
+                  ŷ = {formatNumber(model.w)} × {formatNumber(inferenceValue)} + {formatNumber(model.b)}
+                </p>
+              </>
+            ) : (
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                Enter an input between −100,000 and 100,000 to see a prediction.
+              </p>
+            )}
+          </div>
         </div>
       </section>
 

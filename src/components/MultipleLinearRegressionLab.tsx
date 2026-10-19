@@ -77,9 +77,22 @@ export function MultipleLinearRegressionLab() {
   const [dataset, setDataset] = useState<DatasetRow[]>(defaultDatasetRows);
   const [standardize, setStandardize] = useState(true);
   const [model, setModel] = useState<LabModel>(() => initialModel(defaultDatasetRows));
+  const [inferenceFeatures, setInferenceFeatures] = useState<Record<FeatureKey, string>>(
+    () => ({ ...defaultDatasetRows[0].values }),
+  );
   const validObservations = useMemo(() => getValidObservations(dataset), [dataset]);
   const featureStats = useMemo(() => getFeatureStats(validObservations), [validObservations]);
   const currentParameters = useMemo<ModelParameters>(() => ({ weights: model.weights, bias: model.bias }), [model.weights, model.bias]);
+  const inferenceValues = regressionFeatures.map(({ key }) => parseNumericInput(inferenceFeatures[key]));
+  const inferenceInput = inferenceValues.some((value) => value === null)
+    ? null
+    : inferenceValues.filter((value): value is number => value !== null);
+  const inferencePrediction = inferenceInput && validObservations.length > 0
+    ? predict(inferenceInput, currentParameters, featureStats, standardize)
+    : null;
+  const inferenceContributions = inferenceInput
+    ? transformFeatures(inferenceInput, featureStats, standardize).map((value, index) => value * model.weights[index])
+    : [];
   const currentLoss = useMemo(
     () => computeMSE(validObservations, currentParameters, featureStats, standardize),
     [validObservations, currentParameters, featureStats, standardize],
@@ -367,9 +380,76 @@ export function MultipleLinearRegressionLab() {
         </aside>
       </div>
 
+      <section className="mt-10 rounded-[28px] border border-ink-100 bg-white p-5 shadow-[0_12px_35px_rgba(13,15,18,0.04)] lg:p-7">
+        <p className="mono-label">Section C</p>
+        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">Try your own inputs</h2>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-ink-500">
+          Enter feature values to run inference with the current model. The prediction updates as you change the inputs, model parameters, training data, or feature scaling.
+        </p>
+        <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_0.8fr]">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {regressionFeatures.map((feature) => (
+              <label key={feature.key} className="text-sm text-ink-600">
+                {feature.label}
+                <input
+                  aria-label={`Inference input: ${feature.label}`}
+                  type="number"
+                  min="-100000"
+                  max="100000"
+                  step="0.1"
+                  value={inferenceFeatures[feature.key]}
+                  onChange={(event) => setInferenceFeatures((previous) => ({
+                    ...previous,
+                    [feature.key]: event.target.value,
+                  }))}
+                  className="mt-2 w-full rounded-lg border border-ink-200 px-3 py-2 text-ink-900 outline-none focus:border-accent-500"
+                />
+              </label>
+            ))}
+          </div>
+          <div className="rounded-2xl border border-ink-100 bg-ink-50 p-5" aria-live="polite">
+            <p className="text-sm font-medium text-ink-500">Estimated price</p>
+            {inferencePrediction !== null ? (
+              <>
+                <p className="mt-2 text-3xl font-semibold tracking-tight text-ink-900">
+                  ${formatNumber(inferencePrediction * 10_000)}
+                </p>
+                <p className="mt-1 text-sm text-ink-500">
+                  {formatNumber(inferencePrediction)} in $10,000 units
+                </p>
+                <div className="mt-4 border-t border-ink-200 pt-3">
+                  <p className="text-xs font-medium uppercase tracking-widest text-ink-500">Contribution breakdown</p>
+                  <ul className="mt-2 space-y-1 text-xs text-ink-600">
+                    {regressionFeatures.map((feature, index) => (
+                      <li key={feature.key} className="flex justify-between gap-4">
+                        <span>{feature.label}</span>
+                        <span>{formatNumber(inferenceContributions[index])}</span>
+                      </li>
+                    ))}
+                    <li className="flex justify-between gap-4 border-t border-ink-200 pt-1 font-medium text-ink-900">
+                      <span>Bias / intercept</span>
+                      <span>{formatNumber(model.bias)}</span>
+                    </li>
+                  </ul>
+                </div>
+              </>
+            ) : (
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">
+                {validObservations.length === 0
+                  ? 'Complete at least one dataset row to provide the feature statistics used by this model.'
+                  : 'Enter all four feature values within the range −100,000 to 100,000 to see a prediction.'}
+              </p>
+            )}
+            <p className="mt-4 text-xs leading-relaxed text-ink-500">
+              Predictions use the current model parameters and are shown in the same units as the dataset. Train the model in the next section or adjust its parameters above to change the result.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="rounded-[28px] border border-ink-100 bg-white p-5 shadow-[0_12px_35px_rgba(13,15,18,0.04)] lg:p-7">
-          <p className="mono-label">Section C</p>
+          <p className="mono-label">Section D</p>
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">Fit and evaluate</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             <label className="text-sm text-ink-600">Learning rate (maximum 1)<input aria-label="Learning rate" type="number" min="0.000000000001" max="1" step="0.005" value={model.learningRate} onChange={(event) => {
@@ -422,7 +502,7 @@ export function MultipleLinearRegressionLab() {
       </section>
 
       <section className="mt-10 rounded-[28px] border border-ink-100 bg-white p-5 shadow-[0_12px_35px_rgba(13,15,18,0.04)] lg:p-7">
-        <p className="mono-label">Section D</p>
+        <p className="mono-label">Section E</p>
         <h2 className="mt-2 text-2xl font-semibold tracking-tight text-ink-900">Predicted versus actual</h2>
         <p className="mt-3 text-sm text-ink-500">Points closer to the diagonal represent more accurate predictions.</p>
         <div className="mt-5 overflow-x-auto rounded-2xl border border-ink-100 bg-ink-50 p-2">

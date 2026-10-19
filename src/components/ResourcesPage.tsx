@@ -1,20 +1,23 @@
 const resources = [
   {
     title: 'Simple Linear Regression',
+    badge: 'SL',
     description:
-      'Explore how a model learns from data. Adjust the weight and bias, visualize prediction errors, and experiment with gradient descent in an interactive lab.',
+      'Explore how a model learns from data. Adjust the weight and bias, run predictions with your own input, visualize errors, and experiment with gradient descent.',
     href: '/resources/simple-linear-regression',
     cta: 'Explore Interactive Lab',
   },
   {
     title: 'Multiple Linear Regression',
+    badge: 'ML',
     description:
-      'Explore how four input features work together to predict a target. Adjust model coefficients, standardize inputs, and train with gradient descent.',
+      'Explore how four input features work together to predict a target. Adjust model coefficients, train with gradient descent, and run inference with your own feature values.',
     href: '/resources/multiple-linear-regression',
     cta: 'Explore Interactive Lab',
   },
   {
     title: 'Binary Classification with Logistic Regression',
+    badge: 'LC',
     description:
       'Learn how a model turns input features into class probabilities. Adjust the decision threshold, train logistic regression, and explore the decision boundary and confusion matrix.',
     href: '/resources/logistic-classification',
@@ -22,9 +25,66 @@ const resources = [
   },
   {
     title: 'Decision Tree Classification',
+    badge: 'DT',
     description:
       'Explore how a tree makes interpretable, rule-based predictions. Adjust tree depth and leaf size, compare Gini impurity with entropy, and visualize nonlinear decision regions.',
     href: '/resources/decision-tree-classification',
+    cta: 'Explore Interactive Lab',
+  },
+  {
+    title: 'K-Means Clustering',
+    badge: 'KM',
+    description:
+      'Explore unsupervised learning by grouping observations. Adjust the number of clusters and iterations to see centroids move and points get assigned.',
+    href: '/resources/k-means-clustering',
+    cta: 'Explore Interactive Lab',
+  },
+  {
+    title: 'K-Nearest Neighbors',
+    badge: 'KNN',
+    description:
+      'Classify new observations by their closest neighbors. Adjust k, inspect decision regions, and run inference with custom feature values.',
+    href: '/resources/knn-classification',
+    cta: 'Explore Interactive Lab',
+  },
+  {
+    title: 'Gaussian Naive Bayes',
+    badge: 'NB',
+    description:
+      'Explore probabilistic classification using feature distributions. Adjust variance smoothing and compare predictions across the feature space.',
+    href: '/resources/naive-bayes',
+    cta: 'Explore Interactive Lab',
+  },
+  {
+    title: 'Random Forest Classification',
+    badge: 'RF',
+    description:
+      'See how an ensemble of randomized decision trees combines votes. Change the number of trees and compare its decision regions and accuracy.',
+    href: '/resources/random-forest',
+    cta: 'Explore Interactive Lab',
+  },
+  {
+    title: 'Support Vector Machine',
+    badge: 'SVM',
+    description:
+      'Explore a maximum-margin linear classifier. Adjust regularization, inspect the decision boundary, and predict outcomes from your own inputs.',
+    href: '/resources/support-vector-machine',
+    cta: 'Explore Interactive Lab',
+  },
+  {
+    title: 'Principal Component Analysis',
+    badge: 'PCA',
+    description:
+      'Explore dimensionality reduction by projecting standardized data onto principal components and comparing the variance each component explains.',
+    href: '/resources/pca',
+    cta: 'Explore Interactive Lab',
+  },
+  {
+    title: 'Neural Network Classification',
+    badge: 'NN',
+    description:
+      'Train a small neural network in your browser. Adjust hidden-layer size and training epochs, then inspect its learned decision regions.',
+    href: '/resources/neural-network',
     cta: 'Explore Interactive Lab',
   },
 ];
@@ -78,9 +138,7 @@ export function ResourcesPage() {
             >
               <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-accent-50 text-accent-700">
                 <span className="text-lg font-semibold">
-                  {resource.title.startsWith('Simple') ? 'SL'
-                    : resource.title.startsWith('Multiple') ? 'ML'
-                      : resource.title.startsWith('Decision') ? 'DT' : 'LC'}
+                  {resource.badge}
                 </span>
               </div>
 
