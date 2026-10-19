@@ -31,7 +31,7 @@ export function Hero() {
               className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-ink-500 animate-fade-up opacity-0"
               style={{ animationDelay: '0.3s' }}
             >
-              Learn and experiment across AI, machine learning and cloud engineering. Start with free resources and browser-based ML experiments, with practical AI and cloud engineering labs on the roadmap.
+              Learn and experiment across AI, machine learning and cloud engineering. Start with free resources and browser-based ML experiments, with practical AI labs on the roadmap.
             </p>
 
             <div

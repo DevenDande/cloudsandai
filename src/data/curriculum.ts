@@ -422,7 +422,7 @@ export const homepageFaqItems: { question: string; answer: string }[] = [
   {
     question: 'Are more interactive labs planned?',
     answer:
-      'Yes. Advanced AI and cloud engineering lab capabilities are planned and marked Coming Soon. The existing educational resources remain accessible.',
+      'Yes. Advanced AI lab capabilities are planned and marked Coming Soon. The existing educational resources remain accessible.',
   },
   {
     question: 'Who is Deven Dande?',

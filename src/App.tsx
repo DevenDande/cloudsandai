@@ -165,8 +165,8 @@ function PageContent({ path }: { path: string }) {
     return (
       <>
         <PageIntro
-          title="Interactive AI & Cloud Engineering Labs"
-          description="Explore free machine learning labs available today and the vision for future advanced simulations, model-training experiments and AI/cloud engineering labs."
+          title="Interactive AI Labs"
+          description="Explore free machine learning labs available today and the vision for future advanced AI simulations and model-training experiments."
         />
         <LabsPage />
       </>

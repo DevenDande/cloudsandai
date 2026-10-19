@@ -1,4 +1,4 @@
-import { ArrowRight, BrainCircuit, Cloud, FlaskConical } from 'lucide-react';
+import { ArrowRight, BrainCircuit, FlaskConical } from 'lucide-react';
 
 const labIdeas = [
   {
@@ -13,12 +13,6 @@ const labIdeas = [
       'Guided environments for exploring the building blocks of AI applications, including models, APIs and retrieval workflows.',
     icon: FlaskConical,
   },
-  {
-    title: 'AWS and cloud engineering labs',
-    description:
-      'Practical scenarios for understanding cloud architecture, deployment decisions and the infrastructure behind AI systems.',
-    icon: Cloud,
-  },
 ];
 
 export function LabsPage() {
@@ -32,7 +26,7 @@ export function LabsPage() {
               Learn by experimenting
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-ink-500">
-              cloudsandai is building toward hands-on labs that make AI and cloud concepts easier to explore through experimentation, not just explanation.
+              cloudsandai is building toward hands-on labs that make AI concepts easier to explore through experimentation, not just explanation.
             </p>
             <p className="mt-4 text-base leading-relaxed text-ink-500">
               Free educational resources will remain accessible. A future subscription is planned for additional advanced lab capabilities; no subscription or payment is required to use the resources available today.

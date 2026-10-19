@@ -60,7 +60,7 @@ The website currently offers free interactive labs for simple linear regression,
 
 ## Interactive Labs
 
-The existing machine-learning interactive labs are free educational resources. cloudsandai is planning additional advanced subscription lab capabilities, including interactive model-training experiments and AI/cloud engineering scenarios. Advanced subscription labs are coming soon; no payment, account or subscription system is currently available.
+The existing machine-learning interactive labs are free educational resources. cloudsandai is planning additional advanced subscription lab capabilities, including interactive model-training experiments and AI engineering scenarios. Advanced subscription labs are coming soon; no payment, account or subscription system is currently available.
 
 ## Audience and Delivery
 

@@ -10,7 +10,7 @@ export const pageMetadata: Record<string, PageMetadata> = {
   '/': {
     title: 'Interactive AI, ML & Cloud Learning Platform | cloudsandai',
     description:
-      'Learn AI, machine learning and cloud engineering with free resources and browser-based ML experiments, with practical AI and cloud engineering labs on the roadmap.',
+      'Learn AI, machine learning and cloud engineering with free resources and browser-based ML experiments, with practical AI labs on the roadmap.',
     path: '/',
   },
   '/courses': {
@@ -38,9 +38,9 @@ export const pageMetadata: Record<string, PageMetadata> = {
     path: '/resources',
   },
   '/labs': {
-    title: 'Interactive AI & Cloud Engineering Labs | cloudsandai',
+    title: 'Interactive AI Labs | cloudsandai',
     description:
-      'Explore free machine learning labs and the planned vision for advanced AI simulations, model-training experiments and AWS/cloud engineering labs. Subscription access is coming soon.',
+      'Explore free machine learning labs and the planned vision for advanced AI simulations and model-training experiments. Subscription access is coming soon.',
     path: '/labs',
   },
   '/resources/simple-linear-regression': {
