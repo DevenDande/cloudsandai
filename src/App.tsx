@@ -26,6 +26,7 @@ import { LogisticClassificationLab } from '@/components/LogisticClassificationLa
 import { DecisionTreeClassificationLab } from '@/components/DecisionTreeClassificationLab';
 import { InteractiveModelLab, type InteractiveModelKind } from '@/components/InteractiveModelLab';
 import { LabsPage } from '@/components/LabsPage';
+import { SolutionsPage } from '@/components/SolutionsPage';
 import { normalizePath, pageMetadata } from '@/seo';
 
 const interactiveModelResources: Record<string, { title: string; description: string; kind: InteractiveModelKind }> = {
@@ -147,6 +148,10 @@ function PageContent({ path }: { path: string }) {
         <FinalCTA />
       </>
     );
+  }
+
+  if (path === '/solutions') {
+    return <SolutionsPage />;
   }
 
   if (path === '/contact') {

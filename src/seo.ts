@@ -31,6 +31,12 @@ export const pageMetadata: Record<string, PageMetadata> = {
       'Contact cloudsandai with questions about free learning resources, the AI/ML curriculum, structured programs, or an appointment with Deven.',
     path: '/contact',
   },
+  '/solutions': {
+    title: 'AI Solutions & Implementation Services | cloudsandai',
+    description:
+      'Explore AI solutions from cloudsandai, including document intelligence, OCR, speech and video analysis, generative AI, RAG, agentic workflows, and custom AI application development.',
+    path: '/solutions',
+  },
   '/resources': {
     title: 'Free AI & Machine Learning Resources | cloudsandai',
     description:

@@ -1,7 +1,23 @@
 import { useEffect, useState } from 'react';
-import { Instagram, Mail, Phone, Linkedin, Send, ArrowUpRight, Youtube } from 'lucide-react';
+import { Instagram, Mail, Phone, Linkedin, Send, ArrowRight, ArrowUpRight, Youtube } from 'lucide-react';
 
-export function Contact({ compact = false }: { compact?: boolean }) {
+interface ContactProps {
+  compact?: boolean;
+  initialCategory?: string;
+  heading?: string;
+  description?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+}
+
+export function Contact({
+  compact = false,
+  initialCategory = '',
+  heading = 'Questions About Learning?',
+  description = 'Have questions about the free resources or want to learn more about a structured program? Get in touch with Deven.',
+  ctaHref,
+  ctaLabel,
+}: ContactProps) {
   useEffect(() => {
     const scriptId = 'calendly-inline-widget-script';
     const existingScript = document.getElementById(scriptId) as HTMLScriptElement | null;
@@ -19,22 +35,26 @@ export function Contact({ compact = false }: { compact?: boolean }) {
     name: '',
     email: '',
     phone: '',
-    course: '',
+    organization: '',
+    course: initialCategory,
     message: '',
+    projectDetails: '',
   });
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(
-      `Course Enquiry — ${form.course || 'General'} — ${form.name}`
+      `${form.course === 'AI Solutions' ? 'AI Solutions Enquiry' : 'Course Enquiry'} — ${form.course || 'General'} — ${form.name}`
     );
     const body = encodeURIComponent(
       `Name: ${form.name}\n` +
         `Email: ${form.email}\n` +
         `Phone: ${form.phone || 'Not provided'}\n` +
-        `Course Interested In: ${form.course || 'Not specified'}\n\n` +
-        `Message:\n${form.message}`
+        `Organization: ${form.organization || 'Not provided'}\n` +
+        `Enquiry category: ${form.course || 'Not specified'}\n\n` +
+        `Message:\n${form.message}\n\n` +
+        `Additional project details:\n${form.projectDetails || 'Not provided'}`
     );
     window.location.href = `mailto:deven@cloudsandai.com?subject=${subject}&body=${body}`;
     setSent(true);
@@ -56,12 +76,21 @@ export function Contact({ compact = false }: { compact?: boolean }) {
           <div className="lg:col-span-5">
             <p className="mono-label">Contact</p>
             <h2 className="mt-4 text-balance text-3xl font-semibold leading-tight tracking-tight text-ink-900 sm:text-4xl">
-              Questions About Learning?
+              {heading}
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-ink-500">
-              Have questions about the free resources or want to learn more about a structured program?
-              Get in touch with Deven.
+              {description}
             </p>
+
+            {ctaHref && ctaLabel && (
+              <a
+                href={ctaHref}
+                className="group mt-6 inline-flex items-center gap-2 rounded-full bg-ink-900 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-ink-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-600"
+              >
+                {ctaLabel}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
+            )}
 
             <div className="mt-8 space-y-3">
               <a
@@ -171,7 +200,8 @@ export function Contact({ compact = false }: { compact?: boolean }) {
                     htmlFor="email"
                     className="mb-1.5 block text-xs font-medium text-ink-700"
                   >
-                    Email <span className="text-error-500">*</span>
+                    {initialCategory === 'AI Solutions' ? 'Work email' : 'Email'}{' '}
+                    <span className="text-error-500">*</span>
                   </label>
                   <input
                     id="email"
@@ -204,24 +234,46 @@ export function Contact({ compact = false }: { compact?: boolean }) {
                 </div>
                 <div>
                   <label
+                    htmlFor="organization"
+                    className="mb-1.5 block text-xs font-medium text-ink-700"
+                  >
+                    Organization
+                    {initialCategory === 'AI Solutions' && (
+                      <span className="text-error-500"> *</span>
+                    )}
+                  </label>
+                  <input
+                    id="organization"
+                    type="text"
+                    required={initialCategory === 'AI Solutions'}
+                    value={form.organization}
+                    onChange={(e) => setForm({ ...form, organization: e.target.value })}
+                    className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 transition-colors placeholder:text-ink-300 focus:border-ink-900 focus:outline-none focus:ring-1 focus:ring-ink-900"
+                    placeholder="Your organization"
+                  />
+                </div>
+                <div>
+                  <label
                     htmlFor="course"
                     className="mb-1.5 block text-xs font-medium text-ink-700"
                   >
-                    Course Interested In
+                    Enquiry category
                   </label>
                   <select
                     id="course"
                     value={form.course}
+                    required={initialCategory === 'AI Solutions'}
                     onChange={(e) => setForm({ ...form, course: e.target.value })}
                     className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 transition-colors focus:border-ink-900 focus:outline-none focus:ring-1 focus:ring-ink-900"
                   >
-                    <option value="">Select a course</option>
+                    <option value="">Select a category</option>
                     <option value="AI/ML Foundations">
                       AI/ML Foundations
                     </option>
                     <option value="AI Engineering">
                       AI Engineering
                     </option>
+                    <option value="AI Solutions">AI Solutions</option>
                     <option value="Not sure yet">Not sure yet</option>
                   </select>
                 </div>
@@ -232,15 +284,36 @@ export function Contact({ compact = false }: { compact?: boolean }) {
                   htmlFor="message"
                   className="mb-1.5 block text-xs font-medium text-ink-700"
                 >
-                  Message
+                  Problem description or message
+                  {initialCategory === 'AI Solutions' && (
+                    <span className="text-error-500"> *</span>
+                  )}
                 </label>
                 <textarea
                   id="message"
                   rows={4}
+                  required={initialCategory === 'AI Solutions'}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 transition-colors placeholder:text-ink-300 focus:border-ink-900 focus:outline-none focus:ring-1 focus:ring-ink-900"
                   placeholder="Your questions or message..."
+                />
+              </div>
+
+              <div className="mt-5">
+                <label
+                  htmlFor="projectDetails"
+                  className="mb-1.5 block text-xs font-medium text-ink-700"
+                >
+                  Project details <span className="text-ink-400">(optional)</span>
+                </label>
+                <textarea
+                  id="projectDetails"
+                  rows={3}
+                  value={form.projectDetails}
+                  onChange={(e) => setForm({ ...form, projectDetails: e.target.value })}
+                  className="w-full rounded-lg border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 transition-colors placeholder:text-ink-300 focus:border-ink-900 focus:outline-none focus:ring-1 focus:ring-ink-900"
+                  placeholder="Any context, systems, or constraints you'd like to share?"
                 />
               </div>
 
