@@ -14,20 +14,6 @@ export function Footer() {
   return (
     <footer className="bg-white py-16">
       <div className="mx-auto max-w-8xl px-6 lg:px-10">
-        <section className="mb-16 grid gap-8 overflow-hidden rounded-3xl border border-ink-100 bg-ink-50 p-6 sm:p-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center">
-          <div>
-            <p className="mono-label">Newsletter</p>
-          </div>
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSfQLohap76RrISxfZd-_56LK2v1QQ2eBEePGv1CFPLUFjX5fQ/viewform?embedded=true"
-            title="cloudsandai newsletter subscription form"
-            loading="lazy"
-            className="h-[760px] w-full rounded-xl border-0 bg-white sm:h-[700px] lg:h-[648px]"
-          >
-            Loading…
-          </iframe>
-        </section>
-
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Brand */}
           <div className="lg:col-span-5">
